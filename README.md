@@ -8,4 +8,4 @@ The website repository contains presentation assets only. Seekers of the Deep re
 
 ## Domain
 
-Point apex A records to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153. Point www CNAME to seeker24601.github.io. Once DNS resolves, configure seeker-studio.games in GitHub Pages and enable HTTPS. Until then use the GitHub Pages URL.
+Cloudflare DNS is configured with apex A records 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, and www CNAME to seeker24601.github.io. All are DNS only. GitHub Pages is configured for seeker-studio.games through the CNAME file. HTTPS enforcement must be enabled once GitHub finishes issuing the certificate.
