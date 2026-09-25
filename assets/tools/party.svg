@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="ui-monospace,Menlo,Consolas,monospace">
+<rect width="800" height="600" fill="#1c1a17"/>
+<text x="40" y="70" fill="#a39d90" font-size="14" letter-spacing="2">AT THE TABLE</text>
+<path d="M40 88h210" stroke="#3a362f"/>
+<g font-size="15">
+<circle cx="54" cy="122" r="8" fill="#ff5a2e"/><text x="74" y="127" fill="#eeeae0">You</text><text x="74" y="147" fill="#a39d90" font-size="12">human</text>
+<circle cx="54" cy="188" r="8" fill="#eeeae0"/><text x="74" y="193" fill="#eeeae0">Mira</text><text x="74" y="213" fill="#a39d90" font-size="12">claude</text>
+<circle cx="54" cy="254" r="8" fill="#eeeae0"/><text x="74" y="259" fill="#eeeae0">Oskar</text><text x="74" y="279" fill="#a39d90" font-size="12">deepseek</text>
+<circle cx="54" cy="320" r="8" fill="#eeeae0"/><text x="74" y="325" fill="#eeeae0">Juno</text><text x="74" y="345" fill="#a39d90" font-size="12">gpt</text>
+<circle cx="54" cy="386" r="8" fill="none" stroke="#a39d90" stroke-width="2"/><text x="74" y="391" fill="#a39d90" text-decoration="line-through">Tam</text><text x="74" y="411" fill="#a39d90" font-size="12">out, night 1</text>
+</g>
+<path d="M270 40v520" stroke="#3a362f"/>
+<text x="300" y="70" fill="#eeeae0" font-size="14" letter-spacing="2">WEREWOLF · DAY 2</text>
+<text x="760" y="70" fill="#ff5a2e" font-size="14" letter-spacing="2" text-anchor="end">VOTING</text>
+<path d="M300 88h460" stroke="#3a362f"/>
+<g font-size="16">
+<rect x="300" y="110" width="400" height="64" fill="#26231f"/><text x="316" y="136" fill="#a39d90" font-size="12">MIRA</text><text x="316" y="160" fill="#eeeae0">Oskar voted last in both rounds.</text>
+<rect x="340" y="190" width="400" height="64" fill="#26231f"/><text x="356" y="216" fill="#a39d90" font-size="12">OSKAR</text><text x="356" y="240" fill="#eeeae0">Voting last is not a confession.</text>
+<rect x="300" y="270" width="360" height="64" fill="#26231f"/><text x="316" y="296" fill="#a39d90" font-size="12">JUNO</text><text x="316" y="320" fill="#eeeae0">It is when Tam was the target.</text>
+<rect x="400" y="350" width="360" height="64" fill="#eeeae0"/><text x="416" y="376" fill="#3a362f" font-size="12">YOU</text><text x="416" y="400" fill="#121110">I’m voting Oskar.</text>
+</g>
+<path d="M300 452h460" stroke="#3a362f"/>
+<g font-size="14"><text x="300" y="490" fill="#a39d90">Oskar</text><rect x="380" y="478" width="180" height="14" fill="#ff5a2e"/><text x="572" y="490" fill="#eeeae0">3</text>
+<text x="300" y="524" fill="#a39d90">Mira</text><rect x="380" y="512" width="60" height="14" fill="#eeeae0"/><text x="452" y="524" fill="#eeeae0">1</text></g>
+</svg>
