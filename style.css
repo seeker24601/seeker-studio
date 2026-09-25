@@ -64,10 +64,14 @@ nav a:hover,nav a[aria-current=page]{background-size:100% 2px}
 
 /* Parts */
 .part{padding:clamp(56px,8vw,120px) var(--gutter) 0}
-.part-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,11fr);column-gap:var(--gap);align-items:end;border-top:2px solid var(--ink);padding-top:18px;margin-bottom:clamp(28px,4vw,56px)}
-.part-head .code{align-self:start;padding-top:10px}
-.part-head :is(h1,h2){font:clamp(56px,10vw,168px)/.86 var(--display);text-transform:uppercase;letter-spacing:-.03em}
-.part-head p{grid-column:2;max-width:46ch;margin-top:18px;color:var(--ink-2);font-size:18px}
+/* Section titles run down a rail beside the content, as outlined display type */
+.part{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(20px,3vw,48px)}
+.part-rail,.part-body{border-top:2px solid var(--ink);padding-top:14px}
+.part-rail{display:flex;flex-direction:column;align-items:center;gap:18px}
+.part-rail .code{color:var(--signal-ink)}
+.rail-title{position:sticky;top:24px;writing-mode:vertical-rl;transform:rotate(180deg);font:clamp(48px,6vw,104px)/.82 var(--display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;color:var(--ink-2)}
+@supports (-webkit-text-stroke:1px){.rail-title{color:transparent;-webkit-text-stroke:1.5px var(--ink-2)}}
+.part-intro{max-width:46ch;margin-bottom:clamp(28px,4vw,56px);color:var(--ink-2);font-size:18px}
 
 .entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,6fr) minmax(0,5fr);column-gap:var(--gap);padding:clamp(24px,3vw,36px) 0 clamp(40px,5vw,72px);border-top:1px solid var(--rule)}
 .entry-code{display:flex;flex-direction:column;gap:10px}
@@ -87,8 +91,8 @@ nav a:hover,nav a[aria-current=page]{background-size:100% 2px}
 .facts dt{font:500 12px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 
 /* Plugin list */
-.page-links,.teaser{display:flex;flex-wrap:wrap;gap:28px;margin-left:calc((100% - var(--gap)) / 12 + var(--gap))}
-.page-links{margin-top:-8px;margin-bottom:clamp(40px,5vw,72px)}
+.page-links,.teaser{display:flex;flex-wrap:wrap;gap:28px}
+.page-links{margin:-12px 0 clamp(40px,5vw,72px)}
 .teaser{padding-bottom:8px}
 .list-head{display:flex;justify-content:space-between;border-top:2px solid var(--ink);padding:14px 0}
 .list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr) minmax(0,6fr) minmax(0,2fr);column-gap:var(--gap);align-items:baseline;padding:16px 0;border-top:1px solid var(--rule);transition:background .2s}
@@ -101,8 +105,7 @@ nav a:hover,nav a[aria-current=page]{background-size:100% 2px}
 
 /* Studio + footer */
 .studio{padding-bottom:clamp(64px,9vw,128px)}
-.studio-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,11fr);column-gap:var(--gap)}
-.studio-body>*{grid-column:2;max-width:34ch}
+.studio-body>*{max-width:34ch}
 .studio-body .pitch{font-size:clamp(26px,3vw,42px);line-height:1.2;max-width:28ch}
 .studio-body>p:not(.pitch){margin-top:20px;color:var(--ink-2)}
 .links{display:flex;gap:28px;margin-top:32px}
@@ -128,10 +131,10 @@ footer .label{color:var(--ink-2)}
   .entry-code{flex-direction:row;justify-content:space-between;align-items:center}
   .entry-code .status{writing-mode:horizontal-tb;transform:none}
   .entry-code .status i{transform:none}
-  .part-head,.studio-body{grid-template-columns:1fr}
-  .part-head .code{padding:0 0 8px}
-  .part-head p,.studio-body>*{grid-column:1}
-  .page-links,.teaser{margin-left:0}
+  .part{grid-template-columns:1fr}
+  .part-rail{flex-direction:row;align-items:baseline;gap:14px}
+  .part-body{border-top:0;padding-top:10px}
+  .rail-title{position:static;writing-mode:horizontal-tb;transform:none;font-size:clamp(40px,10vw,72px)}
   .list li{grid-template-columns:52px 1fr;row-gap:4px}
   .list li span:not(.code),.list em{grid-column:2;text-align:left}
 }
@@ -142,7 +145,7 @@ footer .label{color:var(--ink-2)}
   nav{gap:16px;font-size:14px}
   .doors a{grid-template-columns:34px 1fr 24px}
   .door-count{display:none}
-  .part-head :is(h1,h2){font-size:clamp(36px,11.5vw,56px)}
+  .rail-title{font-size:clamp(32px,10vw,56px)}
   .facts div{grid-template-columns:1fr;gap:0}
 }
 @media (prefers-reduced-motion:reduce){
