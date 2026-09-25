@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="ui-monospace,Menlo,Consolas,monospace">
+<rect width="800" height="600" fill="#1c1a17"/>
+<defs>
+<g id="bust"><circle cx="0" cy="-34" r="30"/><path d="M-62 44c4-40 30-58 62-58s58 18 62 58z"/></g>
+</defs>
+<g transform="translate(250 300) rotate(-12)">
+<rect x="-95" y="-140" width="190" height="270" rx="10" fill="#26231f" stroke="#3a362f" stroke-width="2"/>
+<g transform="translate(0 -30)" fill="#3a362f"><use href="#bust"/></g>
+<text x="-78" y="-112" fill="#a39d90" font-size="13">No.001</text>
+<rect x="-78" y="62" width="100" height="10" rx="3" fill="#3a362f"/><text x="-78" y="104" fill="#a39d90" font-size="12">12 SKILLS</text>
+</g>
+<g transform="translate(550 300) rotate(12)">
+<rect x="-95" y="-140" width="190" height="270" rx="10" fill="#26231f" stroke="#3a362f" stroke-width="2"/>
+<g stroke="#3a362f" stroke-width="2"><path d="M-95 -140l190 270"/><path d="M95 -140l-190 270"/></g>
+<rect x="-52" y="-16" width="104" height="32" rx="4" fill="#1c1a17" stroke="#a39d90"/>
+<text x="0" y="5" fill="#eeeae0" font-size="13" text-anchor="middle" letter-spacing="2">SEALED</text>
+<text x="-78" y="-112" fill="#a39d90" font-size="13">No.003</text>
+</g>
+<g transform="translate(400 280)">
+<rect x="-105" y="-155" width="210" height="300" rx="12" fill="#26231f" stroke="#ff5a2e" stroke-width="2"/>
+<g transform="translate(0 -32)" fill="#a39d90"><use href="#bust"/></g>
+<g transform="translate(0 -32)" fill="none" stroke="#ff5a2e" stroke-width="2.5" opacity=".8"><circle cx="0" cy="-34" r="30"/><path d="M-62 44c4-40 30-58 62-58s58 18 62 58"/></g>
+<text x="-86" y="-126" fill="#eeeae0" font-size="14">No.002</text>
+<rect x="-86" y="64" width="72" height="14" rx="3" fill="#eeeae0"/><rect x="-6" y="64" width="44" height="14" rx="3" fill="#3a362f"/>
+<text x="-86" y="102" fill="#a39d90" font-size="12">ANALYST</text><text x="86" y="102" fill="#ff5a2e" font-size="12" text-anchor="end">9 SKILLS</text>
+<text x="-86" y="128" fill="#a39d90" font-size="11">ART · SOUL · SKILLS</text>
+</g>
+<g font-size="14">
+<rect x="470" y="470" width="290" height="70" rx="10" fill="#eeeae0"/>
+<path d="M500 540l-10 18 26-18z" fill="#eeeae0"/>
+<text x="490" y="498" fill="#121110">On it. Comparing the three</text>
+<text x="490" y="520" fill="#121110">quotes and checking the fees.</text>
+</g>
+<text x="40" y="60" fill="#a39d90" font-size="13" letter-spacing="2">COMPANION CARDS</text>
+<text x="40" y="560" fill="#a39d90" font-size="13">pet mode · workspace mode</text>
+</svg>
