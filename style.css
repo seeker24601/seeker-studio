@@ -50,6 +50,7 @@ nav a:hover,nav a[aria-current=page]{background-size:100% 2px}
 .wordmark>span{display:block;overflow:hidden;padding-bottom:.04em}
 .wordmark>span>span{display:block;animation:rise .9s var(--ease) both}
 .wordmark>span+span>span{animation-delay:.08s}
+.wordmark .mirrored-e{display:inline-block;transform:scaleX(-1);margin-left:.04em}
 .hero-line{font-size:clamp(19px,1.7vw,24px);line-height:1.4;max-width:30ch;margin-bottom:clamp(24px,3vw,36px);animation:fade .8s .25s both}
 .doors{max-width:640px;border-top:1px solid var(--ink);animation:fade .8s .35s both}
 .doors a{display:grid;grid-template-columns:44px 1fr auto 32px;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--ink);background:linear-gradient(var(--ink),var(--ink)) 0 0/0 100% no-repeat;transition:background-size .45s var(--ease),color .2s,padding .3s var(--ease)}
