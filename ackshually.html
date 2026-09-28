@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Ackshually... for Mac | Seeker Studio</title>
+<meta name="description" content="Download Ackshually..., a macOS menu-bar app that fact-checks claims on calls and in videos. For Apple silicon Macs running macOS 15 or later.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="Ackshually... for Mac | Seeker Studio"><meta property="og:description" content="A fact-check that pops up while you're still talking. Download Ackshually... for Apple silicon Macs."><meta property="og:type" content="website">
+<link rel="canonical" href="https://seeker-studio.games/ackshually.html">
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="product-shot.css"><link rel="stylesheet" href="lockbox.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="brand" href="./" aria-label="Seeker Studio home"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="./#games">Games</a><a href="./#tools">Tools</a><a href="./#companions">Companions</a><a href="plugins.html">Plugins</a><a href="./#studio">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
+<main id="main" class="download-page">
+<section class="part page-top" aria-labelledby="ackshually-title">
+<div class="part-rail"><a class="code" href="./#ackshually">T-04</a><p class="rail-title" aria-hidden="true">Tools</p></div>
+<div class="part-body">
+<div class="download-intro">
+<div class="download-copy">
+<p class="label">Live fact checking · macOS</p>
+<h1 id="ackshually-title" class="download-title long-name">Ackshually...</h1>
+<p class="pitch">A fact-check that pops up while you're still talking.</p>
+<p class="download-description">A menu-bar app that listens to a Slack huddle, a YouTube video or any app playing audio, checks the claims it hears against your notes or the public web, and shows a correction when a source disagrees.</p>
+<a class="download-button" href="downloads/Ackshually-0.1.1-macos-arm64.zip" download>Download for Mac <span aria-hidden="true">↓</span></a>
+<p class="download-meta">v0.1.1 · Apple silicon · macOS 15+<br>ZIP · 0.92 MB</p>
+<p class="download-compatibility">Not available for Intel Macs, iPhone, or iPad.</p>
+<a class="go" href="#install">Installation instructions<span aria-hidden="true"> ↓</span></a>
+</div>
+<figure class="plate product-shot"><img src="assets/tools/ackshually-toast.png" width="800" height="520" alt="The Ackshually... correction toast, reading umm... ackshually... over the claim &quot;The Atlas release is scheduled for Friday,&quot; with a note that the sample release note lists Thursday, 12 November, and an Open details button"></figure>
+</div>
+
+<section class="download-section" id="install" aria-labelledby="install-title">
+<div><p class="label">01 / Getting started</p><h2 id="install-title">Install on your Mac</h2></div>
+<div class="download-details">
+<ol class="install-steps">
+<li>Download and open the ZIP file.</li>
+<li>Drag <strong>Ackshually.app</strong> into your Applications folder, then open it. The ☝️ appears in the menu bar.</li>
+<li>Click <strong>Demo</strong> to see a simulated correction. It uses no microphone, audio capture or network.</li>
+<li>Open settings with the sliders button and add your own OpenRouter or OpenAI API key. Requests are billed to your provider account. The key is stored in your Mac's Keychain.</li>
+<li>Click <strong>Start</strong> and allow Screen &amp; System Audio Recording and Speech Recognition when macOS asks. Microphone access is needed only if you include your own voice.</li>
+</ol>
+<div class="install-note"><h3>macOS may block the first launch</h3><p>This build is ad-hoc signed and is not notarized by Apple. If you trust this download and macOS blocks it, follow <a href="https://support.apple.com/en-us/102445">Apple's instructions for opening an app from an unidentified developer</a>. Keep your Mac's security protections enabled.</p></div>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="use-title">
+<div><p class="label">02 / Everyday use</p><h2 id="use-title">Pick a source. Start. Close the panel.</h2></div>
+<div class="download-details">
+<p>Choose <strong>All system audio</strong>, or refresh the source list and pick one app such as Slack or your browser. Then choose where evidence comes from: <strong>Documents only</strong>, <strong>Public web</strong>, or <strong>References + web</strong>.</p>
+<p>For documents, use <strong>Add files…</strong> or <strong>Connect folder…</strong>. Text and Markdown files are read, so an Obsidian vault works as a reference library.</p>
+<p>Close or collapse the panel and corrections keep arriving as small toasts in the top-right corner. When a Slack huddle or call starts, Ackshually... offers to start checking. Nothing is captured until you accept.</p>
+<p>Use <strong>Reset context</strong> after skipping around in a video. Stopping or quitting ends listening; ending a call does not.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="privacy-title">
+<div><p class="label">03 / Privacy</p><h2 id="privacy-title">What leaves your Mac.</h2></div>
+<div class="download-details">
+<p>Raw audio stays on your Mac. Speech is transcribed on device.</p>
+<p>Selected transcript snippets and claims go to the model provider you configure. With documents enabled, matching passages from your notes go to that provider too. Public-web mode sends spoken claims to web search, and your notes are never included in those searches.</p>
+<p>Transcripts and findings are never saved to disk. The panel and toasts can show up if you share your whole screen, so share a single window instead.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="release-title">
+<div><p class="label">04 / Release</p><h2 id="release-title">Version 0.1.1</h2></div>
+<div class="download-details">
+<p>This is an early prototype. Findings are AI assessments and can be wrong, and accuracy has not been benchmarked. Open the source before relying on a correction. This release fixes the Slack call prompt cutting off its Start checking button.</p>
+<div class="page-links"><a class="go" href="downloads/Ackshually-0.1.1-SHA256.txt">SHA-256 checksum</a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Get help on Discord<span aria-hidden="true"> ↗</span></a></div>
+<a class="go" href="./#tools">Back to tools<span aria-hidden="true"> →</span></a>
+</div>
+</section>
+</div>
+</section>
+</main>
+<footer><a class="brand" href="./"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
+</body></html>

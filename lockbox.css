@@ -2,6 +2,7 @@
 .download-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center;padding:28px 0 clamp(48px,6vw,88px)}
 .download-copy{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .download-title{font:clamp(44px,6vw,92px)/.95 var(--display);letter-spacing:-.025em;text-transform:uppercase}
+.download-title.long-name{font-size:clamp(38px,4.4vw,70px)}
 .download-description{max-width:37ch;color:var(--ink-2)}
 .download-button{display:inline-flex;align-items:center;gap:32px;padding:16px 22px;background:var(--signal);color:var(--paper);font-weight:700;margin-top:8px;transition:background .2s}
 .download-button:hover{background:var(--ink)}
