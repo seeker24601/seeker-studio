@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Lockbox for Mac | Seeker Studio</title>
+<meta name="description" content="Download Lockbox, a small macOS app for one encrypted vault. For Apple silicon Macs running macOS 13 or later.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="Lockbox for Mac | Seeker Studio"><meta property="og:description" content="A password-protected place for private files. Download Lockbox for Apple silicon Macs."><meta property="og:type" content="website">
+<link rel="canonical" href="https://seeker-studio.games/lockbox.html">
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="lockbox.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="brand" href="./" aria-label="Seeker Studio home"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="./#games">Games</a><a href="./#tools">Tools</a><a href="./#companions">Companions</a><a href="plugins.html">Plugins</a><a href="./#studio">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
+<main id="main" class="download-page">
+<section class="part page-top" aria-labelledby="lockbox-title">
+<div class="part-rail"><a class="code" href="./#tools">T-02</a><p class="rail-title" aria-hidden="true">Tools</p></div>
+<div class="part-body">
+<div class="download-intro">
+<div class="download-copy">
+<p class="label">Encrypted files · macOS</p>
+<h1 id="lockbox-title" class="download-title">Lockbox</h1>
+<p class="pitch">A password-protected place for private files.</p>
+<p class="download-description">One encrypted vault on your Mac. Move files in, open them in Finder, and lock the vault when you are done.</p>
+<a class="download-button" href="downloads/Lockbox-0.2.7-macos-arm64.zip" download>Download for Mac <span aria-hidden="true">↓</span></a>
+<p class="download-meta">v0.2.7 · Apple silicon · macOS 13+<br>ZIP · 1.01 MB</p>
+<p class="download-compatibility">Not available for Intel Macs, iPhone, or iPad.</p>
+<a class="go" href="#install">Installation instructions<span aria-hidden="true"> ↓</span></a>
+</div>
+<figure class="plate"><img src="assets/tools/lockbox.svg" width="800" height="600" alt="A closed padlock above a stack of files, labelled Locked and encrypted"></figure>
+</div>
+
+<section class="download-section" id="install" aria-labelledby="install-title">
+<div><p class="label">01 / Getting started</p><h2 id="install-title">Install on your Mac</h2></div>
+<div class="download-details">
+<ol class="install-steps">
+<li>Download and open the ZIP file.</li>
+<li>Drag <strong>Lockbox.app</strong> into your Applications folder, then open it.</li>
+<li>Choose <strong>Create Lockbox</strong>, pick a location, and set a password of at least 12 characters.</li>
+<li>Use <strong>Add Files…</strong> to move files or folders into the vault. Allow Finder Automation when prompted if you want closing its window to lock the vault.</li>
+</ol>
+<div class="install-note"><h3>macOS may block the first launch</h3><p>This build is ad-hoc signed and is not notarized by Apple. If you trust this download and macOS blocks it, follow <a href="https://support.apple.com/en-us/102445">Apple's instructions for opening an app from an unidentified developer</a>. Keep your Mac's security protections enabled.</p></div>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="use-title">
+<div><p class="label">02 / Everyday use</p><h2 id="use-title">Open. Add files. Lock.</h2></div>
+<div class="download-details">
+<p>Unlock with your password to use the files in Finder. Add Files moves the originals into the vault. Files and folders containing symbolic links are rejected.</p>
+<p>Choose <strong>Lock</strong>, quit normally, or close the Finder window Lockbox opened. Lockbox verifies that the volume detached. If a file is still busy, it stays open and shows an error.</p>
+<p>While unlocked, files are accessible to other software running as your macOS user. Force quitting or a crash can leave the vault mounted. Reopen Lockbox and lock it normally.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="backup-title">
+<div><p class="label">03 / Keep a backup</p><h2 id="backup-title">Keep the password safe.</h2></div>
+<div class="download-details">
+<p>There is no password reset. Losing the password or the vault can mean losing the files permanently.</p>
+<p>Wait for <strong>Locked and encrypted</strong>, then back up the entire <code>.sparsebundle</code> package to another disk. Test a restored copy with your password before relying on the backup.</p>
+<p>Moving files into Lockbox does not erase copies from existing backups, other apps, or previously used disk space.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="release-title">
+<div><p class="label">04 / Release</p><h2 id="release-title">Version 0.2.7</h2></div>
+<div class="download-details">
+<p>This release checks existing vaults for encryption, fixes Finder-window locking, rejects unsafe file imports, and keeps state checks off the app's UI thread.</p>
+<div class="page-links"><a class="go" href="downloads/Lockbox-0.2.7-SHA256.txt">SHA-256 checksum</a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Get help on Discord<span aria-hidden="true"> ↗</span></a></div>
+<a class="go" href="./#tools">Back to tools<span aria-hidden="true"> →</span></a>
+</div>
+</section>
+</div>
+</section>
+</main>
+<footer><a class="brand" href="./"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
+</body></html>
