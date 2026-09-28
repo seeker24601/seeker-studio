@@ -1,0 +1,2 @@
+.plate.product-shot{padding:clamp(20px,3vw,44px);background:radial-gradient(ellipse at 50% 20%,#443329 0%,#27221f 55%,#1b1917 100%);border:1px solid var(--rule)}
+.product-shot img{display:block;border-radius:10px;box-shadow:0 18px 48px #0006,0 2px 8px #0003}

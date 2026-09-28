@@ -1,0 +1,1 @@
+cbc8f402b004f37327908f407086d3ff1edf6688970cf306776f4c24104cfdee  Lockbox-0.2.8-macos-arm64.zip

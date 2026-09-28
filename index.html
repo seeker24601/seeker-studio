@@ -6,8 +6,10 @@
 <meta name="description" content="Seeker Studio is an independent studio making games, productivity tools, AI companions and agent plugins: Seekers of the Deep, MarkShot, Lockbox, Deckr, and plugins for DeepSeek Harness.">
 <meta name="theme-color" content="#121110">
 <meta property="og:title" content="Seeker Studio"><meta property="og:description" content="Games, tools and plugins from an independent studio."><meta property="og:type" content="website">
-<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="product-shot.css">
+<link rel="stylesheet" href="tools-carousel.css">
 <script src="site.js" defer></script>
+<script src="tools-carousel.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -49,7 +51,16 @@
 <div class="part-body">
 <p class="part-intro">Single-purpose software that does one job and stays out of the way.</p>
 
-<article class="entry reveal" id="markshot" aria-labelledby="markshot-title">
+<div class="tools-carousel" role="group" aria-label="Tools catalogue">
+<div class="tools-controls" hidden>
+<div class="tools-selectors" aria-label="Choose a tool">
+<button type="button" data-tool="0" aria-controls="tools-track" aria-pressed="true"><span class="code">01</span> MarkShot</button>
+<button type="button" data-tool="1" aria-controls="tools-track" aria-pressed="false"><span class="code">02</span> Lockbox</button>
+</div>
+<div class="tools-paging"><p class="tools-position" aria-live="polite" aria-atomic="true">1 / 2 · MarkShot</p><button type="button" class="tools-prev" aria-label="Previous tool" aria-controls="tools-track" disabled>←</button><button type="button" class="tools-next" aria-label="Next tool" aria-controls="tools-track">→</button></div>
+</div>
+<div class="tools-track" id="tools-track">
+<article class="entry" id="markshot" aria-labelledby="markshot-title">
 <div class="entry-code"><span class="code">T-01</span><span class="status live"><i></i>Public prototype</span></div>
 <figure class="plate"><img src="assets/tools/markshot.webp" width="1600" height="1200" alt="MarkShot open on a screenshot of a web page, with three numbered boxes, a legend of notes for each, and a confirmation that the annotated image was copied for pasting into an agent" loading="lazy"></figure>
 <div class="entry-copy"><p class="label">Screenshot feedback</p><h3 id="markshot-title">MarkShot</h3><p class="pitch">Point at the problem. Say what should change.</p>
@@ -59,14 +70,16 @@
 <a class="go" href="https://markshot-smoky.vercel.app/">Try MarkShot<span aria-hidden="true"> ↗</span></a></div>
 </article>
 
-<article class="entry reveal" id="lockbox" aria-labelledby="lockbox-title">
-<div class="entry-code"><span class="code">T-02</span><span class="status live"><i></i>Download · v0.2.7</span></div>
-<figure class="plate"><img src="assets/tools/lockbox.svg" width="800" height="600" alt="A closed padlock over a stack of files, labelled Locked and encrypted" loading="lazy"></figure>
+<article class="entry" id="lockbox" aria-labelledby="lockbox-title">
+<div class="entry-code"><span class="code">T-02</span><span class="status live"><i></i>Download · v0.2.8</span></div>
+<figure class="plate product-shot"><img src="assets/tools/lockbox.png" width="880" height="660" alt="Lockbox open with an unlocked demo vault named Personal files, and Add Files, Show in Finder, and Lock buttons" loading="lazy"></figure>
 <div class="entry-copy"><p class="label">Encrypted files · macOS</p><h3 id="lockbox-title">Lockbox</h3><p class="pitch">A password-protected place for private files.</p>
 <p>Move files into one encrypted vault. Open it in Finder when you need them, then lock it when you are done. Lockbox checks that the volume has detached before it reports success.</p>
 <dl class="facts"><div><dt>Platform</dt><dd>Apple silicon Mac · macOS 13 or later</dd></div></dl>
 <a class="go" href="lockbox.html">Get Lockbox<span aria-hidden="true"> →</span></a></div>
 </article>
+</div>
+</div>
 </div>
 </section>
 
