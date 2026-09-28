@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Seeker Studio — Games, tools and plugins</title>
-<meta name="description" content="Seeker Studio is an independent studio making games, productivity tools, AI companions and agent plugins: Seekers of the Deep, MarkShot, Lockbox, Deckr, and plugins for DeepSeek Harness.">
+<meta name="description" content="Seeker Studio is an independent studio making games, productivity tools, AI companions and agent plugins: Seekers of the Deep, MarkShot, Lockbox, Deslopifier, Deckr, and plugins for DeepSeek Harness.">
 <meta name="theme-color" content="#121110">
 <meta property="og:title" content="Seeker Studio"><meta property="og:description" content="Games, tools and plugins from an independent studio."><meta property="og:type" content="website">
 <link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="product-shot.css">
@@ -23,7 +23,7 @@
 <p class="hero-line">I make games, productivity tools, AI companions and agent plugins.</p>
 <ol class="doors">
 <li><a href="#games"><span class="code">01</span><span class="door-name">Games</span><span class="door-count">1 in development</span><span class="arrow" aria-hidden="true">→</span></a></li>
-<li><a href="#tools"><span class="code">02</span><span class="door-name">Tools</span><span class="door-count">2 tools</span><span class="arrow" aria-hidden="true">→</span></a></li>
+<li><a href="#tools"><span class="code">02</span><span class="door-name">Tools</span><span class="door-count">3 tools</span><span class="arrow" aria-hidden="true">→</span></a></li>
 <li><a href="#companions"><span class="code">03</span><span class="door-name">Companions</span><span class="door-count">1 coming soon</span><span class="arrow" aria-hidden="true">→</span></a></li>
 <li><a href="plugins.html"><span class="code">04</span><span class="door-name">Plugins</span><span class="door-count">12 plugins</span><span class="arrow" aria-hidden="true">→</span></a></li>
 </ol>
@@ -56,8 +56,9 @@
 <div class="tools-selectors" aria-label="Choose a tool">
 <button type="button" data-tool="0" aria-controls="tools-track" aria-pressed="true"><span class="code">01</span> MarkShot</button>
 <button type="button" data-tool="1" aria-controls="tools-track" aria-pressed="false"><span class="code">02</span> Lockbox</button>
+<button type="button" data-tool="2" aria-controls="tools-track" aria-pressed="false"><span class="code">03</span> Deslopifier</button>
 </div>
-<div class="tools-paging"><p class="tools-position" aria-live="polite" aria-atomic="true">1 / 2 · MarkShot</p><button type="button" class="tools-prev" aria-label="Previous tool" aria-controls="tools-track" disabled>←</button><button type="button" class="tools-next" aria-label="Next tool" aria-controls="tools-track">→</button></div>
+<div class="tools-paging"><p class="tools-position" aria-live="polite" aria-atomic="true">1 / 3 · MarkShot</p><button type="button" class="tools-prev" aria-label="Previous tool" aria-controls="tools-track" disabled>←</button><button type="button" class="tools-next" aria-label="Next tool" aria-controls="tools-track">→</button></div>
 </div>
 <div class="tools-track" id="tools-track">
 <article class="entry" id="markshot" aria-labelledby="markshot-title">
@@ -77,6 +78,15 @@
 <p>Move files into one encrypted vault. Open it in Finder when you need them, then lock it when you are done. Lockbox checks that the volume has detached before it reports success.</p>
 <dl class="facts"><div><dt>Platform</dt><dd>Apple silicon Mac · macOS 13 or later</dd></div></dl>
 <a class="go" href="lockbox.html">Get Lockbox<span aria-hidden="true"> →</span></a></div>
+</article>
+
+<article class="entry" id="deslopifier" aria-labelledby="deslopifier-title">
+<div class="entry-code"><span class="code">T-03</span><span class="status"><i></i>In development</span></div>
+<figure class="plate"><img src="assets/tools/deslopifier.svg" width="800" height="600" alt="Illustration of stock phrases marked in a draft and a shorter rewrite beneath it" loading="lazy"></figure>
+<div class="entry-copy"><p class="label">Writing cleanup</p><h3 id="deslopifier-title">Deslopifier</h3><p class="pitch">Find and rewrite recurring AI writing patterns.</p>
+<p>Paste a draft to flag stock phrases, vague descriptions and formulaic sentence structures in context. Deslopifier rewrites the affected paragraphs while checking for changes to meaning and tone.</p>
+<p>Rewrites go through checks for retained or newly introduced patterns. When an edit fails verification, the original paragraph stays and a review note explains why.</p>
+<dl class="facts"><div><dt>Format</dt><dd>Web editor and API</dd></div></dl></div>
 </article>
 </div>
 </div>

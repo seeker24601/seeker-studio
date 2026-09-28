@@ -15,8 +15,8 @@
 .tools-carousel.is-ready .entry{flex:0 0 100%;min-width:0;scroll-snap-align:start;border-top:0;padding-right:4px;padding-left:4px}
 @media(max-width:600px){
   .tools-controls{gap:12px}
-  .tools-selectors{width:100%}
-  .tools-selectors button{flex:1;justify-content:center}
+  .tools-selectors{width:100%;flex-wrap:wrap}
+  .tools-selectors button{flex:1 1 130px;justify-content:center}
   .tools-paging{width:100%}
   .tools-position{margin-right:auto}
 }
