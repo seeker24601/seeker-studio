@@ -5,15 +5,21 @@
 .catalogue-heading h1{font:clamp(40px,8vw,112px)/1 var(--display);text-transform:uppercase;letter-spacing:-.035em;overflow-wrap:anywhere;margin:20px 0}
 .catalogue-heading>p{max-width:58ch;color:var(--ink-2);font-size:clamp(17px,1.8vw,21px)}
 .catalogue-heading>.go{margin-top:20px}
-.category-links{gap:24px;margin:32px 0 24px;padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.catalogue-controls{display:grid;grid-template-columns:minmax(200px,2fr) minmax(180px,1fr) minmax(140px,1fr) auto;gap:16px;align-items:end}
+.catalogue{margin-top:clamp(32px,4vw,56px);border-top:1px solid var(--rule)}
+/* One toolbar row: filter chips on the left, search on the right. */
+.catalogue-controls{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:24px}
 .catalogue-controls[hidden],.catalogue-card[hidden],.catalogue-empty[hidden]{display:none}
-.catalogue-controls label{display:flex;flex-direction:column;gap:8px;font:500 12px/1.4 var(--mono);color:var(--ink-2)}
-.catalogue-controls input,.catalogue-controls select,.catalogue-controls button{min-width:0;width:100%;min-height:46px;border:1px solid var(--rule);border-radius:0;background:var(--paper-2);color:var(--ink);padding:10px 12px;font:400 15px/1.4 var(--sans)}
-.catalogue-controls input::placeholder{color:var(--ink-2);opacity:1}
-.catalogue-controls select,.catalogue-controls button{cursor:pointer}
-.catalogue-controls button:hover{border-color:var(--signal)}
-.catalogue-controls :is(input,select,button):focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.catalogue-filters{display:flex;flex-wrap:wrap;gap:8px}
+.catalogue-filters button,.catalogue-empty button{min-height:40px;padding:8px 14px;border:1px solid var(--rule);border-radius:0;background:none;color:var(--ink);font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.catalogue-filters button:hover,.catalogue-empty button:hover{border-color:var(--ink)}
+.catalogue-filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip-count{color:var(--ink-2)}
+.catalogue-filters button[aria-pressed=true] .chip-count{color:var(--rule)}
+.catalogue-search{flex:0 1 300px;min-width:0}
+.catalogue-search input{width:100%;min-height:40px;border:1px solid var(--rule);border-radius:0;background:var(--paper-2);color:var(--ink);padding:8px 12px;font:400 15px/1.4 var(--sans)}
+.catalogue-search input::placeholder{color:var(--ink-2);opacity:1}
+.catalogue-search input:hover{border-color:var(--ink-2)}
+.catalogue-controls :is(input,button):focus-visible,.catalogue-empty button:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .catalogue-count{padding:20px 0;font:500 12px/1.4 var(--mono);color:var(--ink-2)}
 .catalogue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .catalogue-card{min-width:0;border:1px solid var(--rule);background:var(--paper-2);scroll-margin-top:24px}
@@ -28,7 +34,7 @@
 .catalogue-pitch{font-size:19px;line-height:1.4}
 .catalogue-description{color:var(--ink-2);font-size:16px;line-height:1.6}
 .catalogue-copy>.go{margin-top:auto;padding-top:20px;font-size:15px}
-.catalogue-empty{padding:32px 0;border-top:1px solid var(--rule);color:var(--ink-2)}
+.catalogue-empty{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:32px 0;border-top:1px solid var(--rule);color:var(--ink-2)}
 @media(min-width:1600px){.catalogue-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:1100px){.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalogue-controls{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}.catalogue-controls button{width:auto;justify-self:start}}
-@media(max-width:600px){.catalogue-grid{grid-template-columns:1fr}.catalogue-controls{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.catalogue-search{grid-column:1/-1}.category-links{gap:18px;font-size:14px}.catalogue-meta .status{font-size:11px}}
+@media(max-width:1100px){.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.catalogue-grid{grid-template-columns:1fr}.catalogue-search{flex-basis:100%;order:-1}.catalogue-meta .status{font-size:11px}}

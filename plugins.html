@@ -6,23 +6,20 @@
 <meta name="theme-color" content="#121110">
 <meta property="og:title" content="Plugins — Seeker Studio"><meta property="og:description" content="Plugins for DeepSeek Harness, an agent harness with a web interface. Some give agents new tools; others change how you work alongside them."><meta property="og:type" content="website">
 <link rel="canonical" href="https://seeker-studio.games/plugins.html">
-<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="catalogue.css?v=20261008">
-<script src="site.js" defer></script><script src="catalogue.js" defer></script>
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="catalogue.css?v=20261008b">
+<script src="site.js" defer></script><script src="catalogue.js?v=20261008b" defer></script>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><a class="brand" href="./" aria-label="Seeker Studio home"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="games.html">Games</a><a href="tools.html">Tools</a><a href="companions.html">Companions</a><a href="plugins.html" aria-current="page">Plugins</a><a href="studio.html">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
 <main id="main" class="catalogue-page">
 <div class="catalogue-heading"><a class="label" href="./">Seeker Studio /</a><h1>Plugins</h1><p>Plugins for DeepSeek Harness, an agent harness with a web interface. Some give agents new tools; others change how you work alongside them.</p><a class="go" href="https://github.com/seeker24601/dsh-plugins">Browse plugin source on GitHub ↗</a></div>
-<nav class="category-links" aria-label="Browse categories"><a href="games.html">Games</a><a href="tools.html">Tools</a><a href="companions.html">Companions</a><a href="plugins.html" aria-current="page">Plugins</a></nav>
 <section class="catalogue" aria-label="Plugins catalogue" data-catalogue data-unit="plugins">
 <div class="catalogue-controls" hidden>
-<label class="catalogue-search">Search plugins<input type="search" placeholder="Search by name or description" aria-controls="catalogue-list"></label>
-<label>Filter<select data-filter aria-controls="catalogue-list"><option value="all">All plugins</option><option value="agent-tools">Agent tools</option><option value="cards">Cards</option><option value="chat">Chat and games</option><option value="interface">Interface</option></select></label>
-<label>Sort<select data-sort aria-controls="catalogue-list"><option value="studio">Studio order</option><option value="az">Name: A–Z</option><option value="za">Name: Z–A</option></select></label>
-<button type="button" data-reset>Reset</button>
+<div class="catalogue-filters" role="group" aria-label="Show plugins"><button type="button" data-show="all" aria-pressed="true">All</button><button type="button" data-show="agent-tools" aria-pressed="false">Agent tools</button><button type="button" data-show="cards" aria-pressed="false">Cards</button><button type="button" data-show="chat" aria-pressed="false">Chat and games</button><button type="button" data-show="interface" aria-pressed="false">Interface</button></div>
+<label class="catalogue-search"><input type="search" placeholder="Search plugins" aria-label="Search plugins" aria-controls="catalogue-list"></label>
 </div>
 <p class="catalogue-count" role="status" aria-live="polite" aria-atomic="true">10 plugins</p>
-<ul class="catalogue-grid" id="catalogue-list"><li class="catalogue-card" id="party" data-name="Party" data-filter="chat">
+<ul class="catalogue-grid" id="catalogue-list"><li class="catalogue-card" id="party" data-filter="chat">
 <article aria-labelledby="party-title">
 <figure class="catalogue-image"><img src="assets/tools/party.svg" width="800" height="600" alt="A group chat between a human and three AI agents on different models, playing Werewolf, with a vote tally below" loading="lazy"></figure>
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-01</span><span class="status"><i></i>v0.1</span></div>
@@ -31,7 +28,7 @@
 <p class="catalogue-description">One chat surface shared by you and any number of AI agents, each on its own provider and model. A pluggable game decides who speaks, who sees what, and what you can do next. Ships with free chat and Werewolf.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="design-canvas" data-name="Design" data-filter="interface">
+<li class="catalogue-card" id="design-canvas" data-filter="interface">
 <article aria-labelledby="design-canvas-title">
 <figure class="catalogue-image"><img src="assets/tools/design-canvas.svg" width="800" height="600" alt="A dotted design canvas with a desktop and a phone artboard, a selected headline, and a request to the agent about that selection" loading="lazy"></figure>
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-02</span><span class="status"><i></i>v0.1</span></div>
@@ -40,7 +37,7 @@
 <p class="catalogue-description">The agent writes artboards as HTML. You pan, zoom and adjust them visually on a Design tab. Whatever you select becomes context for the next request, and whatever the agent changes shows up on the canvas.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="vault" data-name="Vault" data-filter="agent-tools">
+<li class="catalogue-card" id="vault" data-filter="agent-tools">
 <article aria-labelledby="vault-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-03</span></div>
@@ -49,7 +46,7 @@
 <p class="catalogue-description">Your Obsidian vault as a graph, plus search, read and list tools for the agent.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="board" data-name="Board" data-filter="agent-tools">
+<li class="catalogue-card" id="board" data-filter="agent-tools">
 <article aria-labelledby="board-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-04</span></div>
@@ -58,7 +55,7 @@
 <p class="catalogue-description">An append-only message board, so agents on different machines can talk to each other.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="skillpress" data-name="Skillpress" data-filter="cards">
+<li class="catalogue-card" id="skillpress" data-filter="cards">
 <article aria-labelledby="skillpress-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-05</span></div>
@@ -67,7 +64,7 @@
 <p class="catalogue-description">Author skill, character and class cards, and stamp each one into a PNG.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="skillcard" data-name="Skillcard" data-filter="cards">
+<li class="catalogue-card" id="skillcard" data-filter="cards">
 <article aria-labelledby="skillcard-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-06</span></div>
@@ -76,7 +73,7 @@
 <p class="catalogue-description">Equip a character, class or skill card on a session.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="resend" data-name="Resend" data-filter="chat">
+<li class="catalogue-card" id="resend" data-filter="chat">
 <article aria-labelledby="resend-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-07</span></div>
@@ -85,7 +82,7 @@
 <p class="catalogue-description">Resend a message or regenerate a reply by forking the session at that turn.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="themes" data-name="Themes" data-filter="interface">
+<li class="catalogue-card" id="themes" data-filter="interface">
 <article aria-labelledby="themes-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-08</span></div>
@@ -94,7 +91,7 @@
 <p class="catalogue-description">Eight colour themes, each with paired light and dark palettes.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="catalog" data-name="Catalog" data-filter="interface">
+<li class="catalogue-card" id="catalog" data-filter="interface">
 <article aria-labelledby="catalog-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-09</span></div>
@@ -103,7 +100,7 @@
 <p class="catalogue-description">Browse the plugin hub and GitHub, and install into the current profile.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li>
-<li class="catalogue-card" id="youtube-backdrop" data-name="YouTube backdrop" data-filter="interface">
+<li class="catalogue-card" id="youtube-backdrop" data-filter="interface">
 <article aria-labelledby="youtube-backdrop-title">
 
 <div class="catalogue-copy"><div class="catalogue-meta"><span class="code">P-10</span></div>
@@ -112,7 +109,7 @@
 <p class="catalogue-description">Play a video behind the harness, with a small deck to control it.</p>
 <a class="go" href="https://github.com/seeker24601/dsh-plugins">Source on GitHub ↗</a></div>
 </article></li></ul>
-<p class="catalogue-empty" hidden>No matches. Try a different search or reset the filters.</p>
+<p class="catalogue-empty" hidden>No plugins match.<button type="button" data-clear>Show all plugins</button></p>
 </section></main>
 <footer><a class="brand" href="./"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
 </body></html>

@@ -1,45 +1,48 @@
 (() => {
   const catalogue = document.querySelector('[data-catalogue]');
-  if (!catalogue) return;
-  const controls = catalogue.querySelector('.catalogue-controls');
+  const controls = catalogue && catalogue.querySelector('.catalogue-controls');
+  // Short catalogues have no controls; the static count already describes them.
+  if (!controls) return;
   const search = controls.querySelector('input[type="search"]');
-  const filter = controls.querySelector('[data-filter]');
-  const sort = controls.querySelector('[data-sort]');
+  const chips = [...controls.querySelectorAll('[data-show]')];
   const list = catalogue.querySelector('.catalogue-grid');
   const cards = [...list.children];
   const count = catalogue.querySelector('.catalogue-count');
   const empty = catalogue.querySelector('.catalogue-empty');
   const normalize = text => text.normalize('NFKC').toLocaleLowerCase().trim();
   const content = new Map(cards.map(card => [card, normalize(card.textContent)]));
-  const names = new Intl.Collator(document.documentElement.lang, { sensitivity: 'base', numeric: true });
+  let show = 'all';
+
+  for (const chip of chips) {
+    const total = chip.dataset.show === 'all' ? cards.length : cards.filter(card => card.dataset.filter === chip.dataset.show).length;
+    chip.insertAdjacentHTML('beforeend', ` <span class="chip-count">${total}</span>`);
+    chip.addEventListener('click', () => {
+      show = chip.dataset.show;
+      update();
+    });
+  }
 
   function update() {
-    const words = normalize(search.value).split(/\s+/).filter(Boolean);
+    const words = normalize(search ? search.value : '').split(/\s+/).filter(Boolean);
     let visible = 0;
     for (const card of cards) {
       const matches = words.every(word => content.get(card).includes(word)) &&
-        (filter.value === 'all' || card.dataset.filter === filter.value);
+        (show === 'all' || card.dataset.filter === show);
       card.hidden = !matches;
       if (matches) visible++;
     }
-    const ordered = sort.value === 'studio' ? cards : [...cards].sort((a, b) =>
-      names.compare(a.dataset.name, b.dataset.name) * (sort.value === 'za' ? -1 : 1));
-    // Leave the DOM alone while typing; reordering is needed only for a new sort.
-    if (ordered.some((card, index) => list.children[index] !== card)) list.append(...ordered);
+    for (const chip of chips) chip.setAttribute('aria-pressed', String(chip.dataset.show === show));
     const unit = cards.length === 1 ? catalogue.dataset.unit.replace(/s$/, '') : catalogue.dataset.unit;
-    count.textContent = `${visible} of ${cards.length} ${unit}`;
+    count.textContent = visible === cards.length ? `${cards.length} ${unit}` : `${visible} of ${cards.length} ${unit}`;
     empty.hidden = visible !== 0;
   }
 
-  search.addEventListener('input', update);
-  filter.addEventListener('change', update);
-  sort.addEventListener('change', update);
-  controls.querySelector('[data-reset]').addEventListener('click', () => {
-    search.value = '';
-    filter.value = 'all';
-    sort.value = 'studio';
+  if (search) search.addEventListener('input', update);
+  empty.querySelector('[data-clear]').addEventListener('click', () => {
+    if (search) search.value = '';
+    show = 'all';
     update();
-    search.focus();
+    (search || chips[0]).focus();
   });
   controls.hidden = false;
   update();

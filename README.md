@@ -4,7 +4,7 @@ Public studio website and portfolio for seeker-studio.games (games, tools and pl
 
 Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), `lockbox.html`, and `ackshually.html` (downloads and installation).
 
-Category indexes are static HTML so every item can be read without JavaScript. Shared `catalogue.js` adds search, category/status filtering, and name sorting; `catalogue.css` provides the responsive card layout. When adding a project, add a catalogue card to its category page as well as any homepage feature, and update its count. Keep status labels accurate.
+Category indexes are static HTML so every item can be read without JavaScript. The header navigation is the only category switcher. Shared `catalogue.js` adds filter chips with counts and a search field to catalogues whose page includes `.catalogue-controls`; short catalogues such as Games and Companions omit the controls. `catalogue.css` provides the toolbar and the responsive card layout. When adding a project, add a catalogue card to its category page as well as any homepage feature, and update its count. Keep status labels accurate.
 
 `downloads/` contains the standalone Lockbox app ZIP and its SHA-256 checksum. It contains no vaults, user files, or preferences. Lockbox source remains in its separate repository.
 
