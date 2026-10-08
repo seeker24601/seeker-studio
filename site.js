@@ -1,4 +1,7 @@
 document.documentElement.classList.add('js');
+if (document.body.classList.contains('home-page') && location.hash === '#studio') {
+  location.replace('studio.html');
+}
 document.getElementById('year').textContent = String(new Date().getFullYear());
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
