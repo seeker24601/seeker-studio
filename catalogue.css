@@ -24,7 +24,7 @@
 .catalogue-copy{flex:1;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(18px,2vw,28px);gap:12px}
 .catalogue-meta{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px}
 .catalogue-meta>.code{color:var(--signal)}
-.catalogue-copy h2{font:clamp(25px,2.5vw,38px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.02em;overflow-wrap:anywhere}
+.catalogue-copy h2{font:clamp(24px,2.2vw,32px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.02em;overflow-wrap:anywhere}
 .catalogue-pitch{font-size:19px;line-height:1.4}
 .catalogue-description{color:var(--ink-2);font-size:16px;line-height:1.6}
 .catalogue-copy>.go{margin-top:auto;padding-top:20px;font-size:15px}
