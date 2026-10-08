@@ -21,12 +21,19 @@
 .catalogue-search input:hover{border-color:var(--ink-2)}
 .catalogue-controls :is(input,button):focus-visible,.catalogue-empty button:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .catalogue-count{padding:20px 0;font:500 12px/1.4 var(--mono);color:var(--ink-2)}
-.catalogue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
-.catalogue-card{min-width:0;border:1px solid var(--rule);background:var(--paper-2);scroll-margin-top:24px}
+/* Six columns: picture cards take two, or three when the grid also holds text-only rows. */
+.catalogue-grid{--cols:6;--span:2;--feature-span:3;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:var(--gap)}
+.catalogue-grid:has(.catalogue-copy:first-child){--span:var(--feature-span);row-gap:10px}
+.catalogue-card{position:relative;grid-column:span var(--span);min-width:0;border:1px solid var(--rule);background:var(--paper-2);scroll-margin-top:24px;transition:border-color .2s}
+.catalogue-card:hover{border-color:var(--ink-2)}
 .catalogue-card:target{border-color:var(--signal)}
 .catalogue-card article{height:100%;display:flex;flex-direction:column}
 .catalogue-image{background:var(--paper);border-bottom:1px solid var(--rule);aspect-ratio:4/3;overflow:hidden}
-.catalogue-image img{width:100%;height:100%;object-fit:contain}
+.catalogue-image img{width:100%;height:100%;object-fit:contain;transition:transform .5s var(--ease)}
+.catalogue-card:hover .catalogue-image img{transform:scale(1.03)}
+/* The card's link covers the whole card. */
+.catalogue-copy>.go::after{content:"";position:absolute;inset:0}
+.catalogue-card:hover .go{background-size:100% 2px;border-color:transparent}
 .catalogue-copy{flex:1;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(18px,2vw,28px);gap:12px}
 .catalogue-meta{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px}
 .catalogue-meta>.code{color:var(--signal)}
@@ -35,6 +42,23 @@
 .catalogue-description{color:var(--ink-2);font-size:16px;line-height:1.6}
 .catalogue-copy>.go{margin-top:auto;padding-top:20px;font-size:15px}
 .catalogue-empty{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:32px 0;border-top:1px solid var(--rule);color:var(--ink-2)}
-@media(min-width:1600px){.catalogue-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:1100px){.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.catalogue-grid{grid-template-columns:1fr}.catalogue-search{flex-basis:100%;order:-1}.catalogue-meta .status{font-size:11px}}
+/* A card without an image (its copy comes first) is a full-width row; a lone card is a wide feature. */
+.catalogue-card:has(.catalogue-copy:first-child),.catalogue-card:only-child{grid-column:1/-1}
+@media(min-width:901px){
+  .catalogue-card:has(.catalogue-copy:first-child) .catalogue-copy{display:grid;grid-template-columns:72px minmax(0,3fr) minmax(0,6fr) auto;grid-template-areas:"meta label desc go" "meta name desc go";column-gap:var(--gap);row-gap:2px;align-items:center;padding:18px 24px}
+  .catalogue-card:has(.catalogue-copy:first-child) .catalogue-meta{grid-area:meta;width:auto;margin:0}
+  .catalogue-card:has(.catalogue-copy:first-child) .label{grid-area:label}
+  .catalogue-card:has(.catalogue-copy:first-child) h2{grid-area:name;font-size:22px}
+  .catalogue-card:has(.catalogue-copy:first-child) .catalogue-description{grid-area:desc}
+  .catalogue-card:has(.catalogue-copy:first-child) .go{grid-area:go;margin:0;padding-top:6px}
+  .catalogue-card:only-child article{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .catalogue-card:only-child .catalogue-image{display:flex;align-items:center;aspect-ratio:auto;border-bottom:0;border-right:1px solid var(--rule)}
+  .catalogue-card:only-child .catalogue-image img{height:auto}
+  .catalogue-card:only-child .catalogue-copy{justify-content:center;padding:clamp(28px,4vw,64px)}
+  .catalogue-card:only-child h2{font-size:clamp(32px,3.6vw,56px);line-height:.95}
+  .catalogue-card:only-child .catalogue-pitch{font-size:clamp(20px,1.8vw,26px);line-height:1.3}
+  .catalogue-card:only-child .go{margin-top:12px}
+}
+@media(min-width:1600px){.catalogue-grid{--cols:12;--span:3;--feature-span:6}}
+@media(max-width:1100px){.catalogue-grid{--cols:2;--span:1;--feature-span:1}}
+@media(max-width:600px){.catalogue-grid{--cols:1}.catalogue-search{flex-basis:100%;order:-1}.catalogue-meta .status{font-size:11px}}
