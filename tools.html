@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tools — Seeker Studio</title>
+<meta name="description" content="Single-purpose software that does one job and stays out of the way. Browse every tool, including prototypes and work in development.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="Tools — Seeker Studio"><meta property="og:description" content="Single-purpose software that does one job and stays out of the way. Browse every tool, including prototypes and work in development."><meta property="og:type" content="website">
+<link rel="canonical" href="https://seeker-studio.games/tools.html">
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="catalogue.css">
+<script src="site.js" defer></script><script src="catalogue.js" defer></script>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="brand" href="./" aria-label="Seeker Studio home"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="games.html">Games</a><a href="tools.html" aria-current="page">Tools</a><a href="companions.html">Companions</a><a href="plugins.html">Plugins</a><a href="./#studio">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
+<main id="main" class="catalogue-page">
+<div class="catalogue-heading"><a class="label" href="./">Seeker Studio /</a><h1>Tools</h1><p>Single-purpose software that does one job and stays out of the way. Browse every tool, including prototypes and work in development.</p></div>
+<nav class="category-links" aria-label="Browse categories"><a href="games.html">Games</a><a href="tools.html" aria-current="page">Tools</a><a href="companions.html">Companions</a><a href="plugins.html">Plugins</a></nav>
+<section class="catalogue" aria-label="Tools catalogue" data-catalogue data-unit="tools">
+<div class="catalogue-controls" hidden>
+<label class="catalogue-search">Search tools<input type="search" placeholder="Search by name or description" aria-controls="catalogue-list"></label>
+<label>Filter<select data-filter aria-controls="catalogue-list"><option value="all">All tools</option><option value="available">Available to try or download</option><option value="development">In development</option></select></label>
+<label>Sort<select data-sort aria-controls="catalogue-list"><option value="studio">Studio order</option><option value="az">Name: A–Z</option><option value="za">Name: Z–A</option></select></label>
+<button type="button" data-reset>Reset</button>
+</div>
+<p class="catalogue-count" role="status" aria-live="polite" aria-atomic="true">4 tools</p>
+<ul class="catalogue-grid" id="catalogue-list"><li class="catalogue-card" id="markshot" data-name="MarkShot" data-filter="available">
+<article aria-labelledby="markshot-title">
+<figure class="catalogue-image"><img src="assets/tools/markshot.webp" width="1600" height="1200" alt="MarkShot open on a screenshot of a web page, with three numbered boxes, a legend of notes for each, and a confirmation that the annotated image was copied for pasting into an agent" loading="lazy"></figure>
+<div class="catalogue-copy"><div class="catalogue-meta"><span class="code">T-01</span><span class="status live"><i></i>Public prototype</span></div>
+<p class="label">Screenshot feedback</p><h2 id="markshot-title">MarkShot</h2>
+<p class="catalogue-pitch">Point at the problem. Say what should change.</p>
+<p class="catalogue-description">Annotate screenshots with numbered boxes and notes, then export them for an AI agent.</p>
+<a class="go" href="https://markshot-smoky.vercel.app/">Try MarkShot ↗</a></div>
+</article></li>
+<li class="catalogue-card" id="lockbox" data-name="Lockbox" data-filter="available">
+<article aria-labelledby="lockbox-title">
+<figure class="catalogue-image"><img src="assets/tools/lockbox.png" width="880" height="660" alt="Lockbox open with an unlocked demo vault named Personal files, and Add Files, Show in Finder, and Lock buttons" loading="lazy"></figure>
+<div class="catalogue-copy"><div class="catalogue-meta"><span class="code">T-02</span><span class="status live"><i></i>Download · v0.2.8</span></div>
+<p class="label">Encrypted files · macOS</p><h2 id="lockbox-title">Lockbox</h2>
+<p class="catalogue-pitch">A password-protected place for private files.</p>
+<p class="catalogue-description">Keep private files in one encrypted vault. For Apple silicon Macs running macOS 13 or later.</p>
+<a class="go" href="lockbox.html">Get Lockbox →</a></div>
+</article></li>
+<li class="catalogue-card" id="deslopifier" data-name="Deslopifier" data-filter="development">
+<article aria-labelledby="deslopifier-title">
+<figure class="catalogue-image"><img src="assets/tools/deslopifier.svg" width="800" height="600" alt="Illustration of stock phrases marked in a draft and a shorter rewrite beneath it" loading="lazy"></figure>
+<div class="catalogue-copy"><div class="catalogue-meta"><span class="code">T-03</span><span class="status"><i></i>In development</span></div>
+<p class="label">Writing cleanup</p><h2 id="deslopifier-title">Deslopifier</h2>
+<p class="catalogue-pitch">Find and rewrite recurring AI writing patterns.</p>
+<p class="catalogue-description">Flag stock phrases and recurring AI writing patterns, then check rewrites for changes to meaning and tone.</p>
+<a class="go" href="./#deslopifier">About Deslopifier →</a></div>
+</article></li>
+<li class="catalogue-card" id="ackshually" data-name="Ackshually..." data-filter="available">
+<article aria-labelledby="ackshually-title">
+<figure class="catalogue-image"><img src="assets/tools/ackshually-toast.png" width="800" height="520" alt="The Ackshually... correction toast, reading umm... ackshually... over the claim &quot;The Atlas release is scheduled for Friday,&quot; with a note that the sample release note lists Thursday, 12 November, and an Open details button" loading="lazy"></figure>
+<div class="catalogue-copy"><div class="catalogue-meta"><span class="code">T-04</span><span class="status live"><i></i>Download · v0.1.1</span></div>
+<p class="label">Live fact checking · macOS</p><h2 id="ackshually-title">Ackshually...</h2>
+<p class="catalogue-pitch">A fact-check that pops up while you're still talking.</p>
+<p class="catalogue-description">Check claims from calls and videos against your notes or the web. For Apple silicon Macs running macOS 15 or later.</p>
+<a class="go" href="ackshually.html">Get Ackshually... →</a></div>
+</article></li></ul>
+<p class="catalogue-empty" hidden>No matches. Try a different search or reset the filters.</p>
+</section></main>
+<footer><a class="brand" href="./"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
+</body></html>

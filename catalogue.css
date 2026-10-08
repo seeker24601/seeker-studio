@@ -1,0 +1,34 @@
+/* Category catalogues share the studio's type, colours and navigation. */
+.catalogue-page{padding:clamp(36px,6vw,80px) var(--gutter) clamp(64px,8vw,112px)}
+.catalogue-heading{max-width:850px}
+.catalogue-heading>a.label:hover{color:var(--signal)}
+.catalogue-heading h1{font:clamp(40px,8vw,112px)/1 var(--display);text-transform:uppercase;letter-spacing:-.035em;overflow-wrap:anywhere;margin:20px 0}
+.catalogue-heading>p{max-width:58ch;color:var(--ink-2);font-size:clamp(17px,1.8vw,21px)}
+.catalogue-heading>.go{margin-top:20px}
+.category-links{gap:24px;margin:32px 0 24px;padding:14px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.catalogue-controls{display:grid;grid-template-columns:minmax(200px,2fr) minmax(180px,1fr) minmax(140px,1fr) auto;gap:16px;align-items:end}
+.catalogue-controls[hidden],.catalogue-card[hidden],.catalogue-empty[hidden]{display:none}
+.catalogue-controls label{display:flex;flex-direction:column;gap:8px;font:500 12px/1.4 var(--mono);color:var(--ink-2)}
+.catalogue-controls input,.catalogue-controls select,.catalogue-controls button{min-width:0;width:100%;min-height:46px;border:1px solid var(--rule);border-radius:0;background:var(--paper-2);color:var(--ink);padding:10px 12px;font:400 15px/1.4 var(--sans)}
+.catalogue-controls input::placeholder{color:var(--ink-2);opacity:1}
+.catalogue-controls select,.catalogue-controls button{cursor:pointer}
+.catalogue-controls button:hover{border-color:var(--signal)}
+.catalogue-controls :is(input,select,button):focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.catalogue-count{padding:20px 0;font:500 12px/1.4 var(--mono);color:var(--ink-2)}
+.catalogue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.catalogue-card{min-width:0;border:1px solid var(--rule);background:var(--paper-2);scroll-margin-top:24px}
+.catalogue-card:target{border-color:var(--signal)}
+.catalogue-card article{height:100%;display:flex;flex-direction:column}
+.catalogue-image{background:var(--paper);border-bottom:1px solid var(--rule);aspect-ratio:4/3;overflow:hidden}
+.catalogue-image img{width:100%;height:100%;object-fit:contain}
+.catalogue-copy{flex:1;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(18px,2vw,28px);gap:12px}
+.catalogue-meta{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.catalogue-meta>.code{color:var(--signal)}
+.catalogue-copy h2{font:clamp(25px,2.5vw,38px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.02em;overflow-wrap:anywhere}
+.catalogue-pitch{font-size:19px;line-height:1.4}
+.catalogue-description{color:var(--ink-2);font-size:16px;line-height:1.6}
+.catalogue-copy>.go{margin-top:auto;padding-top:20px;font-size:15px}
+.catalogue-empty{padding:32px 0;border-top:1px solid var(--rule);color:var(--ink-2)}
+@media(min-width:1600px){.catalogue-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:1100px){.catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalogue-controls{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}.catalogue-controls button{width:auto;justify-self:start}}
+@media(max-width:600px){.catalogue-grid{grid-template-columns:1fr}.catalogue-controls{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.catalogue-search{grid-column:1/-1}.category-links{gap:18px;font-size:14px}.catalogue-meta .status{font-size:11px}}
