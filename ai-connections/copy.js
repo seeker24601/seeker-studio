@@ -1,6 +1,6 @@
-// Copy buttons for the agent prompts and commands. Without JavaScript the
-// buttons stay hidden and the text is there to select. If the clipboard is
-// refused, the text is selected so a keyboard copy finishes the job.
+// Copy buttons and prompt tabs. Without JavaScript the buttons stay hidden,
+// the tab row stays hidden and every prompt is shown, ready to select. If the
+// clipboard is refused, the text is selected so a keyboard copy finishes it.
 const mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)
 
 function selectText(element) {
@@ -34,5 +34,32 @@ for (const button of document.querySelectorAll('[data-copy]')) {
     let copied = false
     try { copied = document.execCommand('copy') } catch { copied = false }
     show(button, copied ? 'Copied' : mac ? 'Press ⌘C' : 'Press Ctrl+C', copied)
+  })
+}
+
+// Tabs: arrow keys move between them, as the ARIA tabs pattern expects.
+for (const box of document.querySelectorAll('[data-tabs]')) {
+  const list = box.querySelector('[role=tablist]')
+  const tabs = [...box.querySelectorAll('[role=tab]')]
+  if (!list || !tabs.length) continue
+  const select = (tab, focus) => {
+    for (const t of tabs) {
+      const on = t === tab
+      t.setAttribute('aria-selected', String(on))
+      t.tabIndex = on ? 0 : -1
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on
+    }
+    if (focus) tab.focus()
+  }
+  list.hidden = false
+  select(tabs.find((t) => t.getAttribute('aria-selected') === 'true') ?? tabs[0], false)
+  for (const tab of tabs) tab.addEventListener('click', () => select(tab, false))
+  list.addEventListener('keydown', (event) => {
+    const i = tabs.indexOf(document.activeElement)
+    if (i < 0) return
+    const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[event.key]
+    if (next === undefined) return
+    event.preventDefault()
+    select(tabs[(next + tabs.length) % tabs.length], true)
   })
 }
