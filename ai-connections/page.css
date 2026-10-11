@@ -185,6 +185,7 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 .tag{display:inline-block;margin-left:6px;padding:2px 8px;border:2px solid var(--ink);background:var(--paper);font:400 11px/1.5 var(--pixel);letter-spacing:.04em;vertical-align:5px}
 .tag.on{background:var(--hi)}
 .two a{text-decoration:underline;text-underline-offset:3px}
+.checks-win{margin-top:30px}
 .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 36px}
 .checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;color:var(--ink-2)}
 .checks li::before{content:'';width:14px;height:14px;margin-top:5px;border:2px solid var(--ink);background:var(--lamp)}
