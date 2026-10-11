@@ -53,8 +53,7 @@ a{color:inherit}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .kicker{font:600 15px var(--sans);color:var(--ink-2);margin-bottom:18px}
 .kicker b{display:inline-block;margin-right:8px;padding:2px 8px;background:var(--ink);color:var(--win);font:400 11px/1.9 var(--pixel);letter-spacing:.08em;vertical-align:2px}
-h1{font:700 clamp(48px,7vw,108px)/.86 var(--sans);letter-spacing:-.065em}
-h1 span{display:block}
+h1{max-width:9.5em;font:700 clamp(44px,5.6vw,84px)/.92 var(--sans);letter-spacing:-.055em;text-wrap:balance}
 h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55% 88%,transparent 88%)}
 .sub{max-width:34em;margin-top:clamp(22px,3vw,32px);font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:var(--ink-2)}
 .ctas{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;font:600 17px var(--sans)}
