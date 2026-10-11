@@ -63,3 +63,28 @@ for (const box of document.querySelectorAll('[data-tabs]')) {
     select(tabs[(next + tabs.length) % tabs.length], true)
   })
 }
+
+// Switchboard: each jack swaps the model string in the code window, to show
+// that changing provider is one string. Without JavaScript the jacks stay
+// disabled and the list simply names the providers.
+const model = document.getElementById('live-model')
+const keyLine = document.getElementById('live-key')
+const jacks = [...document.querySelectorAll('.jack[data-model]')]
+if (model && keyLine) {
+  for (const jack of jacks) {
+    jack.disabled = false
+    jack.addEventListener('click', () => {
+      for (const j of jacks) j.setAttribute('aria-pressed', String(j === jack))
+      model.textContent = jack.dataset.model
+      const key = jack.dataset.key
+      keyLine.innerHTML = ''
+      if (key) {
+        const b = document.createElement('b')
+        b.textContent = key
+        keyLine.append('Reads ', b, ' from the environment.')
+      } else {
+        keyLine.textContent = 'No key: it runs on your own machine.'
+      }
+    })
+  }
+}

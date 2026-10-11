@@ -4,11 +4,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Connections: every AI provider, in one line your agent writes</title>
 <meta name="description" content="Give your coding agent one line and it adds any of 42 AI providers to your project: text, image, video and local models, on the Vercel AI SDK. Free, open source, on npm.">
-<meta name="theme-color" content="#0a0c10">
+<meta name="theme-color" content="#f3f1ea">
 <meta property="og:title" content="AI Connections"><meta property="og:description" content="Stop rebuilding provider integrations for every project. Hand your agent one line."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/">
 <link rel="canonical" href="https://seeker-studio.games/ai-connections/">
 <link rel="alternate" type="text/plain" href="llms.txt" title="Instructions for coding agents">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0c10'/%3E%3Ccircle cx='10' cy='16' r='4' fill='%237cf0b5'/%3E%3Ccircle cx='22' cy='10' r='3' fill='%23e9edf4'/%3E%3Ccircle cx='22' cy='22' r='3' fill='%23e9edf4'/%3E%3Cpath d='M13.5 14.2 19.3 11.2M13.5 17.8l5.8 3' stroke='%237cf0b5' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111110'/%3E%3Ccircle cx='11' cy='16' r='5' fill='none' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='11' cy='16' r='1.8' fill='%23fcfbf7'/%3E%3Cpath d='M16 16h5' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='24' cy='16' r='3.5' fill='%2316c47c'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="page.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="copy.js" defer></script>
@@ -17,166 +17,192 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
-<div class="wrap">
-<a class="logo" href="./" aria-label="AI Connections home">
-<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#141821"/><circle cx="10" cy="16" r="4" fill="#7cf0b5"/><circle cx="22" cy="10" r="3" fill="#e9edf4"/><circle cx="22" cy="22" r="3" fill="#e9edf4"/><path d="M13.5 14.2 19.3 11.2M13.5 17.8l5.8 3" stroke="#7cf0b5" stroke-width="2" stroke-linecap="round"/></svg>
-AI Connections</a>
+<a class="mark" href="./" aria-label="AI Connections home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="16" r="5" fill="none" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="11" cy="16" r="1.8" fill="#fcfbf7"/><path d="M16 16h5" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="24" cy="16" r="3.5" fill="#16c47c"/></svg></a>
+<a class="name" href="./">AI Connections</a>
 <nav aria-label="Main">
 <a class="hide-sm" href="#how">How it works</a>
-<a class="hide-sm" href="#features">Features</a>
 <a class="hide-sm" href="https://github.com/seeker24601/ai-connections/blob/main/docs/API.md">Docs</a>
 <a href="https://github.com/seeker24601/ai-connections">GitHub</a>
-<a class="btn btn-primary" href="#start">Get started</a>
+<a class="go" href="#prompt">Get started</a>
 </nav>
-</div>
 </header>
 
 <main id="main">
-<section class="hero" id="start" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title">
 <div class="wrap">
 <div>
-<span class="eyebrow"><i></i>For coding agents · free and open source</span>
-<h1 id="hero-title">Give your agent one line. Get <em>every AI provider.</em></h1>
-<p class="lede">Stop rebuilding OpenRouter, Anthropic, OpenAI and Z.ai integrations for every project. Paste one line into your coding agent, and it adds any of 42 AI providers to your project: text, image, video and local models, behind one call.</p>
-
-<div class="prompt" data-tabs>
-<div class="prompt-tabs" role="tablist" aria-label="What are you building?" hidden>
-<button role="tab" id="tab-own" aria-controls="panel-own" aria-selected="true">My app, my keys</button>
-<button role="tab" id="tab-users" aria-controls="panel-users" aria-selected="false" tabindex="-1">Users bring keys</button>
-<button role="tab" id="tab-skill" aria-controls="panel-skill" aria-selected="false" tabindex="-1">Every session</button>
+<p class="kicker"><b>FOR CODING AGENTS</b>Free, open source, on npm</p>
+<h1 id="hero-title"><span>Every AI</span><span>provider.</span><span><em>One line.</em></span></h1>
+<p class="sub">Stop rebuilding OpenRouter, Anthropic, OpenAI and Z.ai integrations for every project. Paste one line into your coding agent, and it adds any of 42 AI providers: text, image, video and local models, behind one call.</p>
+<p class="ctas"><a href="#prompt">Copy the prompt ↓</a><a href="https://www.npmjs.com/package/ai-connections">npm install ai-connections</a><a href="llms.txt">Read what your agent reads</a></p>
 </div>
-<div class="prompt-panel" id="panel-own" role="tabpanel" aria-labelledby="tab-own">
-<div class="prompt-label"><span>Paste into your agent</span><button class="copy" type="button" data-copy="text-own" hidden>Copy</button></div>
-<pre id="text-own">Add AI provider support to this project with AI Connections (npm package: ai-connections). First read https://seeker-studio.games/ai-connections/llms.txt and follow it.</pre>
-</div>
-<div class="prompt-panel" id="panel-users" role="tabpanel" aria-labelledby="tab-users">
-<div class="prompt-label"><span>Paste into your agent</span><button class="copy" type="button" data-copy="text-users" hidden>Copy</button></div>
-<pre id="text-users">Add bring-your-own-key AI provider settings to this app with AI Connections (npm packages: ai-connections, ai-connections-react, ai-connections-cli). Read https://seeker-studio.games/ai-connections/llms.txt first, use full mode, and connect it to this app's existing authentication.</pre>
-</div>
-<div class="prompt-panel" id="panel-skill" role="tabpanel" aria-labelledby="tab-skill">
-<div class="prompt-label"><span>Run once in your project</span><button class="copy" type="button" data-copy="text-skill" hidden>Copy</button></div>
-<pre id="text-skill"><span class="sh">npx ai-connections-cli skill</span></pre>
-<p class="prompt-note">Installs the AI Connections skill for Claude Code and Codex, so every later session in the project uses it without being told.</p>
-</div>
-</div>
-<p class="meta">Works with Claude Code, Codex, Cursor and any agent that can read a URL.</p>
-<div class="hero-links">
-<a class="btn btn-ghost" href="https://www.npmjs.com/package/ai-connections">npm install ai-connections</a>
-<a class="btn btn-ghost" href="llms.txt">Read what your agent reads</a>
-</div>
-</div>
-
-<figure class="session" aria-label="Example: what a coding agent does after you paste the line">
-<div class="session-bar"><i></i><i></i><i></i><span>your agent</span></div>
-<ol>
-<li><span class="you">›</span><span class="you">Add AI provider support to this project with AI Connections…</span></li>
-<li><span class="dot">●</span><span>Reading seeker-studio.games/ai-connections/llms.txt</span></li>
-<li><span class="dot">●</span><span>A server with one key: direct mode</span></li>
-<li><span class="dot">●</span><span>npm install ai-connections</span></li>
-<li><span class="dot">●</span><span>Edited <span class="file">src/ai.ts</span><span class="diff"><b>+</b> import { generateText, languageModel } from 'ai-connections/direct'
-<b>+</b> const model = languageModel(process.env.AI_MODEL)</span></span></li>
-<li><span class="dot">●</span><span>Added AI_MODEL and OPENROUTER_API_KEY to .env.example</span></li>
-<li><span class="ok">✓</span><span>Done. Set OPENROUTER_API_KEY in .env to run it.</span></li>
-</ol>
+<figure class="win patch" aria-label="Diagram: your app plugs into one provider at a time, and switching is one cable">
+<div class="win-title"><span>Patch panel</span></div>
+<svg viewBox="0 0 520 312" aria-hidden="true">
+<rect class="app" x="14" y="124" width="124" height="72"/>
+<text x="76" y="165" text-anchor="middle">your app</text>
+<rect x="138" y="153" width="10" height="14" fill="#111110"/>
+<path class="cable n1" d="M148 160H190V36H389"/>
+<path class="cable n2" d="M148 160H220V84H389"/>
+<path class="cable n3" d="M148 160H250V132H389"/>
+<path class="cable n4" d="M148 160H280V180H389"/>
+<path class="cable n5" d="M148 160H310V228H389"/>
+<path class="cable n6" d="M148 160H340V276H389"/>
+<circle class="lamp n1" cx="400" cy="17" r="4"/><circle class="jack" cx="400" cy="36" r="11"/><circle class="pin" cx="400" cy="36" r="4"/><text x="422" y="40.5">OpenRouter</text>
+<circle class="lamp n2" cx="400" cy="65" r="4"/><circle class="jack" cx="400" cy="84" r="11"/><circle class="pin" cx="400" cy="84" r="4"/><text x="422" y="88.5">Anthropic</text>
+<circle class="lamp n3" cx="400" cy="113" r="4"/><circle class="jack" cx="400" cy="132" r="11"/><circle class="pin" cx="400" cy="132" r="4"/><text x="422" y="136.5">OpenAI</text>
+<circle class="lamp n4" cx="400" cy="161" r="4"/><circle class="jack" cx="400" cy="180" r="11"/><circle class="pin" cx="400" cy="180" r="4"/><text x="422" y="184.5">Z.ai</text>
+<circle class="lamp n5" cx="400" cy="209" r="4"/><circle class="jack" cx="400" cy="228" r="11"/><circle class="pin" cx="400" cy="228" r="4"/><text x="422" y="232.5">Ollama</text>
+<circle class="lamp n6" cx="400" cy="257" r="4"/><circle class="jack" cx="400" cy="276" r="11"/><circle class="pin" cx="400" cy="276" r="4"/><text x="422" y="280.5">fal</text>
+</svg>
+<p class="patch-foot">Switching provider moves one cable: the string you pass to <b>languageModel()</b>.</p>
 </figure>
 </div>
 </section>
 
-<section class="strip" aria-label="Some of the providers">
+<section class="desk" id="prompt" aria-labelledby="prompt-title">
 <div class="wrap">
-<p>42 providers, including</p>
-<ul>
-<li>OpenAI</li><li>Anthropic</li><li>Google</li><li>OpenRouter</li><li>DeepSeek</li><li>Z.ai</li><li>Mistral</li><li>xAI</li><li>Groq</li><li>fal</li><li>Replicate</li><li>Ollama</li><li>LM Studio</li>
+<p class="desk-label"><span>Paste into Claude Code, Codex or Cursor</span><span>Any agent that can read a URL</span></p>
+
+<div class="win w-prompt" data-tabs>
+<div class="win-title"><h2 id="prompt-title">Paste into your agent</h2></div>
+<div class="tabs" role="tablist" aria-label="What are you building?" hidden>
+<button role="tab" id="tab-own" aria-controls="panel-own" aria-selected="true">My app, my keys</button>
+<button role="tab" id="tab-users" aria-controls="panel-users" aria-selected="false" tabindex="-1">Users bring keys</button>
+<button role="tab" id="tab-skill" aria-controls="panel-skill" aria-selected="false" tabindex="-1">Every session</button>
+</div>
+<div class="panel" id="panel-own" role="tabpanel" aria-labelledby="tab-own">
+<div class="panel-head"><span>My app, my keys</span><button class="copy" type="button" data-copy="text-own" hidden>Copy</button></div>
+<pre id="text-own">Add AI provider support to this project with AI Connections (npm package: ai-connections). First read https://seeker-studio.games/ai-connections/llms.txt and follow it.</pre>
+</div>
+<div class="panel" id="panel-users" role="tabpanel" aria-labelledby="tab-users">
+<div class="panel-head"><span>Users bring their own keys</span><button class="copy" type="button" data-copy="text-users" hidden>Copy</button></div>
+<pre id="text-users">Add bring-your-own-key AI provider settings to this app with AI Connections (npm packages: ai-connections, ai-connections-react, ai-connections-cli). Read https://seeker-studio.games/ai-connections/llms.txt first, use full mode, and connect it to this app's existing authentication.</pre>
+</div>
+<div class="panel" id="panel-skill" role="tabpanel" aria-labelledby="tab-skill">
+<div class="panel-head"><span>Run once in your project</span><button class="copy" type="button" data-copy="text-skill" hidden>Copy</button></div>
+<pre id="text-skill"><span class="sh">npx ai-connections-cli skill</span></pre>
+<p>Installs the AI Connections skill for Claude Code and Codex, so every later session in the project uses it without being told.</p>
+</div>
+<p class="hint">The prompt points your agent at <a href="llms.txt">llms.txt</a>: which mode fits, what to install, and the rules.</p>
+</div>
+
+<figure class="win dark w-session" aria-label="Example: what a coding agent does after you paste the line">
+<div class="win-title"><span>your agent</span></div>
+<ol class="log">
+<li><span class="you">›</span><span class="you">Add AI provider support to this project with AI Connections…</span></li>
+<li><span>●</span><span>Reading seeker-studio.games/ai-connections/llms.txt</span></li>
+<li><span>●</span><span>A server with one key: direct mode</span></li>
+<li><span>●</span><span>npm install ai-connections</span></li>
+<li><span>●</span><span>Edited src/ai.ts<span class="diff"><b>+</b> import { generateText, languageModel } from 'ai-connections/direct'
+<b>+</b> const model = languageModel(process.env.AI_MODEL)</span></span></li>
+<li><span>●</span><span>Added AI_MODEL and OPENROUTER_API_KEY to .env.example</span></li>
+<li><span class="ok">✓</span><span class="ok">Done. Set OPENROUTER_API_KEY in .env to run it.</span></li>
+</ol>
+</figure>
+
+<div class="win w-board">
+<div class="win-title"><h2>Switchboard: 12 of 42</h2></div>
+<ul class="board" aria-label="Pick a provider to see the code change">
+<li><button class="jack" type="button" data-model="openrouter:deepseek/deepseek-chat" data-key="OPENROUTER_API_KEY" aria-pressed="true" disabled><i></i>OpenRouter</button></li>
+<li><button class="jack" type="button" data-model="anthropic:claude-sonnet-5-5" data-key="ANTHROPIC_API_KEY" aria-pressed="false" disabled><i></i>Anthropic</button></li>
+<li><button class="jack" type="button" data-model="openai:gpt-5" data-key="OPENAI_API_KEY" aria-pressed="false" disabled><i></i>OpenAI</button></li>
+<li><button class="jack" type="button" data-model="google:gemini-2.5-flash" data-key="GOOGLE_GENERATIVE_AI_API_KEY" aria-pressed="false" disabled><i></i>Google</button></li>
+<li><button class="jack" type="button" data-model="deepseek:deepseek-chat" data-key="DEEPSEEK_API_KEY" aria-pressed="false" disabled><i></i>DeepSeek</button></li>
+<li><button class="jack" type="button" data-model="zai:glm-4.6" data-key="ZAI_API_KEY" aria-pressed="false" disabled><i></i>Z.ai</button></li>
+<li><button class="jack" type="button" data-model="mistral:mistral-large-latest" data-key="MISTRAL_API_KEY" aria-pressed="false" disabled><i></i>Mistral</button></li>
+<li><button class="jack" type="button" data-model="xai:grok-4" data-key="XAI_API_KEY" aria-pressed="false" disabled><i></i>xAI</button></li>
+<li><button class="jack" type="button" data-model="groq:llama-3.3-70b-versatile" data-key="GROQ_API_KEY" aria-pressed="false" disabled><i></i>Groq</button></li>
+<li><button class="jack" type="button" data-model="together:meta-llama/Llama-3.3-70B-Instruct-Turbo" data-key="TOGETHER_API_KEY" aria-pressed="false" disabled><i></i>Together</button></li>
+<li><button class="jack" type="button" data-model="ollama:llama3.2" data-key="" aria-pressed="false" disabled><i></i>Ollama</button></li>
+<li><button class="jack" type="button" data-model="lmstudio:openai/gpt-oss-20b" data-key="" aria-pressed="false" disabled><i></i>LM Studio</button></li>
 </ul>
+<p class="board-foot">Plus Moonshot, Qwen, MiniMax, Cerebras, fal, Replicate, Higgsfield, WaveSpeed and more. Model names here are examples. <a href="https://github.com/seeker24601/ai-connections/blob/main/docs/PROVIDERS.md">All 42</a></p>
+</div>
+
+<figure class="win code w-swap" aria-label="Code example">
+<div class="win-title"><span>src/ai.ts</span></div>
+<pre><span class="k">import</span> {
+  generateText, languageModel, createImage,
+} <span class="k">from</span> <span class="s">'ai-connections/direct'</span>;
+
+<span class="k">const</span> { text } = <span class="k">await</span> generateText({
+  model: languageModel(<span class="s">'<span class="live" id="live-model">openrouter:deepseek/deepseek-chat</span>'</span>),
+  prompt: <span class="s">'Summarize this document…'</span>,
+});
+
+<span class="c">// Images and video, the same way.</span>
+<span class="k">await</span> createImage(<span class="s">'fal:fal-ai/flux/dev'</span>, { prompt });</pre>
+<p class="code-foot" aria-live="polite" id="live-key">Reads <b>OPENROUTER_API_KEY</b> from the environment.</p>
+</figure>
 </div>
 </section>
 
 <section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
-<p class="kicker">How it works</p>
-<h2 id="how-title">Your agent does the integration. You never write it again.</h2>
-<p class="intro">Every AI project re-solves the same things: which package, which base URL, which auth header and key variable, how to list models, why each SDK fails differently. AI Connections solves them once.</p>
-<div class="steps">
-<div class="card"><h3>Paste one line</h3><p>Into Claude Code, Codex or Cursor, or run <code>npx ai-connections-cli skill</code> once so every session knows.</p></div>
-<div class="card"><h3>Your agent reads the instructions</h3><p>From <code>llms.txt</code>: which mode fits, what to install, the patterns to use, and the rules. Keys go in <code>.env</code> and never in code.</p></div>
-<div class="card"><h3>Switch providers with a word</h3><p>A model is just <code>provider:model</code>. Moving from OpenRouter to Anthropic, or to a local Ollama model, changes one string.</p></div>
+<div class="section-head">
+<p class="num">01 / How it works</p>
+<h2 id="how-title">Your agent writes it. You never do again.</h2>
+<p>Every AI project re-solves the same things: which package, which base URL, which auth header and key variable, how to list models, why each SDK fails differently. AI Connections solves them once.</p>
 </div>
-</div>
-</section>
-
-<section class="section" aria-labelledby="swap-title">
-<div class="wrap swap">
-<div>
-<p class="kicker">One call, any provider</p>
-<h2 id="swap-title">The same code, whatever the model.</h2>
-<p class="intro">Built on the Vercel AI SDK, so streaming, tools and structured output work as documented. AI Connections adds what the SDK leaves to you.</p>
-<ul class="swap-list">
-<li><span><strong>Keys found for you</strong> from each provider's usual variable, and a pasted key is matched to its provider.</span></li>
-<li><span><strong>One error type</strong>, with the provider's own message and whether a retry could help.</span></li>
-<li><span><strong>Model lists</strong> straight from the provider, with prices and inputs where stated.</span></li>
-</ul>
-</div>
-<figure class="code" aria-label="Code example">
-<div class="code-head"><span>src/ai.ts</span><span>ai-connections/direct</span></div>
-<pre><span class="k">import</span> { generateText, languageModel, createImage } <span class="k">from</span> <span class="s">'ai-connections/direct'</span>;
-
-<span class="k">const</span> { text } = <span class="k">await</span> generateText({
-  model: languageModel(<span class="s">'openrouter:deepseek/deepseek-chat'</span>),
-  prompt: <span class="s">'Summarize this document…'</span>,
-});
-
-<span class="c">// Another provider: change the string.</span>
-languageModel(<span class="s">'anthropic:claude-sonnet-5-5'</span>);
-languageModel(<span class="s">'zai:glm-4.6'</span>);
-languageModel(<span class="s">'ollama:llama3.2'</span>);
-
-<span class="c">// Images and video, the same way.</span>
-<span class="k">await</span> createImage(<span class="s">'fal:fal-ai/flux/dev'</span>, { prompt, aspectRatio: <span class="s">'3:2'</span> });</pre>
-</figure>
+<ol class="grid">
+<li class="win"><div class="win-title"><span>Step 1</span></div><div class="win-body"><h3>Paste one line</h3><p>Into Claude Code, Codex or Cursor. Or run <code>npx ai-connections-cli skill</code> once, so every session knows.</p></div></li>
+<li class="win"><div class="win-title"><span>Step 2</span></div><div class="win-body"><h3>Your agent reads the rules</h3><p>From <code>llms.txt</code>: which mode fits, what to install, the patterns to use. Keys go in <code>.env</code>, never in code.</p></div></li>
+<li class="win"><div class="win-title"><span>Step 3</span></div><div class="win-body"><h3>Switch with a word</h3><p>A model is just <code>provider:model</code>. OpenRouter to Anthropic, or to a local Ollama model, is one string.</p></div></li>
+</ol>
 </div>
 </section>
 
 <section class="section" id="features" aria-labelledby="features-title">
 <div class="wrap">
-<p class="kicker">What you get</p>
+<div class="section-head">
+<p class="num">02 / What you get</p>
 <h2 id="features-title">Everything between your app and the providers.</h2>
-<div class="grid">
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><h3>30 text providers</h3><p>OpenAI, Anthropic, Google, DeepSeek, Z.ai, Moonshot, Qwen, MiniMax, Mistral, xAI, OpenRouter, Groq, Together and more, plus any OpenAI-compatible endpoint.</p></div>
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="m6.5 16 4-4 3 3 2-2 2 2"/></svg><h3>Images and video</h3><p>15 providers through <code>createImage</code> and <code>createVideo</code>, including OpenRouter with live previews and cost, Higgsfield, WaveSpeed, fal and Replicate.</p></div>
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M8 20h8M12 15v5"/></svg><h3>Local models, done properly</h3><p>Ollama through its own API, so context size and "thinking off" actually apply. LM Studio and vLLM with strict JSON schemas.</p></div>
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="5"/><path d="m13 13 7 7M17 17l2-2"/></svg><h3>Keys handled</h3><p>Read from the environment by convention, detected from a pasted key, and in multi-user apps encrypted per user and never sent back.</p></div>
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6l-8-3Z"/></svg><h3>Safe by default</h3><p>Each provider held to its own address, redirects refused, raw provider errors kept from end users.</p></div>
-<div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 4h6M10 4v5L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V4"/></svg><h3>Tests without bills</h3><p>Realistic provider replies and a recording fake <code>fetch</code>, so your tests make no paid calls.</p></div>
+<p>Built on the Vercel AI SDK, so streaming, tools and structured output work as documented. AI Connections adds what the SDK leaves to you.</p>
 </div>
+<ul class="grid">
+<li class="win"><div class="win-title"><span>text</span></div><div class="win-body"><span class="big">30</span><h3>Text providers</h3><p>OpenAI, Anthropic, Google, DeepSeek, Z.ai, Moonshot, Qwen, MiniMax, Mistral, xAI, OpenRouter, Groq, Together and more, plus any OpenAI-compatible endpoint.</p></div></li>
+<li class="win"><div class="win-title"><span>media</span></div><div class="win-body"><span class="big">15</span><h3>Image and video providers</h3><p>Through <code>createImage</code> and <code>createVideo</code>, including OpenRouter with live previews and cost, Higgsfield, WaveSpeed, fal and Replicate.</p></div></li>
+<li class="win"><div class="win-title"><span>local</span></div><div class="win-body"><span class="big">3</span><h3>Local runners, done properly</h3><p>Ollama through its own API, so context size and "thinking off" actually apply. LM Studio and vLLM with strict JSON schemas.</p></div></li>
+<li class="win"><div class="win-title"><span>keys</span></div><div class="win-body"><span class="big">0</span><h3>Keys in your code</h3><p>Read from each provider's usual variable, matched from a pasted key, and in multi-user apps encrypted per user and never sent back.</p></div></li>
+<li class="win"><div class="win-title"><span>errors</span></div><div class="win-body"><span class="big">1</span><h3>Error type</h3><p><code>ProviderError</code>, with the provider's own message and whether a retry could help. No more catching each SDK differently.</p></div></li>
+<li class="win"><div class="win-title"><span>tests</span></div><div class="win-body"><span class="big">$0</span><h3>Test bills</h3><p>Realistic provider replies and a recording fake <code>fetch</code>, so your tests make no paid calls.</p></div></li>
+</ul>
 </div>
 </section>
 
 <section class="section" aria-labelledby="modes-title">
 <div class="wrap">
-<p class="kicker">Two ways in</p>
-<h2 id="modes-title">One key of yours, or a key for every user.</h2>
-<div class="modes">
-<div class="card">
-<h3>Direct mode <span class="tag accent">most projects</span></h3>
+<div class="section-head">
+<p class="num">03 / Two ways in</p>
+<h2 id="modes-title">One key of yours, or one per user.</h2>
+<p>Your agent picks the mode from <code>llms.txt</code>. Most projects need only the first.</p>
+</div>
+<div class="two">
+<div class="win"><div class="win-title"><span>direct mode</span></div><div class="win-body">
+<h3>Direct mode <span class="tag on">most projects</span></h3>
 <p>Servers, scripts, bots, agent harnesses, workers and desktop tools. Your keys, from the environment. No Node-only dependencies, so it runs in edge workers too.</p>
 <dl><dt>Install</dt><dd>ai-connections</dd><dt>You get</dt><dd>One-line models, images, video and model lists</dd></dl>
 <pre>npm install ai-connections</pre>
-</div>
-<div class="card">
+</div></div>
+<div class="win"><div class="win-title"><span>full mode</span></div><div class="win-body">
 <h3>Full mode <span class="tag">multi-user apps</span></h3>
 <p>Each signed-in user adds their own provider keys in your app's settings. Keys are encrypted per user and stay on your server.</p>
 <dl><dt>Install</dt><dd>ai-connections, ai-connections-react</dd><dt>You get</dt><dd>A connection service, an HTTP handler and a React settings screen</dd></dl>
 <pre>npx ai-connections-cli init</pre>
-</div>
+</div></div>
 </div>
 </div>
 </section>
 
 <section class="section" aria-labelledby="safe-title">
 <div class="wrap">
-<p class="kicker">Safe by default</p>
+<div class="section-head">
+<p class="num">04 / Safe by default</p>
 <h2 id="safe-title">Built for other people's keys.</h2>
-<p class="intro">Made for apps where users' keys and requests pass through your server.</p>
+<p>Made for apps where users' keys and requests pass through your server.</p>
+</div>
+<div class="win"><div class="win-title"><span>security.txt</span></div><div class="win-body">
 <ul class="checks">
 <li><span><strong>Keys encrypted at rest</strong>, never returned by the API, and sent only to the provider they belong to.</span></li>
 <li><span><strong>Endpoints held to the provider.</strong> Redirects are refused, and local addresses open only to local model runners.</span></li>
@@ -185,16 +211,27 @@ languageModel(<span class="s">'ollama:llama3.2'</span>);
 <li><span><strong>SVG output refused</strong> unless you opt in, since it can carry script.</span></li>
 <li><span><strong>Releases built in public CI</strong> and published through npm trusted publishing, with no stored tokens.</span></li>
 </ul>
+</div></div>
 </div>
 </section>
 
 <section class="section" aria-labelledby="honest-title">
 <div class="wrap">
-<p class="kicker">Status</p>
+<div class="section-head">
+<p class="num">05 / Status</p>
 <h2 id="honest-title">In real use, and honest about its limits.</h2>
-<div class="honest">
-<div class="card"><h3>Running in real apps</h3><p><a href="https://github.com/seeker24601/Atelier-1111">Atelier-1111</a>, a desktop image studio, reaches 12 image providers through AI Connections. A multi-agent game harness runs 27 text providers and local models through it.</p><p>Building those two is what shaped it.</p></div>
-<div class="card"><h3>What isn't proven yet</h3><p>Providers are checked against their own documentation and tested against local fixtures, but not every one has been tried with a live account. The first real call to a new provider is the true test, and its error comes back in its own words.</p><p>AWS Bedrock, Azure and Vertex need dedicated adapters. Requires Node.js 22 or newer.</p></div>
+</div>
+<div class="two">
+<div class="win"><div class="win-title"><span>in use</span></div><div class="win-body">
+<h3>Running in real apps</h3>
+<p><a href="https://github.com/seeker24601/Atelier-1111">Atelier-1111</a>, a desktop image studio, reaches 12 image providers through AI Connections. A multi-agent game harness runs 27 text providers and local models through it.</p>
+<p>Building those two is what shaped it.</p>
+</div></div>
+<div class="win"><div class="win-title"><span>not yet proven</span></div><div class="win-body">
+<h3>What isn't proven yet</h3>
+<p>Providers are checked against their own documentation and tested against local fixtures, but not every one has been tried with a live account. The first real call to a new provider is the true test, and its error comes back in its own words.</p>
+<p>AWS Bedrock, Azure and Vertex need dedicated adapters. Requires Node.js 22 or newer.</p>
+</div></div>
 </div>
 </div>
 </section>
@@ -202,10 +239,11 @@ languageModel(<span class="s">'ollama:llama3.2'</span>);
 <section class="section final" aria-labelledby="final-title">
 <div class="wrap">
 <h2 id="final-title">Hand it to your agent.</h2>
-<p class="intro">One line now, and no provider integration to write again.</p>
-<div class="prompt">
-<div class="prompt-panel">
-<div class="prompt-label"><span>Paste into your agent</span><button class="copy" type="button" data-copy="text-final" hidden>Copy</button></div>
+<p class="sub">One line now, and no provider integration to write again.</p>
+<div class="win">
+<div class="win-title"><span>Paste into your agent</span></div>
+<div class="panel">
+<div class="panel-head"><span>My app, my keys</span><button class="copy" type="button" data-copy="text-final" hidden>Copy</button></div>
 <pre id="text-final">Add AI provider support to this project with AI Connections (npm package: ai-connections). First read https://seeker-studio.games/ai-connections/llms.txt and follow it.</pre>
 </div>
 </div>
@@ -215,7 +253,11 @@ languageModel(<span class="s">'ollama:llama3.2'</span>);
 
 <footer class="foot">
 <div class="wrap">
-<p class="made">AI Connections is made by <a href="../">Seeker Studio</a>. MIT licensed.</p>
+<div class="win">
+<div class="win-title"><span>About AI Connections</span></div>
+<div class="win-body">
+<p>Version 0.4.3 · MIT licensed</p>
+<p>Made by <a href="../">Seeker Studio</a>.</p>
 <nav aria-label="Footer">
 <a href="https://www.npmjs.com/package/ai-connections">npm</a>
 <a href="https://github.com/seeker24601/ai-connections">GitHub</a>
@@ -223,6 +265,8 @@ languageModel(<span class="s">'ollama:llama3.2'</span>);
 <a href="https://github.com/seeker24601/ai-connections/blob/main/CHANGELOG.md">Changelog</a>
 <a href="llms.txt">llms.txt</a>
 </nav>
+</div>
+</div>
 </div>
 </footer>
 </body>
