@@ -1,7 +1,9 @@
 /* AI Connections: a switchboard on paper. Lo-fi windows with label strips and
    hard shadows, a halftone cobalt desk, patch cables, tight giant type.
+   Departure Mono (a pixel font, sized in steps of 11px) carries the labels.
    Only the fonts are shared with the Seeker Studio site. */
 @font-face{font-family:Geist;src:url('../assets/fonts/geist.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:"Departure Mono";src:url('../assets/fonts/departure-mono.woff2') format('woff2');font-display:swap}
 @font-face{font-family:GeistMono;src:url('../assets/fonts/geist-mono.woff2') format('woff2');font-weight:100 900;font-display:swap}
 
 :root{
@@ -9,7 +11,7 @@
   --paper:#f3f1ea;--win:#fcfbf7;--ink:#111110;--ink-2:#4f4d47;--ink-3:#7a776e;
   --field:#2a3bff;--field-dot:#1726d6;
   --lamp:#16c47c;--lamp-off:#c9c6bc;--hi:#ffe14d;
-  --sans:Geist,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:GeistMono,ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --sans:Geist,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:GeistMono,ui-monospace,'SF Mono',Menlo,Consolas,monospace;--pixel:'Departure Mono',var(--mono);
   --pad:clamp(16px,4vw,40px);--wrap:1200px;
   --shadow:5px 5px 0 var(--ink);
 }
@@ -40,19 +42,17 @@ a{color:inherit}
 .win{background:var(--win);border:2px solid var(--ink);box-shadow:var(--shadow);min-width:0}
 .win-title{display:flex;align-items:center;gap:10px;height:30px;padding:0 10px 0 12px;background:var(--ink);color:var(--win)}
 .win-title::after{content:'';flex:none;margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 2px var(--ink),0 0 0 3.5px var(--win)}
-.win-title>*{font:700 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.win-title>*{font:400 11px/1 var(--pixel);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .win-body{padding:18px}
 .win.dark{background:var(--ink);color:var(--win)}
 .win.dark .win-title{background:#2b2a27;border-bottom:2px solid var(--win)}
-.code .win-title>*{text-transform:none;letter-spacing:.02em}
+.code .win-title>*{text-transform:none;letter-spacing:0}
 
-/* Hero: text on the left, the patch panel on the right, a cobalt halftone
-   rising into the switchboard below */
-.hero{position:relative;padding:clamp(24px,4vw,56px) 0 clamp(64px,9vw,112px);overflow:hidden;isolation:isolate}
-.hero::after{content:'';position:absolute;z-index:-1;inset:auto 0 0;height:clamp(56px,9vw,112px);pointer-events:none;background-image:radial-gradient(var(--field) 1.3px,transparent 1.5px);background-size:6px 6px;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000)}
+/* Hero: the headline on the left, the prompt to copy on the right */
+.hero{padding:clamp(32px,5vw,72px) 0 clamp(48px,6vw,88px)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .kicker{font:600 15px var(--sans);color:var(--ink-2);margin-bottom:18px}
-.kicker b{display:inline-block;margin-right:8px;padding:2px 8px;background:var(--ink);color:var(--win);font:700 12px/1.6 var(--mono);letter-spacing:.04em;vertical-align:1px}
+.kicker b{display:inline-block;margin-right:8px;padding:2px 8px;background:var(--ink);color:var(--win);font:400 11px/1.9 var(--pixel);letter-spacing:.08em;vertical-align:2px}
 h1{font:700 clamp(48px,7vw,108px)/.86 var(--sans);letter-spacing:-.065em}
 h1 span{display:block}
 h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55% 88%,transparent 88%)}
@@ -63,8 +63,8 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 @keyframes on{to{opacity:1}}
 
 /* Patch panel: one cable lit at a time, stepping through the providers */
-.patch svg{display:block;width:100%;height:auto}
-.patch text{font:700 13px var(--mono);fill:var(--ink)}
+.patch svg{display:block;width:100%;max-height:320px;margin:auto;padding:14px 18px}
+.patch text{font:400 13.2px var(--pixel);fill:var(--ink)}
 .patch .app{fill:var(--hi);stroke:var(--ink);stroke-width:2}
 .patch .cable{fill:none;stroke:var(--ink-3);stroke-width:2;stroke-dasharray:2 5;animation:plug 12s step-end infinite}
 .patch .lamp{fill:var(--lamp-off);stroke:var(--ink);stroke-width:1.5;animation:lamp 12s step-end infinite}
@@ -77,14 +77,14 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 
 /* The desktop: a dithered cobalt field */
 .desk{position:relative;padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px);background-color:var(--field);background-image:radial-gradient(var(--field-dot) 1.2px,transparent 1.4px);background-size:4px 4px;border-block:2px solid var(--ink);overflow:hidden;isolation:isolate}
-.desk::before{content:'';position:absolute;z-index:-1;inset:-30% 30% 55% -10%;background-image:radial-gradient(rgba(255,255,255,.85) 1.2px,transparent 1.4px);background-size:4px 4px;-webkit-mask-image:radial-gradient(closest-side,#000 15%,transparent);mask-image:radial-gradient(closest-side,#000 15%,transparent);pointer-events:none}
-.desk .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;align-items:start}
-.desk-label{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--win);font:700 13px var(--mono);letter-spacing:.04em;text-transform:uppercase}
-.desk-label span{padding:3px 8px;background:var(--ink)}
+.desk .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;align-items:stretch}
+.desk .win{display:flex;flex-direction:column}
+.desk-label{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--win);font:400 22px/1.2 var(--pixel);text-transform:uppercase}
+.desk-label span{padding:4px 10px;background:var(--ink)}
 .w-patch{grid-column:1/8}
-.w-session{grid-column:8/13;margin-top:56px}
+.w-session{grid-column:8/13}
 .w-board{grid-column:1/6}
-.w-swap{grid-column:6/13;margin-top:40px}
+.w-swap{grid-column:6/13}
 
 /* Prompt window with tabs */
 .tabs{display:flex;border-bottom:2px solid var(--ink)}
@@ -100,7 +100,11 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .panel[hidden]{display:none}
 .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
 .js .panel-head>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.js .panel-head{justify-content:flex-end;margin-bottom:4px}
+.js .panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 16px;align-items:start}
+.js .panel[hidden]{display:none}
+.js .panel-head{grid-column:2;grid-row:1;margin:0}
+.js .panel pre{grid-column:1;grid-row:1}
+.js .panel p{grid-column:1/-1;margin:0}
 .panel pre{white-space:pre-wrap;overflow-wrap:anywhere;font:500 15.5px/1.6 var(--mono)}
 .panel pre .sh::before{content:'$ ';color:var(--ink-3)}
 .panel p{margin-top:12px;font-size:14px;color:var(--ink-2)}
@@ -132,7 +136,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .jack[aria-pressed=true]{background:var(--hi)}
 .jack[aria-pressed=true]:hover{background:var(--hi)}
 .jack[aria-pressed=true] i::after{background:var(--lamp)}
-.board-foot{padding:11px 16px;font:12.5px/1.5 var(--mono);color:var(--ink-2)}
+.board-foot{margin-top:auto;padding:11px 16px;font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 
 /* Code window */
 .code pre{padding:18px;overflow-x:auto;font:13px/1.75 var(--mono)}
@@ -140,30 +144,33 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .code .k{color:var(--field);font-weight:700}
 .code .s{color:#0c7a4a}
 .code .live{background:var(--hi);color:var(--ink);padding:1px 2px}
-.code-foot{padding:11px 18px;border-top:2px solid var(--ink);font:12.5px/1.5 var(--mono);color:var(--ink-2)}
+.code-foot{margin-top:auto;padding:11px 18px;border-top:2px solid var(--ink);font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 .code-foot b{color:var(--ink)}
 
 /* Sections on paper */
 .section{padding:clamp(64px,9vw,120px) 0 0}
-.section-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:end;gap:16px 48px;margin-bottom:clamp(28px,4vw,48px)}
-.section-head .num{grid-column:1/-1;font:700 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.section-head{display:grid;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+.section-head .num{grid-column:1/-1;font:400 22px/1 var(--pixel);text-transform:uppercase;color:var(--ink-2)}
 .section-head h2{font:700 clamp(40px,6.4vw,88px)/.9 var(--sans);letter-spacing:-.06em}
-.section-head p{color:var(--ink-2);font-size:17px}
+.section-head p{max-width:34em;color:var(--ink-2);font-size:18px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
 .grid h3{font:700 20px/1.2 var(--sans);letter-spacing:-.025em;margin-bottom:8px}
 .grid p{color:var(--ink-2);font-size:15.5px}
-.grid .big{display:block;font:700 56px/1 var(--sans);letter-spacing:-.06em;margin-bottom:12px}
+.grid .big{display:block;font:400 66px/1 var(--pixel);margin-bottom:14px}
 main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;border:1px solid var(--lamp-off);overflow-wrap:anywhere}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.two .win{display:flex;flex-direction:column}
+.two .win-body{flex:1;display:flex;flex-direction:column}
 .two h3{font:700 24px/1.2 var(--sans);letter-spacing:-.03em;margin-bottom:8px}
-.two p{color:var(--ink-2)}
-.two p+p{margin-top:12px}
+.two p{color:var(--ink-2);margin-bottom:16px}
+.two p+p{margin-top:-4px}
+.two p:last-child{margin-bottom:0}
 .two dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;margin-top:16px;font-size:15px}
 .two dt{font:700 12px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)}
 .two dd{color:var(--ink-2)}
-.two pre{margin-top:16px;padding:10px 12px;border:2px solid var(--ink);background:var(--paper);font:600 14px var(--mono);overflow-x:auto}
+.two pre{margin-top:auto;padding:10px 12px;border:2px solid var(--ink);background:var(--paper);font:600 14px var(--mono);overflow-x:auto}
 .two pre::before{content:'$ ';color:var(--ink-3)}
-.tag{display:inline-block;margin-left:6px;padding:2px 8px;border:2px solid var(--ink);background:var(--paper);font:700 11.5px/1.4 var(--mono);letter-spacing:.02em;vertical-align:4px}
+.tag{display:inline-block;margin-left:6px;padding:2px 8px;border:2px solid var(--ink);background:var(--paper);font:400 11px/1.5 var(--pixel);letter-spacing:.04em;vertical-align:5px}
 .tag.on{background:var(--hi)}
 .two a{text-decoration:underline;text-underline-offset:3px}
 .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 36px}
@@ -174,20 +181,20 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 /* Closing */
 .final{text-align:center;padding-bottom:clamp(64px,9vw,120px)}
 .final h2{font:700 clamp(52px,10vw,148px)/.85 var(--sans);letter-spacing:-.07em}
-.final .sub{margin-top:18px}
+.final .sub{margin:18px auto 0}
 .final .win{max-width:760px;margin:clamp(32px,4vw,48px) auto 0;text-align:left}
 
 /* Footer window */
 .foot{padding:0 0 48px}
-.foot .win{max-width:480px}
-.foot .win-body{font:13px/1.8 var(--mono)}
+.foot .win{max-width:480px;margin:0 auto}
+.foot .win-body{font:400 11px/2 var(--pixel);letter-spacing:.04em}
 .foot nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:8px}
 .foot a{text-underline-offset:3px}
 .foot a:hover{color:var(--field)}
 
 @media(max-width:980px){
   .hero .wrap{grid-template-columns:1fr}
-  .w-patch,.w-session,.w-board,.w-swap{grid-column:1/-1;margin-top:0}
+  .w-patch,.w-session,.w-board,.w-swap{grid-column:1/-1}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .section-head{grid-template-columns:1fr}
 }
@@ -199,6 +206,10 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
   .board{grid-template-columns:repeat(3,minmax(0,1fr))}
   .tabs button{font-size:12.5px;padding:11px 4px}
   .panel pre{font-size:14px}
+  .js .panel{grid-template-columns:1fr}
+  .js .panel-head{grid-column:1;grid-row:2}
+  .js .panel-head .copy{width:100%;padding:11px}
+  .js .panel p{grid-row:3}
   .desk .wrap{gap:24px}
   :root{--shadow:4px 4px 0 var(--ink)}
 }
