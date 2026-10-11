@@ -9,8 +9,8 @@
 <link rel="canonical" href="https://seeker-studio.games/lockbox/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230b0d11'/%3E%3Cpath fill='%238fb8ff' d='M9 4v4h6V4H9ZM5 20h14V10H5v10ZM17 8h4v14H3V8h4V2h10v6Z'/%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lockbox","applicationCategory":"SecurityApplication","operatingSystem":"macOS 13 or later (Apple silicon); Windows 10 or 11 Pro, Enterprise or Education","description":"One encrypted vault for your private files. One password, no settings, no accounts.","url":"https://seeker-studio.games/lockbox/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Seeker Studio","url":"https://seeker-studio.games/"}}</script>
-<link rel="stylesheet" href="page.css?v=1">
-<script src="page.js?v=1" defer></script>
+<link rel="stylesheet" href="page.css?v=2">
+<script src="page.js?v=2" defer></script>
 </head>
 <body>
 <!-- Icons: Pixelarticons Pro 2.5.0 (licensed), sharp family -->
@@ -42,7 +42,7 @@
 <p class="sub">Lockbox keeps your private files in one encrypted vault. Unlock it, use your files, lock it again. That's the whole app.</p>
 <div class="buttons">
 <a class="dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download for Mac<small>Apple silicon · macOS 13+</small></span></a>
-<a class="dl" href="../downloads/Lockbox-0.1.0-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download for Windows<small>Windows 10/11 Pro · 64-bit</small></span></a>
+<a class="dl" href="../downloads/Lockbox-0.1.1-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download for Windows<small>Windows 10/11 Pro · 64-bit</small></span></a>
 </div>
 </div>
 <figure class="shot"><img src="../assets/tools/lockbox-windows.png" width="880" height="660" alt="Two Lockbox windows on Windows: a dark one showing LOCKED with a BitLocker tag and a password field, and a light one showing UNLOCKED, open as drive E, with Add Files and Show in File Explorer buttons"></figure>
@@ -69,7 +69,12 @@
 <article><h3>Cryptomator</h3><p class="them">Built for cloud folders, encrypting file by file so sync services can carry the vault.</p><p class="us"><svg aria-hidden="true"><use href="#i-lock"/></svg>Built for your own disk. No cloud service in the loop.</p></article>
 <article><h3>Disk Utility · BitLocker</h3><p class="them">Already on your computer, but you assemble it yourself and have to remember to eject.</p><p class="us"><svg aria-hidden="true"><use href="#i-lock"/></svg>The same built-in encryption, in one window that confirms when it's locked.</p></article>
 </div>
-<p class="not"><span>Left out on purpose</span>Accounts · Cloud sync · Settings · Subscriptions</p>
+<ul class="perks">
+<li><svg aria-hidden="true"><use href="#i-shield"/></svg>No accounts</li>
+<li><svg aria-hidden="true"><use href="#i-shield"/></svg>No cloud sync</li>
+<li><svg aria-hidden="true"><use href="#i-shield"/></svg>No settings</li>
+<li><svg aria-hidden="true"><use href="#i-shield"/></svg>No subscriptions</li>
+</ul>
 </div>
 </section>
 
@@ -80,9 +85,9 @@
 <p class="big">Free. No account.</p>
 <div class="buttons">
 <a class="dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Mac<small>v0.2.8 · ZIP · 1.0 MB</small></span></a>
-<a class="dl" href="../downloads/Lockbox-0.1.0-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Windows<small>v0.1.0 · ZIP · 2.1 MB</small></span></a>
+<a class="dl" href="../downloads/Lockbox-0.1.1-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Windows<small>v0.1.1 · ZIP · 2.1 MB</small></span></a>
 </div>
-<p class="sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.0-windows-SHA256.txt">Windows</a></p>
+<p class="sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.1-windows-SHA256.txt">Windows</a></p>
 </div>
 <div class="notes">
 <details>
@@ -97,7 +102,7 @@
 <details>
 <summary>Install on Windows</summary>
 <ol>
-<li>Extract the ZIP and run <b>Lockbox.exe</b>.</li>
+<li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
 <li>Approve the administrator prompt. Windows needs it to open disk images.</li>
 <li>Choose <b>Create Lockbox</b>, pick a place for the vault, and set a password of 12 characters or more.</li>
 </ol>
