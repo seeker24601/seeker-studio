@@ -1,13 +1,13 @@
 # AI Connections
 
-> npm package `ai-connections`: one-line access to 42 AI providers (text, image, video and local models), built on the Vercel AI SDK. Use it to add AI provider support to a project instead of writing provider clients, base URLs, auth headers or model lists by hand.
+> npm package `ai-connections`: BYOK (bring your own key) support for 42 AI providers, one line each (text, image, video and local models), built on the Vercel AI SDK. Use it to integrate AI provider support into a project instead of writing provider clients, base URLs, auth headers or model lists by hand.
 
 You are a coding agent asked to add AI provider support to a project. Follow these steps.
 
 ## 1. Choose the mode
 
 - **Direct mode**: the developer or operator supplies the keys. Servers, CLIs, scripts, agent harnesses, workers, desktop and single-user tools. Most projects.
-- **Full mode**: each end user adds their own provider keys in the app's settings. Only for multi-user apps with signed-in users.
+- **Full mode** (BYOK for end users): each end user adds their own provider keys in the app's settings. Only for multi-user apps with signed-in users.
 
 If the project has no signed-in users, use direct mode. Ask the user only if the code and the request leave this unclear.
 

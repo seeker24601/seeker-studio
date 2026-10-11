@@ -1,6 +1,7 @@
 /* AI Connections: a switchboard on paper. Lo-fi windows with label strips and
-   hard shadows, a halftone cobalt desk, patch cables, tight giant type.
-   Two accents: cobalt for the connection, yellow for whatever is on.
+   hard shadows, a halftone green desk, patch cables, tight giant type.
+   Two accents: green for the connection and anything switched on, yellow
+   for the thing to act on (copy, the live string).
    Departure Mono (a pixel font, sized in steps of 11px) carries the labels.
    Only the fonts are shared with the Seeker Studio site. */
 @font-face{font-family:Geist;src:url('../assets/fonts/geist.woff2') format('woff2');font-weight:100 900;font-display:swap}
@@ -10,8 +11,8 @@
 :root{
   color-scheme:light;
   --paper:#f3f1ea;--win:#fcfbf7;--ink:#111110;--ink-2:#4f4d47;--ink-3:#7a776e;
-  --field:#2a3bff;--field-dot:#1726d6;
-  --hi:#ffe14d;--lamp:var(--hi);--lamp-off:#c9c6bc;
+  --field:#1fa35c;--field-dot:#178c4d;--field-ink:#0b6b3c;
+  --hi:#ffe14d;--lamp:#3ddc84;--lamp-off:#c9c6bc;
   --sans:Geist,system-ui,-apple-system,'Segoe UI',sans-serif;--mono:GeistMono,ui-monospace,'SF Mono',Menlo,Consolas,monospace;--pixel:'Departure Mono',var(--mono);
   --pad:clamp(16px,4vw,40px);--wrap:1200px;
   --shadow:5px 5px 0 var(--ink);
@@ -22,7 +23,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--
 h1,h2,h3,p,ol,ul,figure,pre,dl,dd{margin:0}
 ol,ul{padding:0;list-style:none}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--field);outline-offset:3px}
+:focus-visible{outline:3px solid var(--field-ink);outline-offset:3px}
 ::selection{background:var(--hi);color:var(--ink)}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
 .skip{position:fixed;top:-100px;left:16px;z-index:50;background:var(--ink);color:var(--win);padding:10px 14px}
@@ -37,7 +38,7 @@ a{color:inherit}
 .top nav a{display:flex;align-items:center;padding:0 18px;font:600 15px var(--sans);text-decoration:none;border-left:2px solid var(--ink);white-space:nowrap}
 .top nav a:hover{background:var(--win)}
 .top nav .go{background:var(--ink);color:var(--win)}
-.top nav .go:hover{background:var(--field)}
+.top nav .go:hover{background:var(--field-ink)}
 
 /* Window: a solid label strip with a status lamp, like tape on a patch bay */
 .win{background:var(--win);border:2px solid var(--ink);box-shadow:var(--shadow);min-width:0}
@@ -59,7 +60,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .sub{max-width:34em;margin-top:clamp(22px,3vw,32px);font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:var(--ink-2)}
 .ctas{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;font:600 17px var(--sans)}
 .ctas a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
-.ctas a:hover{text-decoration-color:var(--field)}
+.ctas a:hover{text-decoration-color:var(--field-ink)}
 @keyframes on{to{opacity:1}}
 
 /* Patch panel: one cable lit at a time, stepping through the providers */
@@ -112,7 +113,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .copy[hidden]{display:none}
 .copy:hover{background:var(--win)}
 .copy:active{transform:translate(2px,2px);box-shadow:none}
-.copy[data-done]{background:var(--field);color:var(--win)}
+.copy[data-done]{background:var(--lamp)}
 .hint{padding:12px 18px;border-top:2px solid var(--ink);font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 
 /* Session log */
@@ -120,10 +121,10 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .log li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;opacity:0;animation:on .01s forwards}
 .log li+li{margin-top:7px}
 .log li:nth-child(1){animation-delay:0.6s}.log li:nth-child(2){animation-delay:1.1s}.log li:nth-child(3){animation-delay:1.6s}.log li:nth-child(4){animation-delay:2.1s}.log li:nth-child(5){animation-delay:2.6s}.log li:nth-child(6){animation-delay:3.1s}.log li:nth-child(7){animation-delay:3.6s}
-.log .you{color:#aab2ff}
-.log .ok{color:var(--hi)}
+.log .you{color:var(--hi)}
+.log .ok{color:var(--lamp)}
 .log .diff{display:block;margin-top:5px;padding:8px 10px;border:1px dashed rgba(252,251,247,.45);white-space:pre-wrap;overflow-wrap:anywhere}
-.log .diff b{color:var(--hi)}
+.log .diff b{color:var(--lamp)}
 
 /* Switchboard */
 .board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--ink);border-bottom:2px solid var(--ink)}
@@ -133,7 +134,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .jack:focus-visible{outline-offset:-5px}
 .jack i{position:relative;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);background:radial-gradient(circle,var(--ink) 0 4px,var(--paper) 4.5px)}
 .jack i::after{content:'';position:absolute;top:-9px;right:-11px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink);background:var(--lamp-off)}
-.jack[aria-pressed=true],.jack[aria-pressed=true]:hover{background:var(--field);color:var(--win)}
+.jack[aria-pressed=true],.jack[aria-pressed=true]:hover{background:var(--lamp)}
 .jack[aria-pressed=true] i::after{background:var(--lamp)}
 .board-foot{margin-top:auto;padding:11px 16px;font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 
@@ -141,7 +142,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .code pre{padding:18px;overflow-x:auto;font:13px/1.75 var(--mono)}
 .code .c{color:var(--ink-3)}
 .code .k{color:var(--ink);font-weight:700}
-.code .s{color:var(--field)}
+.code .s{color:var(--field-ink)}
 .code .live{background:var(--hi);color:var(--ink);padding:1px 2px}
 .code-foot{margin-top:auto;padding:11px 18px;border-top:2px solid var(--ink);font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 .code-foot b{color:var(--ink)}
@@ -189,7 +190,7 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 .foot .win-body{font:400 11px/2 var(--pixel);letter-spacing:.04em}
 .foot nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:8px}
 .foot a{text-underline-offset:3px}
-.foot a:hover{color:var(--field)}
+.foot a:hover{color:var(--field-ink)}
 
 @media(max-width:980px){
   .hero .wrap{grid-template-columns:1fr}

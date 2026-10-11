@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Connections: every AI provider, in one line your agent writes</title>
-<meta name="description" content="Give your coding agent one line and it adds any of 42 AI providers to your project: text, image, video and local models, on the Vercel AI SDK. Free, open source, on npm.">
+<title>AI Connections: integrate BYOK support for every AI provider in one line</title>
+<meta name="description" content="Integrate BYOK (bring your own key) support for 42 AI providers into your app with one line your coding agent writes: text, image, video and local models. Free, open source, on npm.">
 <meta name="theme-color" content="#f3f1ea">
-<meta property="og:title" content="AI Connections"><meta property="og:description" content="Stop rebuilding provider integrations for every project. Hand your agent one line."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/">
+<meta property="og:title" content="AI Connections: BYOK support for every AI provider"><meta property="og:description" content="Integrate BYOK support for 42 AI providers with one line your coding agent writes."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/">
 <link rel="canonical" href="https://seeker-studio.games/ai-connections/">
 <link rel="alternate" type="text/plain" href="llms.txt" title="Instructions for coding agents">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111110'/%3E%3Ccircle cx='11' cy='16' r='5' fill='none' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='11' cy='16' r='1.8' fill='%23fcfbf7'/%3E%3Cpath d='M16 16h5' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='24' cy='16' r='3.5' fill='%23ffe14d'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111110'/%3E%3Ccircle cx='11' cy='16' r='5' fill='none' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='11' cy='16' r='1.8' fill='%23fcfbf7'/%3E%3Cpath d='M16 16h5' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='24' cy='16' r='3.5' fill='%233ddc84'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Connections","applicationCategory":"DeveloperApplication","operatingSystem":"Node.js 22+","description":"Integrate BYOK (bring your own key) support for 42 AI providers into any app: text, image, video and local models, on the Vercel AI SDK.","url":"https://seeker-studio.games/ai-connections/","downloadUrl":"https://www.npmjs.com/package/ai-connections","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Seeker Studio","url":"https://seeker-studio.games/"}}</script>
 <link rel="stylesheet" href="page.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="copy.js" defer></script>
@@ -17,7 +18,7 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
-<a class="mark" href="./" aria-label="AI Connections home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="16" r="5" fill="none" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="11" cy="16" r="1.8" fill="#fcfbf7"/><path d="M16 16h5" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="24" cy="16" r="3.5" fill="#ffe14d"/></svg></a>
+<a class="mark" href="./" aria-label="AI Connections home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="16" r="5" fill="none" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="11" cy="16" r="1.8" fill="#fcfbf7"/><path d="M16 16h5" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="24" cy="16" r="3.5" fill="#3ddc84"/></svg></a>
 <a class="name" href="./">AI Connections</a>
 <nav aria-label="Main">
 <a class="hide-sm" href="#how">How it works</a>
@@ -31,15 +32,15 @@
 <section class="hero" aria-labelledby="hero-title">
 <div class="wrap">
 <div>
-<p class="kicker"><b>FOR CODING AGENTS</b>Free and open source</p>
+<p class="kicker"><b>BYOK SUPPORT</b>For coding agents. Free and open source.</p>
 <h1 id="hero-title">Connect every AI provider with <em>one line.</em></h1>
-<p class="sub">Paste the prompt into your coding agent. It adds any of 42 AI providers to your project.</p>
+<p class="sub">Paste the prompt into your coding agent. It integrates BYOK support for 42 AI providers into your project.</p>
 </div>
 <div class="win w-prompt" id="prompt" data-tabs>
 <div class="win-title"><h2 id="prompt-title">Paste into your agent</h2></div>
 <div class="tabs" role="tablist" aria-label="What are you building?" hidden>
 <button role="tab" id="tab-own" aria-controls="panel-own" aria-selected="true">My app, my keys</button>
-<button role="tab" id="tab-users" aria-controls="panel-users" aria-selected="false" tabindex="-1">Users bring keys</button>
+<button role="tab" id="tab-users" aria-controls="panel-users" aria-selected="false" tabindex="-1">BYOK for users</button>
 <button role="tab" id="tab-skill" aria-controls="panel-skill" aria-selected="false" tabindex="-1">Every session</button>
 </div>
 <div class="panel" id="panel-own" role="tabpanel" aria-labelledby="tab-own">
@@ -47,8 +48,8 @@
 <pre id="text-own">Add AI provider support to this project with AI Connections (npm package: ai-connections). First read https://seeker-studio.games/ai-connections/llms.txt and follow it.</pre>
 </div>
 <div class="panel" id="panel-users" role="tabpanel" aria-labelledby="tab-users">
-<div class="panel-head"><span>Users bring their own keys</span><button class="copy" type="button" data-copy="text-users" hidden>Copy</button></div>
-<pre id="text-users">Add AI provider settings where each user brings their own key, using AI Connections (npm: ai-connections). Read https://seeker-studio.games/ai-connections/llms.txt first, use full mode, and hook it into this app&#39;s sign-in.</pre>
+<div class="panel-head"><span>BYOK for your users</span><button class="copy" type="button" data-copy="text-users" hidden>Copy</button></div>
+<pre id="text-users">Integrate BYOK support into this app with AI Connections (npm: ai-connections), so each user brings their own AI provider key. Read https://seeker-studio.games/ai-connections/llms.txt first, use full mode, and hook it into this app&#39;s sign-in.</pre>
 </div>
 <div class="panel" id="panel-skill" role="tabpanel" aria-labelledby="tab-skill">
 <div class="panel-head"><span>Run once in your project</span><button class="copy" type="button" data-copy="text-skill" hidden>Copy</button></div>
@@ -155,7 +156,7 @@
 <div class="section-head">
 <p class="num">02 / What you get</p>
 <h2 id="features-title">What you get.</h2>
-<p>Built on the Vercel AI SDK.</p>
+<p>Built on the Vercel AI SDK. BYOK all the way: requests go straight from your app to the provider, with no proxy and no markup.</p>
 </div>
 <ul class="grid">
 <li class="win"><div class="win-title"><span>text</span></div><div class="win-body"><span class="big">30</span><h3>Text providers</h3><p>OpenAI, Anthropic, Google, DeepSeek, OpenRouter and more.</p></div></li>
@@ -172,8 +173,8 @@
 <div class="wrap">
 <div class="section-head">
 <p class="num">03 / Two ways in</p>
-<h2 id="modes-title">Use your keys or your users&#39; keys.</h2>
-<p>Your agent picks for you.</p>
+<h2 id="modes-title">BYOK for you or for your users.</h2>
+<p>Bring your own key, or let each user bring theirs. Your agent picks the mode.</p>
 </div>
 <div class="two">
 <div class="win"><div class="win-title"><span>direct mode</span></div><div class="win-body">
@@ -182,7 +183,7 @@
 <pre>npm install ai-connections</pre>
 </div></div>
 <div class="win"><div class="win-title"><span>full mode</span></div><div class="win-body">
-<h3>Their keys <span class="tag">apps with users</span></h3>
+<h3>BYOK for users <span class="tag">apps with users</span></h3>
 <p>Each user adds their own keys in a settings screen. Keys are stored encrypted on your server.</p>
 <pre>npx ai-connections-cli init</pre>
 </div></div>
@@ -194,7 +195,7 @@
 <div class="wrap">
 <div class="section-head">
 <p class="num">04 / Safe by default</p>
-<h2 id="safe-title">Safe with other people's keys.</h2>
+<h2 id="safe-title">BYOK support that keeps keys safe.</h2>
 </div>
 <div class="win"><div class="win-title"><span>security</span></div><div class="win-body">
 <ul class="checks">
