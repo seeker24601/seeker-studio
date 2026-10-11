@@ -48,12 +48,12 @@ a{color:inherit}
 
 /* Hero: text on the left, the patch panel on the right, a cobalt halftone
    rising into the switchboard below */
-.hero{position:relative;padding:clamp(40px,6vw,88px) 0 clamp(72px,10vw,128px);overflow:hidden;isolation:isolate}
+.hero{position:relative;padding:clamp(24px,4vw,56px) 0 clamp(64px,9vw,112px);overflow:hidden;isolation:isolate}
 .hero::after{content:'';position:absolute;z-index:-1;inset:auto 0 0;height:clamp(56px,9vw,112px);pointer-events:none;background-image:radial-gradient(var(--field) 1.3px,transparent 1.5px);background-size:6px 6px;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000)}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .kicker{font:600 15px var(--sans);color:var(--ink-2);margin-bottom:18px}
 .kicker b{display:inline-block;margin-right:8px;padding:2px 8px;background:var(--ink);color:var(--win);font:700 12px/1.6 var(--mono);letter-spacing:.04em;vertical-align:1px}
-h1{font:700 clamp(52px,8vw,124px)/.86 var(--sans);letter-spacing:-.065em}
+h1{font:700 clamp(48px,7vw,108px)/.86 var(--sans);letter-spacing:-.065em}
 h1 span{display:block}
 h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55% 88%,transparent 88%)}
 .sub{max-width:34em;margin-top:clamp(22px,3vw,32px);font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:var(--ink-2)}
@@ -81,7 +81,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .desk .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;align-items:start}
 .desk-label{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--win);font:700 13px var(--mono);letter-spacing:.04em;text-transform:uppercase}
 .desk-label span{padding:3px 8px;background:var(--ink)}
-.w-prompt{grid-column:1/8}
+.w-patch{grid-column:1/8}
 .w-session{grid-column:8/13;margin-top:56px}
 .w-board{grid-column:1/6}
 .w-swap{grid-column:6/13;margin-top:40px}
@@ -99,6 +99,8 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .js .panel+.panel{border-top:0}
 .panel[hidden]{display:none}
 .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px;font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.js .panel-head>span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.js .panel-head{justify-content:flex-end;margin-bottom:4px}
 .panel pre{white-space:pre-wrap;overflow-wrap:anywhere;font:500 15.5px/1.6 var(--mono)}
 .panel pre .sh::before{content:'$ ';color:var(--ink-3)}
 .panel p{margin-top:12px;font-size:14px;color:var(--ink-2)}
@@ -185,8 +187,7 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 
 @media(max-width:980px){
   .hero .wrap{grid-template-columns:1fr}
-  .patch{max-width:560px}
-  .w-prompt,.w-session,.w-board,.w-swap{grid-column:1/-1;margin-top:0}
+  .w-patch,.w-session,.w-board,.w-swap{grid-column:1/-1;margin-top:0}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .section-head{grid-template-columns:1fr}
 }
