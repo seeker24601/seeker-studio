@@ -55,7 +55,7 @@ a{color:inherit}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .kicker{font:600 15px var(--sans);color:var(--ink-2);margin-bottom:18px}
 .kicker b{display:inline-block;margin-right:8px;padding:2px 8px;background:var(--ink);color:var(--win);font:400 11px/1.9 var(--pixel);letter-spacing:.08em;vertical-align:2px}
-h1{max-width:9.5em;font:700 clamp(44px,5.6vw,84px)/.92 var(--sans);letter-spacing:-.055em;text-wrap:balance}
+h1{font:700 clamp(38px,4.3vw,64px)/.95 var(--sans);letter-spacing:-.05em;text-wrap:balance}
 h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55% 88%,transparent 88%)}
 .sub{max-width:34em;margin-top:clamp(22px,3vw,32px);font-size:clamp(17px,1.5vw,19px);line-height:1.5;color:var(--ink-2)}
 .ctas{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;font:600 17px var(--sans)}
@@ -76,7 +76,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 @keyframes lamp{0%{fill:var(--lamp)}16.6%{fill:var(--lamp-off)}}
 .patch-foot{padding:10px 16px;border-top:2px solid var(--ink);font:12.5px/1.5 var(--mono);color:var(--ink-2)}
 
-/* The desktop: a dithered cobalt field */
+/* The desktop: a dithered green field */
 .desk{position:relative;padding:clamp(40px,6vw,80px) 0 clamp(56px,7vw,96px);background-color:var(--field);background-image:radial-gradient(var(--field-dot) 1.2px,transparent 1.4px);background-size:4px 4px;border-block:2px solid var(--ink);overflow:hidden;isolation:isolate}
 .desk .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px;align-items:stretch}
 .desk .win{display:flex;flex-direction:column}
