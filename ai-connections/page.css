@@ -63,6 +63,16 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .ctas a:hover{text-decoration-color:var(--field-ink)}
 @keyframes on{to{opacity:1}}
 
+/* Provider marks: one inline sprite, drawn in the current text colour */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.lg{flex:none;width:22px;height:22px;fill:currentColor}
+
+/* Logo strip */
+.logos{padding:clamp(28px,4vw,44px) 0;border-top:2px solid var(--ink)}
+.logos h2{margin-bottom:18px;font:400 11px/1.4 var(--pixel);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.logos ul{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px 24px}
+.logos li{display:flex;align-items:center;gap:8px;font:600 15px var(--sans);white-space:nowrap}
+
 /* Patch panel: one cable lit at a time, stepping through the providers */
 .patch svg{display:block;width:100%;max-height:320px;margin:auto;padding:14px 18px}
 .patch text{font:400 13.2px var(--pixel);fill:var(--ink)}
@@ -71,6 +81,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .patch .lamp{fill:var(--lamp-off);stroke:var(--ink);stroke-width:1.5;animation:lamp 12s step-end infinite}
 .patch .jack{fill:var(--paper);stroke:var(--ink);stroke-width:2}
 .patch .pin{fill:var(--ink)}
+.patch use{fill:var(--ink)}
 .patch .n2{animation-delay:2s}.patch .n3{animation-delay:4s}.patch .n4{animation-delay:6s}.patch .n5{animation-delay:8s}.patch .n6{animation-delay:10s}
 @keyframes plug{0%{stroke:var(--ink);stroke-width:3.5;stroke-dasharray:none}16.6%{stroke:var(--ink-3);stroke-width:2;stroke-dasharray:2 5}}
 @keyframes lamp{0%{fill:var(--lamp)}16.6%{fill:var(--lamp-off)}}
@@ -132,7 +143,8 @@ h1 em{font-style:normal;background:linear-gradient(transparent 55%,var(--hi) 55%
 .jack:disabled{cursor:default;color:var(--ink)}
 .jack:not(:disabled):hover{background:var(--paper)}
 .jack:focus-visible{outline-offset:-5px}
-.jack i{position:relative;width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);background:radial-gradient(circle,var(--ink) 0 4px,var(--paper) 4.5px)}
+.jack i{position:relative;display:grid;place-items:center;width:26px;height:26px}
+.jack .lg{width:26px;height:26px}
 .jack i::after{content:'';position:absolute;top:-9px;right:-11px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink);background:var(--lamp-off)}
 .jack[aria-pressed=true],.jack[aria-pressed=true]:hover{background:var(--lamp)}
 .jack[aria-pressed=true] i::after{background:var(--lamp)}
@@ -188,6 +200,7 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 .foot{padding:0 0 48px}
 .foot .win{max-width:480px;margin:0 auto}
 .foot .win-body{font:400 11px/2 var(--pixel);letter-spacing:.04em}
+.foot .tm{margin-top:10px;color:var(--ink-2)}
 .foot nav{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:8px}
 .foot a{text-underline-offset:3px}
 .foot a:hover{color:var(--field-ink)}
@@ -196,9 +209,11 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
   .hero .wrap{grid-template-columns:1fr}
   .w-patch,.w-session,.w-board,.w-swap{grid-column:1/-1}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logos ul{grid-template-columns:repeat(4,minmax(0,1fr))}
   .section-head{grid-template-columns:1fr}
 }
 @media(max-width:680px){
+  .logos ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
   .top .name{padding:0 12px;font-size:15px}
   .top nav a{padding:0 14px;font-size:14px}
   .top nav .hide-sm{display:none}
