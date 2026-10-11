@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Connections: AI providers for your agent | Seeker Studio</title>
+<meta name="description" content="Give your coding agent one line and it adds any of 42 AI providers to your project: text, image, video and local models, on the Vercel AI SDK. Free, open source, on npm.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="AI Connections | Seeker Studio"><meta property="og:description" content="Stop rebuilding provider integrations for every project. Hand your agent one line."><meta property="og:type" content="website">
+<link rel="canonical" href="https://seeker-studio.games/ai-connections/">
+<link rel="alternate" type="text/plain" href="llms.txt" title="Instructions for coding agents">
+<link rel="icon" href="../assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../lockbox.css"><link rel="stylesheet" href="page.css">
+<script src="../site.js" defer></script><script src="copy.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="brand" href="../" aria-label="Seeker Studio home"><img src="../assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="../games.html">Games</a><a href="../tools.html">Tools</a><a href="../companions.html">Companions</a><a href="../plugins.html">Plugins</a><a href="../studio.html">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
+<main id="main" class="download-page">
+<section class="part page-top" aria-labelledby="ac-title">
+<div class="part-rail"><a class="code" href="../tools.html#ai-connections">T-06</a><p class="rail-title" aria-hidden="true">Tools</p></div>
+<div class="part-body">
+<div class="download-intro">
+<div class="download-copy">
+<p class="label">Developer library · npm · MIT</p>
+<h1 id="ac-title" class="download-title long-name">AI Connections</h1>
+<p class="pitch">Stop rebuilding provider integrations for every project. Hand your agent one line.</p>
+<p class="download-description">Any of 42 AI providers in a project: text, image, video and local models, behind one call. Your coding agent sets it up, and switching provider later is a one-word change.</p>
+<div class="ac-prompt primary">
+<div class="ac-prompt-head"><span class="label">Paste into your agent</span><button class="ac-copy" type="button" data-copy="prompt-main" hidden>Copy</button></div>
+<pre id="prompt-main">Add AI provider support to this project with AI Connections (npm package: ai-connections). First read https://seeker-studio.games/ai-connections/llms.txt and follow it.</pre>
+</div>
+<p class="download-meta">Works with Claude Code, Codex, Cursor and any agent that can read a URL.</p>
+<a class="go" href="#agents">More ways to hand it over<span aria-hidden="true"> ↓</span></a>
+</div>
+<figure class="plate ac-code" aria-label="What the agent writes"><pre><span class="c">// What your agent writes</span>
+import { generateText, languageModel, createImage } from 'ai-connections/direct';
+
+const { text } = await generateText({
+  model: languageModel(<span class="s">'openrouter:deepseek/deepseek-chat'</span>),
+  prompt: 'Summarize this document…',
+});
+
+<span class="c">// Another provider: change the string.</span>
+languageModel(<span class="s">'anthropic:claude-sonnet-5-5'</span>)
+languageModel(<span class="s">'zai:glm-4.6'</span>)
+languageModel(<span class="s">'ollama:llama3.2'</span>)
+
+<span class="c">// Images and video, the same way.</span>
+await createImage(<span class="s">'fal:fal-ai/flux/dev'</span>, { prompt, aspectRatio: '3:2' })</pre></figure>
+</div>
+
+<section class="download-section" id="agents" aria-labelledby="agents-title">
+<div><p class="label">01 / For your agent</p><h2 id="agents-title">Three ways to hand it over.</h2></div>
+<div class="download-details">
+<p><strong>Your app uses your own keys</strong> (a server, script, bot or desktop tool). The prompt above covers it: the agent reads the instructions, installs the package, puts keys in <code>.env</code>, and wires your AI features to it.</p>
+<p><strong>Your users bring their own keys</strong> (a multi-user web app):</p>
+<div class="ac-prompt">
+<div class="ac-prompt-head"><span class="label">Paste into your agent</span><button class="ac-copy" type="button" data-copy="prompt-byok" hidden>Copy</button></div>
+<pre id="prompt-byok">Add bring-your-own-key AI provider settings to this app with AI Connections (npm packages: ai-connections, ai-connections-react, ai-connections-cli). Read https://seeker-studio.games/ai-connections/llms.txt first, use full mode, and connect it to this app's existing authentication.</pre>
+</div>
+<p><strong>Teach every future session.</strong> Install the AI Connections skill into the project once, and Claude Code and Codex use it whenever provider work comes up, without being told.</p>
+<div class="ac-prompt">
+<div class="ac-prompt-head"><span class="label">Run in your project</span><button class="ac-copy" type="button" data-copy="cmd-skill" hidden>Copy</button></div>
+<pre id="cmd-skill">npx ai-connections-cli skill</pre>
+</div>
+<p>The instructions your agent reads are plain text at <a class="go" href="llms.txt">llms.txt</a>. They are kept current, so a prompt pasted today still works next year.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="why-title">
+<div><p class="label">02 / Why</p><h2 id="why-title">Every AI project solves the same problems.</h2></div>
+<div class="download-details">
+<p>Which package talks to which provider. Its base URL, auth header and key variable. How to list its models. Why every SDK throws a different error. How image and video APIs differ: some stream, some return a job to poll, some want references uploaded first. And once users bring their own keys, how to store those safely and give them a settings screen.</p>
+<p>AI Connections solves these once, for every provider it knows. Your project, and the agent building it, writes a provider string instead of an integration.</p>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="what-title">
+<div><p class="label">03 / What you get</p><h2 id="what-title">One way into 42 providers.</h2></div>
+<div class="download-details">
+<ul class="ac-list">
+<li><strong>Text from 30 providers</strong>: OpenAI, Anthropic, Google, DeepSeek, Z.ai, Moonshot, Qwen, MiniMax, Mistral, xAI, OpenRouter, Groq, Together, Fireworks, DeepInfra, Cerebras, Hugging Face and more, plus any OpenAI-compatible endpoint.</li>
+<li><strong>Images and video from 15 providers</strong>, including OpenRouter images with live previews and cost, Higgsfield, WaveSpeed, fal and Replicate.</li>
+<li><strong>Local models done properly</strong>: Ollama's own API, so context size and "thinking off" actually apply; LM Studio and vLLM with strict JSON.</li>
+<li><strong>Model lists</strong> straight from each provider, with what each model takes in and costs where the provider says.</li>
+<li><strong>One error type</strong>, with the provider's own message and whether a retry could help.</li>
+<li><strong>Built on the Vercel AI SDK</strong>, so streaming, tools and structured output work as documented.</li>
+<li><strong>Test helpers</strong> with realistic provider replies, so tests cost nothing.</li>
+</ul>
+<table class="ac-modes">
+<thead><tr><th scope="col"></th><th scope="col">Direct mode</th><th scope="col">Full mode</th></tr></thead>
+<tbody>
+<tr><th scope="row">For</th><td>Servers, scripts, agent harnesses, desktop tools</td><td>Multi-user apps where users bring keys</td></tr>
+<tr><th scope="row">Keys</th><td>Yours, from the environment</td><td>Each user's, encrypted per owner</td></tr>
+<tr><th scope="row">You get</th><td>One-line models, images, video, model lists</td><td>A connection service and a React settings screen</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="safe-title">
+<div><p class="label">04 / Safe by default</p><h2 id="safe-title">Built for other people's keys.</h2></div>
+<div class="download-details">
+<ul class="ac-list">
+<li>Keys are encrypted at rest, never returned by the API, and sent only to the provider they belong to.</li>
+<li>Each provider is held to its own address, redirects are refused, and links a provider sends back are fetched only if they are public HTTPS.</li>
+<li>Raw provider errors, which can echo keys or prompts, never reach end users.</li>
+<li>Releases are published from GitHub through npm trusted publishing, with no stored tokens.</li>
+</ul>
+</div>
+</section>
+
+<section class="download-section" aria-labelledby="status-title">
+<div><p class="label">05 / Status</p><h2 id="status-title">Open source, in use, honest about limits.</h2></div>
+<div class="download-details">
+<p>AI Connections runs in <a class="go" href="../tools.html#atelier">Atelier-1111</a>, which reaches 12 image providers through it, and in a multi-agent game harness with 27 text providers and local models.</p>
+<p>Providers are checked against their own documentation and tested against local fixtures. Not every one has been tried with a live account, so the first real call to a new provider is the true test, and its error comes back in its own words. AWS Bedrock, Azure and Vertex need dedicated adapters. Requires Node.js 22 or newer.</p>
+<div class="page-links"><a class="go" href="https://www.npmjs.com/package/ai-connections">npm<span aria-hidden="true"> ↗</span></a><a class="go" href="https://github.com/seeker24601/ai-connections">Source on GitHub<span aria-hidden="true"> ↗</span></a><a class="go" href="https://github.com/seeker24601/ai-connections/blob/main/docs/API.md">API reference<span aria-hidden="true"> ↗</span></a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a></div>
+<a class="go" href="../tools.html">Back to tools<span aria-hidden="true"> →</span></a>
+</div>
+</section>
+</div>
+</section>
+</main>
+<footer><a class="brand" href="../"><img src="../assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
+</body></html>

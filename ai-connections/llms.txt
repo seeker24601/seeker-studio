@@ -1,0 +1,86 @@
+# AI Connections
+
+> npm package `ai-connections`: one-line access to 42 AI providers (text, image, video and local models), built on the Vercel AI SDK. Use it to add AI provider support to a project instead of writing provider clients, base URLs, auth headers or model lists by hand.
+
+You are a coding agent asked to add AI provider support to a project. Follow these steps.
+
+## 1. Choose the mode
+
+- **Direct mode**: the developer or operator supplies the keys. Servers, CLIs, scripts, agent harnesses, workers, desktop and single-user tools. Most projects.
+- **Full mode**: each end user adds their own provider keys in the app's settings. Only for multi-user apps with signed-in users.
+
+If the project has no signed-in users, use direct mode. Ask the user only if the code and the request leave this unclear.
+
+## 2. Install
+
+Direct mode:
+
+    npm install ai-connections
+
+Full mode:
+
+    npm install ai-connections ai-connections-react
+    npm install -D ai-connections-cli
+    npx --no-install ai-connections init --dry-run
+    npx --no-install ai-connections init
+
+Use the project's own package manager if it is not npm. Node.js 22 or newer.
+
+Optionally run `npx ai-connections-cli skill` so later agent sessions in this project know to use AI Connections.
+
+## 3. Direct mode patterns
+
+Import from `ai-connections/direct`. A model is named `provider:model`, and the key is read from the provider's conventional environment variable.
+
+    import { generateText, streamText, languageModel, createImage, listModels, ProviderError } from 'ai-connections/direct';
+
+    const { text } = await generateText({
+      model: languageModel('openrouter:deepseek/deepseek-chat'), // reads OPENROUTER_API_KEY
+      prompt: 'Summarize this document…',
+    });
+
+    const image = await createImage('fal:fal-ai/flux/dev', { prompt: 'a lantern', aspectRatio: '3:2' });
+    // { kind: 'image', mediaType: 'image/png', base64 }
+
+    const models = await listModels('openrouter', { kind: 'image' });
+
+- Make the provider and model configurable, for example `AI_MODEL=openrouter:deepseek/deepseek-chat`, so switching provider changes no code.
+- `languageModel()` returns a Vercel AI SDK model. Use the re-exported `generateText`, `streamText`, `Output`, `tool` and `jsonSchema` rather than adding a separate `ai` dependency.
+- `apiKeyNames(providerId)` gives a provider's variable names; `configuredProviders()` lists those with a key set.
+- Media results are base64. The app owns storage.
+- Local models: `ollama:<model>` (native API: pass `providerOptions.ollama.num_ctx` and `reasoning: 'none'` as needed), `lmstudio:<model>`, `vllm:<model>`.
+- Provider-specific options go through `providerOptions.<provider>`.
+
+## 4. Keys: rules
+
+- Put real keys only in a gitignored `.env` or the host's secret store. Add the variable names, without values, to `.env.example`.
+- Never write a key into source, tests, docs, commits, logs or chat output, even if one is visible elsewhere.
+- Never pass an end user's endpoint or provider choice to direct mode. That is what full mode is for.
+
+## 5. Errors
+
+Catch `ProviderError`. It has `status`, `providerMessage` (the provider's own words), `code` and `retryable`. Do not inspect SDK-specific errors.
+
+## 6. Tests
+
+Use `ai-connections/testing` (`replies`, `fakeFetch`) or local mock servers. Make a real provider call only when the user has authorized it and its cost.
+
+## 7. Full mode, additionally
+
+- Replace the generated `getOwnerId` with the app's server-verified session lookup. Never trust a browser-supplied user id.
+- Keep credential encryption and provider calls on the server. Keep keys out of browser storage, URLs, logs and API responses.
+- Set a stable 32-byte `AI_CONNECTIONS_ENCRYPTION_KEY` in server secrets.
+- Connect the app's actual AI features to the service. Settings alone do not change existing AI calls.
+- Follow the generated `AI_CONNECTIONS.md`.
+
+## 8. Report
+
+Tell the user what works, which environment variables to set, and anything left for them, such as authentication wiring in full mode or a first real call to confirm a key.
+
+## Reference
+
+- Direct mode and runtime API: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/API.md
+- Providers, ids and limits: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/PROVIDERS.md
+- Full mode installation: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/INSTALLATION.md
+- Package: https://www.npmjs.com/package/ai-connections
+- Source: https://github.com/seeker24601/ai-connections

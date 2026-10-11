@@ -1,0 +1,26 @@
+/* AI Connections: copyable agent prompts and code, on the download-page layout. */
+.ac-prompt{position:relative;width:100%;border:1px solid var(--rule);background:var(--paper-2)}
+.ac-prompt.primary{border-color:var(--signal)}
+.ac-prompt-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.ac-prompt.primary .ac-prompt-head{border-bottom-color:var(--signal)}
+.ac-prompt pre{margin:0;padding:14px;white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 var(--mono);color:var(--ink)}
+.ac-copy{font:600 13px/1 var(--sans);padding:8px 12px;border:0;background:var(--signal);color:var(--paper);cursor:pointer;transition:background .2s}
+.ac-copy:hover{background:var(--ink)}
+.ac-copy:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ac-copy[data-done]{background:var(--ink)}
+/* Long code lines scroll inside the panel instead of widening the page. */
+.download-intro>*,.download-details>*{min-width:0;max-width:100%}
+.ac-code{padding:0;border:1px solid var(--rule);min-width:0;max-width:100%}
+.ac-code pre{margin:0;padding:clamp(18px,2.4vw,28px);overflow-x:auto;font:13px/1.7 var(--mono);color:var(--ink)}
+.ac-code .c{color:var(--ink-2)}
+.ac-code .s{color:var(--signal)}
+.ac-or{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ac-list{display:flex;flex-direction:column;gap:14px}
+.ac-list li{padding-left:18px;position:relative}
+.ac-list li::before{content:'';position:absolute;left:0;top:.7em;width:8px;height:2px;background:var(--signal)}
+.ac-modes{width:100%;border-collapse:collapse;font-size:15px}
+.ac-modes th,.ac-modes td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-top:1px solid var(--rule)}
+.ac-modes th{color:var(--ink);font-weight:600}
+.ac-modes thead th{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);border-top:0}
+.download-details code{color:var(--ink)}
+@media(max-width:600px){.ac-modes{font-size:14px}}
