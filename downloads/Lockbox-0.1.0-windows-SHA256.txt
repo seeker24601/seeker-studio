@@ -1,0 +1,1 @@
+e68bace83ac51eff65379e5be10dd48ac2a0a8b072ed180e77995feec0e814ba  Lockbox-0.1.0-windows-x64.zip
