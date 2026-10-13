@@ -1,7 +1,6 @@
 /* Atelier-1111 product page, in the app's own design: six colours, square
    corners, heavy rules, inverted bands, signal orange only for downloading.
-   The app window is the one exception: it looks like an OS window, with
-   soft corners and a shadow, because that is what it is. */
+   The app window is drawn the same way: square, ruled, hard offset shadow. */
 
 @font-face{font-family:"Departure Mono";src:url('../assets/fonts/departure-mono.woff2') format('woff2');font-display:swap}
 @font-face{font-family:"Archivo";src:url('fonts/archivo-wdth.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap}
@@ -10,16 +9,12 @@
   --carbon:#0b0b0b;--stock:#ecece8;--bleach:#fff;--concrete:#d2d2cc;--ash:#6b6b66;
   --signal:#ff4d00;--on-signal:#0b0b0b;
   --rule:2px solid var(--carbon);--hair:1px solid var(--carbon);
-  --chrome:#f3f3f3;--chrome-ink:#1a1a1a;--chrome-edge:rgba(0,0,0,.18);
-  --shadow:0 1px 2px rgba(0,0,0,.08),0 12px 24px rgba(0,0,0,.12),0 40px 90px rgba(0,0,0,.28);
   --mono:"Departure Mono",ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;
   --sans:"Archivo",system-ui,-apple-system,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root{--carbon:#e6e6e1;--stock:#121211;--bleach:#1b1b19;--concrete:#2f2f2c;--ash:#8f8f88;--signal:#ff5a1f;
-    --chrome:#202020;--chrome-ink:#e8e8e8;--chrome-edge:rgba(255,255,255,.14);
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 24px rgba(0,0,0,.4),0 40px 90px rgba(0,0,0,.65);
     color-scheme:dark}
 }
 
@@ -61,20 +56,21 @@ h1{font:900 clamp(56px,10.4vw,150px)/.86 var(--sans);font-stretch:62%;text-trans
 .get .fine{font:11px/1.6 var(--mono);color:var(--ash);letter-spacing:.02em}
 .get .fine a,.get .fine b{color:var(--carbon);font-weight:400}
 
-/* ── The app, as a window, straddling into the band below ──────────────── */
-.stage{position:relative;isolation:isolate;margin-top:48px}
-.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:var(--carbon);z-index:-1}
-.window{position:relative;max-width:1100px;border-radius:10px;overflow:hidden;background:var(--chrome);box-shadow:var(--shadow);outline:1px solid var(--chrome-edge)}
-.titlebar{display:flex;align-items:center;justify-content:space-between;height:34px;padding-left:12px;background:var(--chrome);color:var(--chrome-ink);font:12px/1 "Segoe UI",system-ui,-apple-system,sans-serif}
-.titlebar .app{display:flex;align-items:center;gap:8px}
-.titlebar .app i{width:14px;height:14px;background:#0b0b0b;position:relative}
-.titlebar .app i::after{content:"";position:absolute;right:2px;top:2px;width:4px;height:2px;background:#ff4d00}
-.controls{display:flex;height:100%}
-.controls i{width:46px;height:100%;position:relative}
+/* ── The app, as a window: square, ruled, hard offset shadow ────────── */
+.stage{margin-top:48px;padding-bottom:72px}
+.window{max-width:1100px;border:3px solid var(--carbon);background:var(--bleach);box-shadow:14px 14px 0 var(--carbon)}
+.titlebar{display:flex;align-items:stretch;justify-content:space-between;height:38px;border-bottom:3px solid var(--carbon);background:var(--bleach);color:var(--carbon);font:11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.titlebar .app{display:flex;align-items:center;gap:10px;padding:0 14px}
+.titlebar .app i{width:14px;height:14px;background:var(--carbon);position:relative}
+.titlebar .app i::after{content:"";position:absolute;right:2px;top:2px;width:4px;height:2px;background:var(--signal)}
+.controls{display:flex}
+.controls i{width:46px;position:relative;border-left:3px solid var(--carbon)}
+.controls .close{background:var(--carbon);color:var(--bleach)}
 .controls i::before,.controls i::after{content:"";position:absolute;left:50%;top:50%;background:currentColor}
-.controls .min::before{width:10px;height:1px;transform:translate(-50%,-50%)}
-.controls .max::before{width:9px;height:9px;background:none;border:1px solid currentColor;transform:translate(-50%,-50%)}
-.controls .close::before,.controls .close::after{width:12px;height:1px;transform:translate(-50%,-50%) rotate(45deg)}
+.controls .min::before{width:12px;height:2px;transform:translate(-50%,-50%)}
+.controls .max::before{width:11px;height:11px;background:none;border:2px solid currentColor;transform:translate(-50%,-50%)}
+.controls .close::before,.controls .close::after{width:14px;height:2px;transform:translate(-50%,-50%) rotate(45deg)}
+.controls .close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 .controls .close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 
 /* ── How it works: one inverted band, read left to right ───────────────── */
@@ -109,7 +105,8 @@ h1{font:900 clamp(56px,10.4vw,150px)/.86 var(--sans);font-stretch:62%;text-trans
   .flow ol{grid-template-columns:1fr;gap:22px}
   .flow li{border-left:0;padding:0;border-top:1px solid var(--ash);padding-top:18px}
   .flow li:first-child{border-top:0;padding-top:0}
-  .titlebar{height:26px;font-size:11px}
+  .stage{padding-bottom:48px}
+  .titlebar{height:28px}
   .controls i{width:30px}
-  .window{border-radius:8px}
+  .window{border-width:2px;box-shadow:8px 8px 0 var(--carbon)}
 }
