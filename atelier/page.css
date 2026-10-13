@@ -1,5 +1,7 @@
 /* Atelier-1111 product page, in the app's own design: six colours, square
-   corners, heavy rules, inverted bars, signal orange only for the one action. */
+   corners, heavy rules, inverted bands, signal orange only for downloading.
+   The app window is the one exception: it looks like an OS window, with
+   soft corners and a shadow, because that is what it is. */
 
 @font-face{font-family:"Departure Mono";src:url('../assets/fonts/departure-mono.woff2') format('woff2');font-display:swap}
 @font-face{font-family:"Archivo";src:url('fonts/archivo-wdth.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap}
@@ -8,100 +10,106 @@
   --carbon:#0b0b0b;--stock:#ecece8;--bleach:#fff;--concrete:#d2d2cc;--ash:#6b6b66;
   --signal:#ff4d00;--on-signal:#0b0b0b;
   --rule:2px solid var(--carbon);--hair:1px solid var(--carbon);
+  --chrome:#f3f3f3;--chrome-ink:#1a1a1a;--chrome-edge:rgba(0,0,0,.18);
+  --shadow:0 1px 2px rgba(0,0,0,.08),0 12px 24px rgba(0,0,0,.12),0 40px 90px rgba(0,0,0,.28);
   --mono:"Departure Mono",ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;
   --sans:"Archivo",system-ui,-apple-system,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
-  :root{--carbon:#e6e6e1;--stock:#121211;--bleach:#1b1b19;--concrete:#2f2f2c;--ash:#8f8f88;--signal:#ff5a1f;color-scheme:dark}
+  :root{--carbon:#e6e6e1;--stock:#121211;--bleach:#1b1b19;--concrete:#2f2f2c;--ash:#8f8f88;--signal:#ff5a1f;
+    --chrome:#202020;--chrome-ink:#e8e8e8;--chrome-edge:rgba(255,255,255,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 24px rgba(0,0,0,.4),0 40px 90px rgba(0,0,0,.65);
+    color-scheme:dark}
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border-radius:0}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--stock);color:var(--carbon);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--signal);outline-offset:2px}
 ::selection{background:var(--carbon);color:var(--bleach)}
-img{display:block;max-width:100%;height:auto}
-
+img{display:block;width:100%;height:auto}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
 .skip{position:absolute;left:-999px;top:0;background:var(--carbon);color:var(--bleach);padding:8px 12px;font:12px var(--mono)}
 .skip:focus{left:8px;z-index:10}
 
-/* ── Top bar: the wordmark is the one inverted slab ─────────────────────── */
-.top{display:flex;align-items:stretch;justify-content:space-between;border-bottom:var(--rule);background:var(--bleach);position:sticky;top:0;z-index:5}
+/* ── Top bar ───────────────────────────────────────────────────────────── */
+.top{display:flex;align-items:stretch;justify-content:space-between;border-bottom:var(--rule);background:var(--bleach)}
 .mark{display:flex;align-items:center;padding:12px 16px;background:var(--carbon);color:var(--bleach);text-decoration:none;font:900 24px/1 var(--sans);font-stretch:62%;text-transform:uppercase;letter-spacing:.01em;white-space:nowrap}
-.top nav{display:flex;align-items:stretch}
+.top nav{display:flex}
 .top nav a{display:flex;align-items:center;padding:0 16px;border-left:var(--rule);font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 .top nav a:hover{background:var(--carbon);color:var(--bleach)}
-.top nav .nav-dl{background:var(--signal);color:var(--on-signal)}
-.top nav .nav-dl:hover{background:var(--on-signal);color:var(--signal)}
-@media (max-width:640px){.hide-sm{display:none!important}.top nav a{padding:0 12px}.mark{font-size:20px}}
-
-/* ── Type ──────────────────────────────────────────────────────────────── */
-.tag,.head,.also,.n,.chips li,summary,.dl small,.note,.fine{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-.tag{display:inline-block;border:var(--hair);padding:4px 8px;background:var(--bleach)}
-h1{font:900 clamp(56px,11vw,132px)/.88 var(--sans);font-stretch:62%;text-transform:uppercase;margin:20px 0 16px}
-h3{font:800 24px/1 var(--sans);font-stretch:62%;text-transform:uppercase}
-.sub{max-width:58ch;font-size:18px}
-.big{font:900 40px/.95 var(--sans);font-stretch:62%;text-transform:uppercase;margin:8px 0 20px}
-.head{display:inline-block;background:var(--carbon);color:var(--bleach);padding:6px 10px;margin-bottom:20px}
+@media (max-width:560px){.top nav .hide-sm{display:none}.mark{font-size:20px}}
 
 /* ── Hero ──────────────────────────────────────────────────────────────── */
-.hero{padding:48px 0 0}
-.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.buttons.stack{flex-direction:column;max-width:380px}
-.dl{display:flex;flex-direction:column;gap:4px;padding:14px 18px;border:var(--rule);background:var(--signal);color:var(--on-signal);text-decoration:none;font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;min-width:240px}
-.dl span::after{content:" ↓"}
-.dl small{font-size:11px;letter-spacing:.06em;text-transform:none;opacity:.8}
+.hero{padding-top:44px}
+.tag{display:inline-block;border:var(--hair);background:var(--bleach);padding:4px 8px;font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+h1{font:900 clamp(56px,10.4vw,150px)/.86 var(--sans);font-stretch:62%;text-transform:uppercase;margin:18px 0 28px}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:40px;align-items:start;border-top:var(--rule);padding-top:24px}
+.sub{font-size:19px;max-width:46ch}
+
+.get{display:grid;gap:10px}
+.dl{display:flex;align-items:center;gap:14px;padding:14px 18px;border:var(--rule);background:var(--signal);color:var(--on-signal);text-decoration:none}
 .dl:hover{background:var(--on-signal);color:var(--signal)}
-.also{margin-top:14px;color:var(--ash);text-transform:none;letter-spacing:.04em}
-.also a{color:var(--carbon)}
-.shot{margin-top:40px;border:var(--rule);border-bottom:0;background:var(--bleach)}
+.dl b{display:block;font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.dl small{display:block;font:11px var(--mono);letter-spacing:.04em;opacity:.8;margin-top:3px}
+.os{width:26px;height:26px;flex:none;fill:currentColor}
+.split{display:grid;grid-template-columns:minmax(0,1fr) auto}
+.split .dl--alt{border-left:0;justify-content:center;padding:14px 18px}
+.get .fine{font:11px/1.6 var(--mono);color:var(--ash);letter-spacing:.02em}
+.get .fine a,.get .fine b{color:var(--carbon);font-weight:400}
 
-/* ── Bands ─────────────────────────────────────────────────────────────── */
-.band{border-top:var(--rule);padding:48px 0}
-.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border:var(--rule);background:var(--bleach)}
-.steps li{padding:20px;border-left:var(--rule);display:flex;flex-direction:column;gap:10px}
-.steps li:first-child{border-left:0}
-.n{color:var(--ash)}
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.chips li{border:var(--rule);background:var(--bleach);padding:8px 12px;letter-spacing:.08em}
-.note{margin-top:16px;color:var(--ash);text-transform:none;letter-spacing:.04em}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);border:var(--rule);background:var(--bleach)}
-.grid article{padding:20px;display:flex;flex-direction:column;gap:10px;border-top:var(--hair)}
-.grid article:nth-child(-n+2){border-top:0}
-.grid article:nth-child(even){border-left:var(--rule)}
-.grid p,.steps p{font-size:15px}
+/* ── The app, as a window, straddling into the band below ──────────────── */
+.stage{position:relative;isolation:isolate;margin-top:48px}
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:var(--carbon);z-index:-1}
+.window{position:relative;max-width:1100px;border-radius:10px;overflow:hidden;background:var(--chrome);box-shadow:var(--shadow);outline:1px solid var(--chrome-edge)}
+.titlebar{display:flex;align-items:center;justify-content:space-between;height:34px;padding-left:12px;background:var(--chrome);color:var(--chrome-ink);font:12px/1 "Segoe UI",system-ui,-apple-system,sans-serif}
+.titlebar .app{display:flex;align-items:center;gap:8px}
+.titlebar .app i{width:14px;height:14px;background:#0b0b0b;position:relative}
+.titlebar .app i::after{content:"";position:absolute;right:2px;top:2px;width:4px;height:2px;background:#ff4d00}
+.controls{display:flex;height:100%}
+.controls i{width:46px;height:100%;position:relative}
+.controls i::before,.controls i::after{content:"";position:absolute;left:50%;top:50%;background:currentColor}
+.controls .min::before{width:10px;height:1px;transform:translate(-50%,-50%)}
+.controls .max::before{width:9px;height:9px;background:none;border:1px solid currentColor;transform:translate(-50%,-50%)}
+.controls .close::before,.controls .close::after{width:12px;height:1px;transform:translate(-50%,-50%) rotate(45deg)}
+.controls .close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 
-/* ── Download ──────────────────────────────────────────────────────────── */
-.download{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
-.notes{border:var(--rule);background:var(--bleach)}
-details+details{border-top:var(--hair)}
-summary{cursor:pointer;padding:14px 16px;list-style:none;display:flex;justify-content:space-between}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+"}
-details[open] summary{background:var(--carbon);color:var(--bleach)}
-details[open] summary::after{content:"−"}
-details ol,details p,details pre{margin:14px 16px}
-details ol{padding-left:20px;display:grid;gap:6px}
-details p{font-size:15px}
-pre,code{font-family:var(--mono);font-size:12px}
-pre{background:var(--stock);border:var(--hair);padding:10px 12px;overflow-x:auto}
-details a{color:var(--carbon)}
+/* ── How it works: one inverted band, read left to right ───────────────── */
+.flow{background:var(--carbon);color:var(--bleach);padding:44px 0 56px}
+.flow ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
+.flow li{display:flex;flex-direction:column;gap:6px;padding:0 24px;border-left:1px solid var(--ash)}
+.flow li:first-child{border-left:0;padding-left:0}
+.flow .n{font:11px var(--mono);letter-spacing:.12em;color:var(--signal)}
+.flow b{font:800 30px/1 var(--sans);font-stretch:62%;text-transform:uppercase}
+.flow span:last-child{font-size:15px;opacity:.75}
+
+/* ── Providers: a wall of their own marks ──────────────────────────────── */
+.providers{padding:64px 0}
+.providers h2{font:900 clamp(40px,6vw,72px)/.9 var(--sans);font-stretch:62%;text-transform:uppercase;margin-bottom:28px}
+.logos{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--carbon);border:var(--rule)}
+.logos li{display:flex;align-items:center;gap:14px;padding:22px 20px;background:var(--bleach);font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.logos svg,.mask{width:30px;height:30px;flex:none;fill:currentColor}
+.mask{background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.mask--higgsfield{--m:url('logos/higgsfield-mask.png')}
+.note{margin-top:14px;font:11px var(--mono);color:var(--ash);letter-spacing:.04em}
 
 /* ── Footer ────────────────────────────────────────────────────────────── */
-.foot{border-top:var(--rule);background:var(--bleach);padding:24px 0}
-.foot p+p{margin-top:8px}
-.fine{color:var(--ash);text-transform:none;letter-spacing:.04em}
+.foot{border-top:var(--rule);background:var(--bleach);padding:22px 0}
+.foot p{font:11px/1.7 var(--mono);letter-spacing:.04em}
+.foot .fine{color:var(--ash);margin-top:6px}
 
-@media (max-width:820px){
-  .steps,.grid,.download{grid-template-columns:1fr}
-  .steps li{border-left:0;border-top:var(--rule)}
-  .steps li:first-child{border-top:0}
-  .grid article,.grid article:nth-child(even){border-left:0;border-top:var(--hair)}
-  .grid article:first-child{border-top:0}
-  .dl{min-width:0}
-  .buttons:not(.stack) .dl{flex:1 1 220px}
+@media (max-width:900px){
+  .hero-row{grid-template-columns:1fr;gap:24px}
+  .logos{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .flow ol{grid-template-columns:1fr;gap:22px}
+  .flow li{border-left:0;padding:0;border-top:1px solid var(--ash);padding-top:18px}
+  .flow li:first-child{border-top:0;padding-top:0}
+  .titlebar{height:26px;font-size:11px}
+  .controls i{width:30px}
+  .window{border-radius:8px}
 }
