@@ -32,3 +32,30 @@ document.querySelectorAll('[data-copy]').forEach(button => {
     setTimeout(() => { button.textContent = 'Copy address'; }, 2500);
   });
 });
+// Counts on the homepage come from the catalogue pages, so adding a card there updates them.
+(() => {
+  const targets = document.querySelectorAll('[data-count-src]');
+  const pages = new Map();
+  const load = src => {
+    if (!pages.has(src)) pages.set(src, fetch(src)
+      .then(response => response.ok ? response.text() : Promise.reject(new Error(response.status)))
+      .then(html => new DOMParser().parseFromString(html, 'text/html')));
+    return pages.get(src);
+  };
+  targets.forEach(async target => {
+    try {
+      const page = await load(target.dataset.countSrc);
+      const cards = [...page.querySelectorAll('.catalogue-card')];
+      const matching = cards.filter(card => card.dataset.filter === target.dataset.countFilter);
+      // A status label such as "in development" applies only while some cards still have that status.
+      if (target.dataset.countFilter && matching.length) {
+        target.textContent = `${matching.length} ${target.dataset.countLabel}`;
+      } else {
+        const unit = page.querySelector('[data-catalogue]').dataset.unit;
+        target.textContent = `${cards.length} ${cards.length === 1 ? unit.replace(/s$/, '') : unit}`;
+      }
+    } catch {
+      // Leave the fallback text in place.
+    }
+  });
+})();
