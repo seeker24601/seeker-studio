@@ -51,18 +51,23 @@ img{display:block;width:100%;height:auto}
   color:transparent;-webkit-text-stroke:1px var(--ash);opacity:.45}
 
 /* Out-of-focus light behind everything: two broad washes for contrast and a
-   few soft-edged discs, pink and cyan, fixed while the page scrolls. Drawn
-   with gradients, not blur filters, so it costs nothing to paint. */
-body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+   few soft discs spread over the page, pink and cyan, fixed while the page
+   scrolls. Blurred once as a single layer; it never repaints. */
+body::before{content:"";position:fixed;inset:-80px;z-index:-2;pointer-events:none;filter:blur(22px);
   background:
-    radial-gradient(circle 64px at 86% 14%,rgba(254,44,85,.16) 0 62%,rgba(254,44,85,0) 100%),
-    radial-gradient(circle 26px at 78% 26%,rgba(254,44,85,.13) 0 58%,rgba(254,44,85,0) 100%),
-    radial-gradient(circle 40px at 93% 33%,rgba(37,244,238,.10) 0 60%,rgba(37,244,238,0) 100%),
-    radial-gradient(circle 90px at 9% 82%,rgba(37,244,238,.08) 0 60%,rgba(37,244,238,0) 100%),
-    radial-gradient(circle 30px at 18% 92%,rgba(254,44,85,.10) 0 58%,rgba(254,44,85,0) 100%),
-    radial-gradient(circle 22px at 64% 8%,rgba(37,244,238,.10) 0 55%,rgba(37,244,238,0) 100%),
-    radial-gradient(ellipse 52% 46% at 88% 12%,rgba(254,44,85,.10),rgba(254,44,85,0) 70%),
-    radial-gradient(ellipse 50% 50% at 6% 88%,rgba(37,244,238,.07),rgba(37,244,238,0) 70%)}
+    radial-gradient(circle 110px at 85% 12%,rgba(254,44,85,0.29) 0 30%,rgba(254,44,85,0) 100%),
+    radial-gradient(circle 40px at 60% 5%,rgba(254,44,85,0.2) 0 30%,rgba(254,44,85,0) 100%),
+    radial-gradient(circle 60px at 97% 44%,rgba(254,44,85,0.19) 0 30%,rgba(254,44,85,0) 100%),
+    radial-gradient(circle 46px at 28% 62%,rgba(254,44,85,0.12) 0 30%,rgba(254,44,85,0) 100%),
+    radial-gradient(circle 80px at 74% 90%,rgba(254,44,85,0.16) 0 30%,rgba(254,44,85,0) 100%),
+    radial-gradient(circle 130px at 5% 80%,rgba(37,244,238,0.19) 0 30%,rgba(37,244,238,0) 100%),
+    radial-gradient(circle 50px at 20% 16%,rgba(37,244,238,0.13) 0 30%,rgba(37,244,238,0) 100%),
+    radial-gradient(circle 56px at 91% 72%,rgba(37,244,238,0.16) 0 30%,rgba(37,244,238,0) 100%),
+    radial-gradient(circle 40px at 47% 97%,rgba(37,244,238,0.14) 0 30%,rgba(37,244,238,0) 100%),
+    radial-gradient(circle 34px at 42% 36%,rgba(37,244,238,0.09) 0 30%,rgba(37,244,238,0) 100%),
+    radial-gradient(ellipse 55% 50% at 88% 10%,rgba(254,44,85,.09),rgba(254,44,85,0) 70%),
+    radial-gradient(ellipse 50% 55% at 4% 90%,rgba(37,244,238,.07),rgba(37,244,238,0) 70%),
+    radial-gradient(ellipse 40% 40% at 80% 96%,rgba(254,44,85,.05),rgba(254,44,85,0) 70%)}
 
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero{padding-top:56px}
