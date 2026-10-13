@@ -7,9 +7,9 @@
 <meta name="theme-color" content="#121110">
 <meta property="og:title" content="Seeker Studio"><meta property="og:description" content="Games, tools and plugins from an independent studio."><meta property="og:type" content="website">
 <link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="product-shot.css">
-<link rel="stylesheet" href="tools-carousel.css"><link rel="stylesheet" href="studio.css">
+<link rel="stylesheet" href="tools-carousel.css?v=20261013"><link rel="stylesheet" href="studio.css">
 <script src="site.js?v=20261013-counts" defer></script>
-<script src="tools-carousel.js" defer></script>
+<script src="tools-carousel.js?v=20261013" defer></script>
 </head>
 <body class="home-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -55,14 +55,8 @@
 
 <div class="tools-carousel" role="group" aria-label="Tools catalogue">
 <div class="tools-controls" hidden>
-<div class="tools-selectors" aria-label="Choose a tool">
-<button type="button" data-tool="0" aria-controls="tools-track" aria-pressed="true"><span class="code">01</span> MarkShot</button>
-<button type="button" data-tool="1" aria-controls="tools-track" aria-pressed="false"><span class="code">02</span> Lockbox</button>
-<button type="button" data-tool="2" aria-controls="tools-track" aria-pressed="false"><span class="code">03</span> Deslopifier</button>
-<button type="button" data-tool="3" aria-controls="tools-track" aria-pressed="false"><span class="code">04</span> Ackshually...</button>
-<button type="button" data-tool="4" aria-controls="tools-track" aria-pressed="false"><span class="code">05</span> Atelier-1111</button>
-</div>
-<div class="tools-paging"><p class="tools-position" aria-live="polite" aria-atomic="true">1 / 5 · MarkShot</p><button type="button" class="tools-prev" aria-label="Previous tool" aria-controls="tools-track" disabled>←</button><button type="button" class="tools-next" aria-label="Next tool" aria-controls="tools-track">→</button></div>
+<div class="tools-selectors" aria-label="Choose a tool"></div>
+<div class="tools-paging"><p class="tools-position" aria-live="polite" aria-atomic="true"></p><button type="button" class="tools-prev" aria-label="Previous tool" aria-controls="tools-track" disabled>←</button><button type="button" class="tools-next" aria-label="Next tool" aria-controls="tools-track">→</button></div>
 </div>
 <div class="tools-track" id="tools-track">
 <article class="entry" id="markshot" aria-labelledby="markshot-title">
@@ -113,6 +107,26 @@
 <dl class="facts"><div><dt>Runs on</dt><dd>Windows or macOS · your own key from OpenRouter, OpenAI, Google and nine more</dd></div></dl>
 <a class="go" href="atelier/" target="_blank" rel="noopener">Visit Atelier-1111<span aria-hidden="true"> ↗</span></a></div>
 </article>
+<article class="entry" id="ai-connections" aria-labelledby="ai-connections-title">
+<div class="entry-code"><span class="code">T-06</span><span class="status live"><i></i>Open source · MIT</span></div>
+<figure class="plate"><img src="assets/tools/ai-connections.webp" width="1600" height="1200" alt="The AI Connections landing page: the headline Integrate BYOK support for every AI provider with one line, a panel with the prompt to paste into a coding agent, and logos of providers including OpenAI, Anthropic, Google and OpenRouter" loading="lazy"></figure>
+<div class="entry-copy"><p class="label">Developer library · for coding agents</p><h3 id="ai-connections-title">AI Connections</h3><p class="pitch">Add every AI provider to your project with one line.</p>
+<p>Paste one line into Claude Code, Codex or Cursor. Your agent installs the package, puts your keys in <code>.env</code> and sets up 42 providers: text, image, video and local models.</p>
+<p>Changing provider means changing one word. Requests go straight from your app to the provider, with no proxy and no markup.</p>
+<dl class="facts"><div><dt>Runs on</dt><dd>Node.js 22+ · npm package <code>ai-connections</code> · built on the Vercel AI SDK</dd></div></dl>
+<a class="go" href="ai-connections/" target="_blank" rel="noopener">Visit AI Connections<span aria-hidden="true"> ↗</span></a></div>
+</article>
+
+<article class="entry" id="vaultkeeper" aria-labelledby="vaultkeeper-title">
+<div class="entry-code"><span class="code">T-07</span><span class="status live"><i></i>Free · web app</span></div>
+<figure class="plate"><img src="assets/tools/vaultkeeper.webp" width="1600" height="1200" alt="The Vaultkeeper landing page: the headline Turn any long text into a wiki, a Build your wiki button, and star-chart graphs of example wikis around it" loading="lazy"></figure>
+<div class="entry-copy"><p class="label">Knowledge bases · runs in your browser</p><h3 id="vaultkeeper-title">Vaultkeeper</h3><p class="pitch">Turn any long text into a wiki.</p>
+<p>Add a book, paper, manual or record as EPUB, PDF, HTML, Markdown or plain text. Vaultkeeper writes a short page for everyone and everything in it. The pages link to each other, and each paragraph cites the passage it came from.</p>
+<p>You get a folder of linked Markdown pages for Obsidian, any notes app, or an AI. It runs in your browser, and your text is never uploaded to us.</p>
+<dl class="facts"><div><dt>Models</dt><dd>Your own API key, a model on your computer, or your Claude or ChatGPT subscription · you see the cost first</dd></div></dl>
+<a class="go" href="vaultkeeper/">Try Vaultkeeper<span aria-hidden="true"> →</span></a></div>
+</article>
+
 </div>
 </div>
 </div>
