@@ -114,7 +114,7 @@ nav a:hover,nav a[aria-current=page]{background-size:100% 2px}
 .links{display:flex;gap:28px;margin-top:32px}
 footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px var(--gutter);border-top:1px solid var(--rule);background:#0b0a09}
 footer .label{color:var(--ink-2)}
-.footer-links{display:flex;gap:24px;font-size:14px;font-weight:500}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;font-weight:500}
 .footer-links a:hover{color:var(--signal)}
 
 /* Motion */

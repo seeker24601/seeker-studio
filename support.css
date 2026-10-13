@@ -1,0 +1,21 @@
+/* Support: crypto tips. QR codes stay dark on white so every camera can read them. */
+.support{padding:clamp(40px,6vw,88px) var(--gutter) clamp(64px,9vw,128px)}
+.support-head{max-width:60ch}
+.support-head>.label:hover{color:var(--signal)}
+.support-head h1{font:clamp(44px,7vw,104px)/1 var(--display);text-transform:uppercase;letter-spacing:-.035em;margin:24px 0 28px}
+.support-head .pitch{font-size:clamp(22px,2.3vw,32px);max-width:32ch;margin-bottom:16px}
+.support-head>p:not(.pitch){color:var(--ink-2)}
+.support-coins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px)}
+.coin{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:start;padding:clamp(16px,2vw,24px);background:var(--paper-2);border-top:1px solid var(--rule)}
+.coin-qr{width:clamp(140px,14vw,216px);background:#fff}
+.coin-copy{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
+.coin-copy h3{font:clamp(24px,2.4vw,34px)/1 var(--display);text-transform:uppercase}
+.coin-address{font:15px/1.5 var(--mono);color:var(--ink);overflow-wrap:anywhere;user-select:all;padding:10px 12px;background:var(--paper);border:1px solid var(--rule);align-self:stretch}
+.coin-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:4px}
+.copy-button{font:600 15px/1 var(--sans);color:var(--paper);background:var(--signal);border:0;padding:12px 16px;cursor:pointer;transition:background .2s}
+.copy-button:hover{background:var(--ink)}
+.copy-button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.support-note{max-width:65ch;margin-top:clamp(24px,3vw,36px);border-left:2px solid var(--signal);padding-left:20px;color:var(--ink-2)}
+.copy-status{font:13px var(--mono);color:var(--signal-ink);min-height:1.4em;margin-top:12px}
+@media(max-width:1000px){.support-coins{grid-template-columns:1fr}}
+@media(max-width:600px){.coin{grid-template-columns:1fr}.coin-qr{width:min(100%,240px)}}

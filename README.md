@@ -2,7 +2,7 @@
 
 Public studio website and portfolio for seeker-studio.games (games, tools and plugins), hosted on GitHub Pages. Static HTML, CSS and JavaScript with self-hosted fonts, SVG illustrations and supplied game artwork. No analytics, cookies, external embeds or build dependencies.
 
-Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), and `ackshually.html` (download and installation). Standalone product pages: `ai-connections/`, `atelier/` and `lockbox/` (`lockbox.html` redirects to it).
+Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `support.html` (crypto tips), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), and `ackshually.html` (download and installation). Standalone product pages: `ai-connections/`, `atelier/` and `lockbox/` (`lockbox.html` redirects to it).
 
 Category indexes are static HTML so every item can be read without JavaScript. The header navigation is the only category switcher. Shared `catalogue.js` adds filter chips with counts and a search field to catalogues whose page includes `.catalogue-controls`; short catalogues such as Games and Companions omit the controls. `catalogue.css` provides the toolbar and the responsive card layout. When adding a project, add a catalogue card to its category page as well as any homepage feature, and update its count. Keep status labels accurate.
 
