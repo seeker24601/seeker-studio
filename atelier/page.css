@@ -43,9 +43,9 @@ img{display:block;width:100%;height:auto}
 
 /* ── The name, as background: outlined, vertical, fixed to the left edge.
    Read bottom to top. Sections with their own fill pass over it. ──────── */
-.backdrop{position:fixed;left:24px;top:0;bottom:0;z-index:-1;display:flex;align-items:center;justify-content:center;
+.backdrop{position:fixed;left:20px;top:0;bottom:0;z-index:-1;display:flex;align-items:center;justify-content:center;
   writing-mode:vertical-rl;transform:rotate(180deg);pointer-events:none;user-select:none;white-space:nowrap;
-  font:min(12vh,124px)/.9 var(--display);text-transform:uppercase;
+  font:min(10vh,88px)/.9 var(--display);text-transform:uppercase;
   color:transparent;-webkit-text-stroke:1px var(--ash);opacity:.45}
 
 /* Out-of-focus light behind everything: two broad washes for contrast and a
@@ -68,18 +68,21 @@ body::before{content:"";position:fixed;inset:-80px;z-index:-2;pointer-events:non
     radial-gradient(ellipse 40% 40% at 80% 96%,rgba(254,44,85,.05),rgba(254,44,85,0) 70%)}
 
 /* ── Hero ──────────────────────────────────────────────────────────────── */
-.hero{padding-top:56px}
+.hero{padding-top:64px}
 .tag{display:inline-block;border:var(--rule);background:var(--plate);color:var(--ash);padding:5px 9px;font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
-h1{font:clamp(26px,5.6vw,84px)/1.04 var(--display);text-transform:uppercase;margin:22px 0 30px;letter-spacing:-.01em}
+h1{font:clamp(26px,5.6vw,84px)/1.04 var(--display);text-transform:uppercase;margin:24px 0 28px;letter-spacing:-.01em}
 /* The last full stop takes the wordmark's pink. */
 h1 .dot{color:var(--pink)}
-.hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:40px;align-items:start}
-.sub{font-size:16px;line-height:1.6;max-width:44ch;color:var(--ink)}
+/* One left edge for the whole hero: headline, intro, downloads, fine print. */
+.hero-row{display:grid;gap:32px}
+.sub{font-size:16px;line-height:1.6;max-width:60ch;color:var(--ink)}
 .sub em{font-style:normal;color:var(--ash)}
 
 /* ── Downloads: the app's Generate button. Pink, hatched; on hover the
    hatch goes, the face turns ink and the label splits once. ──────────── */
-.get{display:grid;gap:16px;isolation:isolate}
+.get{display:grid;gap:18px;isolation:isolate}
+.dl-rows{display:flex;flex-wrap:wrap;gap:18px 24px}
+.dl-rows .dl-row{flex:0 1 auto;min-width:300px}
 .dl-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr);box-shadow:0 0 0 2px var(--page)}
 .dl-row--split{grid-template-columns:minmax(0,1fr) auto}
 .dl-row::before{content:"";position:absolute;inset:0;z-index:-1;transform:translate(7px,7px);background:var(--hatch-pink);pointer-events:none}
@@ -97,16 +100,16 @@ h1 .dot{color:var(--pink)}
 .dl:focus-visible{position:relative;z-index:1}
 @keyframes splitIn{0%{text-shadow:-5px 0 0 var(--cyan),5px 0 0 var(--pink)}50%{text-shadow:-1px 0 0 var(--cyan),1px 0 0 var(--pink)}}
 
-.get .fine{margin-top:6px;font:11px/1.7 var(--mono);color:var(--ash);letter-spacing:.02em}
+.get .fine{font:11px/1.7 var(--mono);color:var(--ash);letter-spacing:.02em}
 .get .fine a,.get .fine b{color:var(--ink);font-weight:400}
 .get .fine a{text-decoration-color:var(--line);text-underline-offset:3px}
 .get .fine a:hover{color:var(--cyan);text-decoration-color:currentColor}
-.links{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:8px}
+.links{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:-6px}
 .links a{display:inline-flex;align-items:center;gap:6px}
 
 /* ── The app, as a window: square, ruled, its offset block hatched ───── */
 .stage{margin-top:56px;padding-bottom:80px;isolation:isolate}
-.window{position:relative;max-width:1100px;border:var(--rule);background:var(--plate);box-shadow:0 0 0 2px var(--page)}
+.window{position:relative;border:var(--rule);background:var(--plate);box-shadow:0 0 0 2px var(--page)}
 .window::before{content:"";position:absolute;inset:-1px;transform:translate(12px,12px);z-index:-1;background:var(--hatch-cyan);opacity:.55}
 .titlebar{display:flex;align-items:stretch;justify-content:space-between;height:36px;border-bottom:var(--rule);background:var(--page);color:var(--ash);font:11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
 .titlebar .app{display:flex;align-items:center;gap:10px;padding:0 14px}
@@ -149,12 +152,18 @@ h1 .dot{color:var(--pink)}
 .foot a:hover{color:var(--cyan);text-decoration-color:currentColor}
 .foot .fine{color:var(--ash);margin-top:6px}
 
+/* Narrower than the name plus its margin: the content steps right to keep a
+   strip for the outlined name, rather than running over it. */
+@media (min-width:641px) and (max-width:1400px){
+  .wrap{width:auto;margin-left:120px;margin-right:24px}
+}
 @media (max-width:900px){
-  .backdrop{left:4px;font-size:min(9vh,64px);opacity:.22}
-  .hero-row{grid-template-columns:1fr;gap:28px}
+  .hero-row{gap:28px}
   .logos{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:640px){
+  .backdrop{left:4px;font-size:min(9vh,64px);opacity:.22}
+  .dl-rows .dl-row{flex:1 1 100%;min-width:0}
   .flow ol{grid-template-columns:1fr;gap:22px}
   .flow li{border-left:0;padding:0;border-top:var(--rule);padding-top:18px}
   .flow li:first-child{border-top:0;padding-top:0}
