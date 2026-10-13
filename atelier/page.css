@@ -1,11 +1,10 @@
 /* Atelier-1111 product page, in the app's own design: dark only, 1px rules,
    square corners, cyan for what you choose and focus, pink for what acts.
-   Silkscreen sets the name and headings, Departure Mono the labels.
+   Silkscreen sets the name and headings, Departure Mono everything else.
    Shadows are hatched, never blurred: 2px lines on a 5px repeat, kept off
    the element by a 2px ring of page colour. */
 
 @font-face{font-family:"Departure Mono";src:url('../assets/fonts/departure-mono.woff2') format('woff2');font-display:swap}
-@font-face{font-family:"Archivo";src:url('fonts/archivo-wdth.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-display:swap}
 @font-face{font-family:"Silkscreen";src:url('fonts/silkscreen.woff2') format('woff2');font-display:swap}
 
 :root{
@@ -19,14 +18,13 @@
   --frames:90ms steps(2,end);
   --display:"Silkscreen",var(--mono);
   --mono:"Departure Mono",ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;
-  --sans:"Archivo",system-ui,-apple-system,sans-serif;
   color-scheme:dark;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 /* The page colour lives on body alone, so it reaches the canvas and the
    fixed backdrop at z-index -1 still shows through. */
-body{background:var(--page);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+body{background:var(--page);color:var(--ink);font:14px/1.6 var(--mono);-webkit-font-smoothing:antialiased}
 a{color:inherit}
 :focus-visible{outline:none;box-shadow:var(--focus-ring)}
 ::selection{background:var(--pink);color:var(--on-accent)}
@@ -76,7 +74,7 @@ h1{font:clamp(26px,5.6vw,84px)/1.04 var(--display);text-transform:uppercase;marg
 /* The last full stop takes the wordmark's pink. */
 h1 .dot{color:var(--pink)}
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:40px;align-items:start}
-.sub{font-size:19px;max-width:46ch;color:var(--ink)}
+.sub{font-size:16px;line-height:1.6;max-width:44ch;color:var(--ink)}
 .sub em{font-style:normal;color:var(--ash)}
 
 /* ── Downloads: the app's Generate button. Pink, hatched; on hover the
@@ -130,7 +128,7 @@ h1 .dot{color:var(--pink)}
 .flow .n{font:11px var(--mono);letter-spacing:.12em;color:var(--ash)}
 .flow .n::after{content:" /";color:var(--line)}
 .flow b{font:22px/1.1 var(--display);text-transform:uppercase;font-weight:400}
-.flow span:last-child{font-size:15px;color:var(--ash)}
+.flow span:last-child{font-size:13px;color:var(--ash)}
 
 /* ── Providers: a wall of their own marks ──────────────────────────────── */
 .providers{padding:64px 0 72px}
