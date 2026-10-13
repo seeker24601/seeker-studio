@@ -1,13 +1,17 @@
 (() => {
   const catalogue = document.querySelector('[data-catalogue]');
-  const controls = catalogue && catalogue.querySelector('.catalogue-controls');
-  // Short catalogues have no controls; the static count already describes them.
+  if (!catalogue) return;
+  const cards = [...catalogue.querySelector('.catalogue-grid').children];
+  const count = catalogue.querySelector('.catalogue-count');
+  const unit = cards.length === 1 ? catalogue.dataset.unit.replace(/s$/, '') : catalogue.dataset.unit;
+  // The count comes from the cards, so the page never states it by hand.
+  count.textContent = `${cards.length} ${unit}`;
+  const controls = catalogue.querySelector('.catalogue-controls');
+  // Short catalogues have no controls.
   if (!controls) return;
   const search = controls.querySelector('input[type="search"]');
   const chips = [...controls.querySelectorAll('[data-show]')];
   const list = catalogue.querySelector('.catalogue-grid');
-  const cards = [...list.children];
-  const count = catalogue.querySelector('.catalogue-count');
   const empty = catalogue.querySelector('.catalogue-empty');
   const normalize = text => text.normalize('NFKC').toLocaleLowerCase().trim();
   const content = new Map(cards.map(card => [card, normalize(card.textContent)]));
@@ -32,7 +36,6 @@
       if (matches) visible++;
     }
     for (const chip of chips) chip.setAttribute('aria-pressed', String(chip.dataset.show === show));
-    const unit = cards.length === 1 ? catalogue.dataset.unit.replace(/s$/, '') : catalogue.dataset.unit;
     count.textContent = visible === cards.length ? `${cards.length} ${unit}` : `${visible} of ${cards.length} ${unit}`;
     empty.hidden = visible !== 0;
   }
