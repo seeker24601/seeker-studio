@@ -124,14 +124,6 @@ h1 .dot{color:var(--pink)}
 .controls .close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 
 /* ── How it works: one plate across the page, read left to right ───────── */
-.flow{background:var(--plate);border-block:var(--rule);padding:44px 0 52px}
-.flow ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr)}
-.flow li{display:flex;flex-direction:column;gap:8px;padding:0 24px;border-left:var(--rule)}
-.flow li:first-child{border-left:0;padding-left:0}
-.flow .n{font:11px var(--mono);letter-spacing:.12em;color:var(--ash)}
-.flow .n::after{content:" /";color:var(--line)}
-.flow b{font:22px/1.1 var(--display);text-transform:uppercase;font-weight:400}
-.flow span:last-child{font-size:13px;color:var(--ash)}
 
 /* ── Providers: a wall of their own marks ──────────────────────────────── */
 .providers{padding:64px 0 72px}
@@ -164,9 +156,6 @@ h1 .dot{color:var(--pink)}
 @media (max-width:640px){
   .backdrop{left:4px;font-size:min(9vh,64px);opacity:.22}
   .dl-rows .dl-row{flex:1 1 100%;min-width:0}
-  .flow ol{grid-template-columns:1fr;gap:22px}
-  .flow li{border-left:0;padding:0;border-top:var(--rule);padding-top:18px}
-  .flow li:first-child{border-top:0;padding-top:0}
   .stage{padding-bottom:48px}
   .titlebar{height:28px}
   .controls i{width:30px}

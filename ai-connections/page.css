@@ -192,10 +192,6 @@ main code{font:600 .88em var(--mono);background:var(--paper);padding:1px 5px;bor
 .checks strong{color:var(--ink)}
 
 /* Closing */
-.final{text-align:center;padding-bottom:clamp(64px,9vw,120px)}
-.final h2{font:700 clamp(52px,10vw,148px)/.85 var(--sans);letter-spacing:-.07em}
-.final .sub{margin:18px auto 0}
-.final .win{max-width:760px;margin:clamp(32px,4vw,48px) auto 0;text-align:left}
 
 /* Footer window */
 .foot{padding:0 0 48px}
