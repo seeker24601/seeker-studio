@@ -3,8 +3,7 @@
 .support-head{max-width:60ch}
 .support-head>.label:hover{color:var(--signal)}
 .support-head h1{font:clamp(44px,7vw,104px)/1 var(--display);text-transform:uppercase;letter-spacing:-.035em;margin:24px 0 28px}
-.support-head .pitch{font-size:clamp(22px,2.3vw,32px);max-width:32ch;margin-bottom:16px}
-.support-head>p:not(.pitch){color:var(--ink-2)}
+.support-head .pitch{font-size:clamp(22px,2.3vw,32px);max-width:44ch}
 .support-coins{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px)}
 .coin{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:start;padding:clamp(16px,2vw,24px);background:var(--paper-2);border-top:1px solid var(--rule)}
 .coin-qr{width:clamp(140px,14vw,216px);background:#fff}
