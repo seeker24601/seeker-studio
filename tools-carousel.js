@@ -34,6 +34,17 @@
     previous.disabled = index === 0;
     next.disabled = index === slides.length - 1;
     position.textContent = `${index + 1} / ${slides.length} · ${slides[index].querySelector('h3').textContent}`;
+    revealSelector(selectors[index]);
+  }
+
+  // Scroll only the button strip, never the page, so the pressed button stays in view.
+  function revealSelector(button) {
+    const start = button.offsetLeft;
+    const end = start + button.offsetWidth;
+    let left = selectorList.scrollLeft;
+    if (start < left) left = start;
+    else if (end > left + selectorList.clientWidth) left = end - selectorList.clientWidth;
+    if (left !== selectorList.scrollLeft) selectorList.scrollTo({ left, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   }
 
   function select(index, animate = true) {
