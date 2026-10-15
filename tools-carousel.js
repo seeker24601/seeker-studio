@@ -11,6 +11,9 @@
   let selectors = [];
   let current = 0;
   let frame;
+  // While the track glides to a chosen slide, the slides it passes are not selections.
+  let destination = null;
+  let release;
 
   // The selector buttons come from the slides, so the two lists cannot drift apart.
   function render() {
@@ -25,7 +28,28 @@
       return button;
     });
     selectorList.replaceChildren(...selectors);
+    fitStrip();
     update(Math.min(current, slides.length - 1));
+  }
+
+  // Every resting position of the strip starts at a button's left edge. A spacer after the last
+  // button makes the final such position reachable.
+  function fitStrip() {
+    selectorList.style.setProperty('--tail', '0px');
+    const width = selectorList.clientWidth;
+    const last = selectors[selectors.length - 1];
+    const lastEnd = last.offsetLeft + last.offsetWidth;
+    if (lastEnd > width) {
+      const edge = selectors.map(button => button.offsetLeft).find(start => start >= lastEnd - width) ?? last.offsetLeft;
+      selectorList.style.setProperty('--tail', `${Math.max(0, edge + width - lastEnd)}px`);
+    }
+    updateFade();
+  }
+
+  // Fade the right edge only while buttons are still hidden to the right.
+  function updateFade() {
+    const last = selectors[selectors.length - 1];
+    selectorList.classList.toggle('has-more', last.offsetLeft + last.offsetWidth > selectorList.scrollLeft + selectorList.clientWidth + 1);
   }
 
   function update(index) {
@@ -38,18 +62,24 @@
   }
 
   // Scroll only the button strip, never the page, so the pressed button stays in view.
+  // The strip always stops at a button's left edge, so the leftmost button is never cut off.
   function revealSelector(button) {
+    const width = selectorList.clientWidth;
     const start = button.offsetLeft;
     const end = start + button.offsetWidth;
     let left = selectorList.scrollLeft;
     if (start < left) left = start;
-    else if (end > left + selectorList.clientWidth) left = end - selectorList.clientWidth;
+    else if (end > left + width) left = selectors.map(other => other.offsetLeft).find(edge => edge >= end - width) ?? start;
     if (left !== selectorList.scrollLeft) selectorList.scrollTo({ left, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   }
 
   function select(index, animate = true) {
     const target = Math.max(0, Math.min(index, slides.length - 1));
     const left = track.scrollLeft + slides[target].getBoundingClientRect().left - track.getBoundingClientRect().left;
+    destination = target;
+    clearTimeout(release);
+    // Fall back in case the glide is interrupted before it arrives.
+    release = setTimeout(() => { destination = null; }, 1000);
     track.scrollTo({ left, behavior: animate && !reducedMotion.matches ? 'smooth' : 'instant' });
     update(target);
   }
@@ -131,18 +161,28 @@
       const origin = track.getBoundingClientRect().left;
       const distances = slides.map(slide => Math.abs(slide.getBoundingClientRect().left - origin));
       const nearest = distances.indexOf(Math.min(...distances));
+      if (destination !== null) {
+        if (nearest === destination && distances[nearest] < 2) destination = null;
+        return;
+      }
       if (nearest !== current) update(nearest);
     });
   }, { passive: true });
+  track.addEventListener('scrollend', () => { destination = null; });
+  selectorList.addEventListener('scroll', updateFade, { passive: true });
   window.addEventListener('hashchange', selectHash);
-  window.addEventListener('resize', () => select(current, false));
+  window.addEventListener('resize', () => {
+    fitStrip();
+    select(current, false);
+  });
   track.setAttribute('tabindex', '0');
   track.setAttribute('role', 'region');
   track.setAttribute('aria-label', 'Tools. Use left and right arrow keys to browse.');
   carousel.setAttribute('aria-roledescription', 'carousel');
   carousel.classList.add('is-ready');
-  render();
+  // Show the controls before building the buttons, so the strip can be measured.
   carousel.querySelector('.tools-controls').hidden = false;
+  render();
   selectHash();
   addMissingSlides().catch(() => {
     // The hand-written slides stay as they are.
