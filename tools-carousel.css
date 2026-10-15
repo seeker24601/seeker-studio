@@ -3,11 +3,15 @@
 /* One row: the tool buttons scroll sideways, the arrows keep their place on the right. */
 .tools-controls{display:flex;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
 .tools-selectors,.tools-paging{display:flex;align-items:center;gap:8px}
-.tools-selectors{position:relative;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+.tools-selectors{position:relative;flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x mandatory}
 .tools-selectors::-webkit-scrollbar{display:none}
+/* Spacer sized by tools-carousel.js so the strip can stop with any button at its left edge. */
+.tools-selectors::after{content:"";flex:none;width:var(--tail,0px);margin-left:-8px}
+/* Fade the right edge while more buttons are hidden there. */
+.tools-selectors.has-more{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 64px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 64px),transparent)}
 .tools-paging{flex:none}
 .tools-controls button{font:500 14px/1.4 var(--sans);color:var(--ink-2);background:transparent;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;min-height:44px}
-.tools-selectors button{display:flex;flex:none;align-items:center;gap:10px;white-space:nowrap}
+.tools-selectors button{display:flex;flex:none;align-items:center;gap:10px;white-space:nowrap;scroll-snap-align:start}
 .tools-selectors .code{font-size:10px;color:inherit}
 .tools-selectors button[aria-pressed=true]{border-color:var(--ink);color:var(--ink);box-shadow:inset 0 -3px var(--signal)}
 .tools-controls button:hover:not(:disabled){background:var(--paper-2);color:var(--ink)}
