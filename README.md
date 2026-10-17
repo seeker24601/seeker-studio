@@ -1,6 +1,6 @@
 # Seeker Studio
 
-Public studio website and portfolio for seeker-studio.games (games, tools and plugins), hosted on GitHub Pages. Static HTML, CSS and JavaScript with self-hosted fonts, SVG illustrations and supplied game artwork. No analytics, cookies, external embeds or build dependencies.
+Public studio website and portfolio for seeker-studio.games (games, tools and plugins), hosted on GitLab Pages. Static HTML, CSS and JavaScript with self-hosted fonts, SVG illustrations and supplied game artwork. No analytics, cookies, external embeds or build dependencies.
 
 Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `support.html` (Ko-fi and crypto tips), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), and `ackshually.html` (download and installation). Standalone product pages: `ai-connections/`, `atelier/` and `lockbox/` (`lockbox.html` redirects to it).
 
@@ -8,7 +8,7 @@ Category indexes are static HTML so every item can be read without JavaScript. T
 
 `downloads/` contains the standalone Lockbox app ZIP and its SHA-256 checksum. It contains no vaults, user files, or preferences. Lockbox source remains in its separate repository.
 
-Preview with `python3 -m http.server 4330 --bind 127.0.0.1`. Publish from the main branch root through GitHub Pages.
+Preview with `python3 -m http.server 4330 --bind 127.0.0.1`. Pushing to `main` on gitlab.com/seeker24601/seeker-studio publishes the site: the `pages` job in `.gitlab-ci.yml` copies the repository root (minus repo-only files) into `public/`.
 
 The website repository contains presentation assets and public tool downloads only. Seekers of the Deep remains a separate private project. Fonts in `assets/fonts/` retain their SIL Open Font License notices. Artwork and studio content are not licensed for redistribution.
 
