@@ -79,8 +79,8 @@ Tell the user what works, which environment variables to set, and anything left 
 
 ## Reference
 
-- Direct mode and runtime API: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/API.md
-- Providers, ids and limits: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/PROVIDERS.md
-- Full mode installation: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/INSTALLATION.md
+- Direct mode and runtime API: https://gitlab.com/seeker24601/ai-connections/-/raw/main/docs/API.md
+- Providers, ids and limits: https://gitlab.com/seeker24601/ai-connections/-/raw/main/docs/PROVIDERS.md
+- Full mode installation: https://gitlab.com/seeker24601/ai-connections/-/raw/main/docs/INSTALLATION.md
 - Package: https://www.npmjs.com/package/ai-connections
-- Source: https://github.com/seeker24601/ai-connections
+- Source: https://gitlab.com/seeker24601/ai-connections
