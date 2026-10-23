@@ -1,0 +1,9 @@
+/* Floating Ko-fi button on every public page except Support, which has its own button.
+   Ko-fi's orange and cup symbol; colours are fixed so it reads the same on product pages with their own palettes. */
+.kofi-float{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:100;display:inline-flex;align-items:center;gap:10px;padding:10px 20px 10px 14px;border-radius:999px;background:#ff6433;color:#202020;font:700 16px/1 var(--sans,system-ui,sans-serif);letter-spacing:0;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .2s,box-shadow .2s}
+.kofi-float img{display:block;width:27px;height:22px}
+.kofi-float:hover{color:#202020;transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.kofi-float:focus-visible{outline:2px solid #ff6433;outline-offset:3px}
+body::after{content:"";display:block;height:calc(72px + env(safe-area-inset-bottom))}
+@media(prefers-reduced-motion:reduce){.kofi-float{transition:none}.kofi-float:hover{transform:none}}
+@media print{.kofi-float{display:none}}
