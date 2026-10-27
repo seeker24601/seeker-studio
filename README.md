@@ -10,7 +10,7 @@ Category indexes are static HTML so every item can be read without JavaScript. T
 
 `downloads/` contains the standalone Lockbox app ZIP and its SHA-256 checksum. It contains no vaults, user files, or preferences. Lockbox source remains in its separate repository.
 
-Preview with `python3 -m http.server 4330 --bind 127.0.0.1`. Code lives at gitlab.com/seeker24601/seeker-studio. Publish with `npx wrangler deploy` from the repository root: `scripts/build-site.mjs` copies everything except repo-only files (`.git`, `AGENTS.md`, `README.md`, `CNAME`, `scripts/`, `wrangler.toml`) into `dist/`, and Cloudflare serves `dist/` at seeker-studio.games and www.seeker-studio.games. Pages answer at extensionless URLs (`/tools`); `/tools.html` redirects there.
+Preview with `python3 -m http.server 4330 --bind 127.0.0.1`. Code lives at github.com/seeker24601/seeker-studio, with a weekly backup copy at gitlab.com/seeker24601/seeker-studio (see `C:\AI\_git-hosts`). Publish with `npx wrangler deploy` from the repository root: `scripts/build-site.mjs` copies everything except repo-only files (`.git`, `AGENTS.md`, `README.md`, `CNAME`, `scripts/`, `wrangler.toml`) into `dist/`, and Cloudflare serves `dist/` at seeker-studio.games and www.seeker-studio.games. Pages answer at extensionless URLs (`/tools`); `/tools.html` redirects there.
 
 The website repository contains presentation assets and public tool downloads only. Seekers of the Deep remains a separate private project. Fonts in `assets/fonts/` retain their SIL Open Font License notices. Artwork and studio content are not licensed for redistribution.
 
