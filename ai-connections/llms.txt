@@ -1,8 +1,8 @@
 # AI Connections
 
-> AI Connections adds BYOK (bring your own key) support for text, image, video and local AI models to a project, using the Vercel AI SDK. Product MCP scaffolding is in development and is not yet in the npm release.
+> AI Connections adds BYOK (bring your own key) support for text, image, video and local AI models to a project, using the Vercel AI SDK. Product MCP scaffolding is available as a pinned preview download, ahead of the npm release.
 
-You are a coding agent asked to add AI provider support to a project. Follow these steps.
+You are a coding agent asked to add AI provider support, product MCP access, or both. Follow the relevant steps. Human installation instructions live at https://seeker-studio.games/ai-connections/install/.
 
 ## 1. Choose the mode
 
@@ -73,11 +73,19 @@ Use `ai-connections/testing` (`replies`, `fakeFetch`) or local mock servers. Mak
 - Connect the app's actual AI features to the service. Settings alone do not change existing AI calls.
 - Follow the generated `AI_CONNECTIONS.md`.
 
-## 8. Product MCP access, in development
+## 8. Product MCP preview
 
-When the user requests MCP access for their product, check the installed CLI's help before invoking `ai-connections mcp`. npm 0.4.3 does not include this command. If it is unavailable, report that limit rather than treating the published package as an MCP installer.
+The npm 0.4.3 CLI does not include `mcp`. For MCP setup, install this source preview in the product's existing project directory:
 
-When a checkout or later release includes `mcp`, run it with `--dry-run` first. Read the generated `ai-connections/mcp/README.md`. Connect its actions to the product's existing services, queues and asset storage. It provides stdio and HTTP entry points and configuration examples for Claude, Codex, Cursor and Hermes.
+    npm install --save-dev https://seeker-studio.games/ai-connections/downloads/ai-connections-cli-mcp-5aec076.tgz
+    npx --no-install ai-connections mcp --dry-run
+    npx --no-install ai-connections mcp
+
+The preview contains the CLI's source from commit 5aec076. Its internal package version is 0.4.3, but it includes unreleased MCP changes. Build details and SHA-256: https://seeker-studio.games/ai-connections/downloads/mcp-5aec076.json.
+
+Install dependencies in the generated `ai-connections/mcp/` folder and run `npm run verify`. Read its `README.md`. Connect actions to the product's existing services, queues and asset storage. The starter `product_status` returns `ready: false`; verification does not establish that product actions are implemented.
+
+Merge only the requested client's generated configuration into its existing settings. Preserve other servers. Client setup locations and optional HTTP steps: https://seeker-studio.games/ai-connections/install/#clients.
 
 Keep authentication, owner identity, permissions, provider keys and spending limits in the host product. HTTP must reject requests until verified host authentication is connected. Test owner isolation, denied permissions and error redaction with fixtures before live calls.
 
@@ -87,6 +95,7 @@ Tell the user what works, which environment variables to set, and anything left 
 
 ## Reference
 
+- Agent-assisted and manual installation: https://seeker-studio.games/ai-connections/install/
 - Direct mode and runtime API: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/API.md
 - Providers, ids and limits: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/PROVIDERS.md
 - Full mode installation: https://raw.githubusercontent.com/seeker24601/ai-connections/main/docs/INSTALLATION.md

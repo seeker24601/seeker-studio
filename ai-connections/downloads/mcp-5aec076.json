@@ -1,0 +1,11 @@
+{
+  "name": "AI Connections MCP preview",
+  "status": "Preview download, ahead of the npm release",
+  "sourceCommit": "5aec07614502ed7e10fa6635684d477f2206a8ce",
+  "packageName": "ai-connections-cli",
+  "packageVersion": "0.4.3",
+  "archive": "ai-connections-cli-mcp-5aec076.tgz",
+  "sha256": "b214be6c4db92a8fbc4bde774484afbf7cec46d8190927913e48cd1d1db5709e",
+  "license": "MIT",
+  "sourceIncluded": true
+}

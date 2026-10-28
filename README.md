@@ -2,7 +2,7 @@
 
 Public studio website and portfolio for seeker-studio.games (games, tools and plugins), hosted on Cloudflare. Static HTML, CSS and JavaScript with self-hosted fonts, SVG illustrations and supplied game artwork. No analytics, cookies, external embeds or build dependencies.
 
-Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `support.html` (Ko-fi and crypto tips), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), and `ackshually.html` (download and installation). Standalone product pages: `ai-connections/`, `atelier/` and `lockbox/` (`lockbox.html` redirects to it).
+Pages: `index.html` (featured projects), `studio.html` (about me and contact links), `support.html` (Ko-fi and crypto tips), `games.html`, `tools.html`, `companions.html`, and `plugins.html` (complete category catalogues), and `ackshually.html` (download and installation). Standalone product pages: `ai-connections/`, `atelier/` and `lockbox/` (`lockbox.html` redirects to it). AI Connections setup lives at `ai-connections/install/`; its pinned source preview and checksum live in `ai-connections/downloads/`.
 
 Every public page except `support.html` and the Vaultkeeper app carries a floating Ko-fi button: a `kofi.css` stylesheet link and an `<a class="kofi-float">` before `</body>`, with the cup from Ko-fi's brand kit in `assets/ko-fi-cup.svg`. Add both to new pages. `vaultkeeper/index.html` is built from the Vaultkeeper repository, so a rebuild drops the button until its source includes it.
 

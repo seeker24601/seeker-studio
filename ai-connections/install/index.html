@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install AI Connections: BYOK and MCP setup</title>
+<meta name="description" content="Install AI Connections with a coding agent or follow the manual BYOK and MCP steps. Includes a pinned MCP preview and client setup for desktop agents.">
+<meta name="theme-color" content="#f3f1ea">
+<meta property="og:title" content="Install AI Connections"><meta property="og:description" content="Agent-assisted and manual installation for BYOK and product MCP support."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/install/">
+<link rel="canonical" href="https://seeker-studio.games/ai-connections/install/">
+<link rel="alternate" type="text/plain" href="../llms.txt" title="Instructions for coding agents">
+<link rel="stylesheet" href="../page.css?v=6"><link rel="stylesheet" href="install.css?v=1"><link rel="stylesheet" href="../../kofi.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../copy.js?v=3" defer></script>
+</head>
+<body class="installation">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<a class="mark" href="../" aria-label="AI Connections home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="16" r="5" fill="none" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="11" cy="16" r="1.8" fill="#fcfbf7"/><path d="M16 16h5" stroke="#fcfbf7" stroke-width="2.5"/><circle cx="24" cy="16" r="3.5" fill="#3ddc84"/></svg></a>
+<a class="name" href="../">AI Connections</a>
+<nav aria-label="Main"><a href="../">Overview</a><a class="hide-sm" href="https://github.com/seeker24601/ai-connections">Source</a><a class="go" href="#manual">Manual setup</a></nav>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="install-title">
+<div class="wrap">
+<div>
+<h1 id="install-title">Install AI Connections.</h1>
+<p class="sub">Add AI provider connections and MCP tools to your app. Use a coding agent or follow the manual steps.</p>
+<nav class="ctas" aria-label="Installation paths"><a href="#manual">Manual BYOK</a><a href="#mcp">Manual MCP</a><a href="#clients">Connect your agent</a></nav>
+</div>
+<div class="win w-prompt" id="agent" data-tabs>
+<div class="win-title"><h2>With a coding agent</h2></div>
+<div class="tabs" role="tablist" aria-label="What should your agent add?" hidden>
+<button role="tab" id="tab-byok" aria-controls="panel-byok" aria-selected="false" tabindex="-1">BYOK</button>
+<button role="tab" id="tab-mcp" aria-controls="panel-mcp" aria-selected="false" tabindex="-1">MCP</button>
+<button role="tab" id="tab-both" aria-controls="panel-both" aria-selected="true">Both</button>
+</div>
+<div class="panel" id="panel-byok" role="tabpanel" aria-labelledby="tab-byok">
+<div class="panel-head"><span>BYOK setup prompt</span><button class="copy" type="button" data-copy="text-byok" hidden>Copy</button></div>
+<pre id="text-byok">Add BYOK support to this app with AI Connections. Read https://seeker-studio.games/ai-connections/llms.txt first. Choose direct mode for my keys or full mode for each user's keys, connect the app's AI features, and verify with fixtures.</pre>
+</div>
+<div class="panel" id="panel-mcp" role="tabpanel" aria-labelledby="tab-mcp">
+<div class="panel-head"><span>MCP setup prompt</span><button class="copy" type="button" data-copy="text-mcp" hidden>Copy</button></div>
+<pre id="text-mcp">Add MCP access to this app with AI Connections. Read https://seeker-studio.games/ai-connections/llms.txt first and use its pinned MCP preview. Connect tools to the app's existing services, identity and permissions. Verify the server and client configuration with fixtures.</pre>
+</div>
+<div class="panel" id="panel-both" role="tabpanel" aria-labelledby="tab-both">
+<div class="panel-head"><span>BYOK and MCP setup prompt</span><button class="copy" type="button" data-copy="text-both" hidden>Copy</button></div>
+<pre id="text-both">Add BYOK and MCP support to this app with AI Connections. Read https://seeker-studio.games/ai-connections/llms.txt first. Use the published provider runtime and the pinned MCP preview, wire them into the app's existing services and permissions, and verify with fixtures.</pre>
+</div>
+<p class="hint">Run your coding agent in the app's project folder. The prompts use the <a href="../llms.txt">agent instructions</a>.</p>
+</div>
+</div>
+</section>
+
+<div class="wrap guide">
+<p class="requirements">Use Node.js 22 or later and your app's existing project folder. The MCP installer requires <code>package.json</code>.</p>
+<section class="guide-section" id="manual" aria-labelledby="byok-title">
+<div class="section-head"><h2 id="byok-title">Manual BYOK setup</h2><p>Choose the path that matches who supplies the provider keys.</p></div>
+<h3>Your own keys</h3>
+<ol>
+<li><p>Install the provider runtime in your project.</p><div class="code-block"><button class="copy" type="button" data-copy="code-runtime" hidden>Copy</button><pre id="code-runtime">npm install ai-connections</pre></div></li>
+<li><p>Set your provider's key in the server environment. OpenRouter uses <code>OPENROUTER_API_KEY</code>. Keep real keys in a gitignored <code>.env</code> or secret store.</p></li>
+<li><p>Save this as <code>example.mjs</code>, then use the same API in your app's AI features.</p>
+<div class="code-block"><button class="copy" type="button" data-copy="code-example" hidden>Copy</button><pre id="code-example">import { generateText, languageModel } from 'ai-connections/direct';
+
+const result = await generateText({
+  model: languageModel('openrouter:deepseek/deepseek-chat'),
+  prompt: 'Write a one-sentence greeting.',
+});
+console.log(result.text);</pre></div>
+<div class="code-block"><button class="copy" type="button" data-copy="code-run" hidden>Copy</button><pre id="code-run">node --env-file=.env example.mjs</pre></div>
+<p class="note">Running this example makes a provider call charged to your account. Your app must load its own environment variables.</p></li>
+</ol>
+<h3>Each user's keys</h3>
+<div class="code-block"><button class="copy" type="button" data-copy="code-full" hidden>Copy</button><pre id="code-full">npm install ai-connections ai-connections-react
+npx ai-connections-cli@0.4.3 init --dry-run
+npx ai-connections-cli@0.4.3 init</pre></div>
+<p>The scaffold supports Next.js App Router and React projects. Follow the generated <code>AI_CONNECTIONS.md</code> to connect verified sign-in, encrypted storage and your app's AI features.</p>
+<p>For other frameworks, use the <a href="https://github.com/seeker24601/ai-connections/blob/main/docs/API.md">runtime API on GitHub</a> directly.</p>
+</section>
+
+<section class="guide-section" id="mcp" aria-labelledby="mcp-install-title">
+<div class="section-head"><h2 id="mcp-install-title">Manual MCP setup</h2><p>Create an MCP server for your product. Its tools call your existing app services.</p></div>
+<div class="win release-note"><div class="win-title"><span>MCP preview</span></div><div class="win-body">
+<p>This preview is built from source commit <code>5aec076</code>. It includes the CLI source and its MIT licence.</p>
+<p>The package's internal version is <code>0.4.3</code>; its MCP changes are distributed through this pinned download, ahead of the npm release.</p>
+<p><a href="../downloads/ai-connections-cli-mcp-5aec076.tgz">Download the MCP preview</a> · <a href="../downloads/mcp-5aec076.json">Build details and checksum</a></p>
+</div></div>
+<ol>
+<li><p>Install the preview in your app's project folder.</p>
+<div class="code-block"><button class="copy" type="button" data-copy="code-mcp-package" hidden>Copy</button><pre id="code-mcp-package">npm install --save-dev https://seeker-studio.games/ai-connections/downloads/ai-connections-cli-mcp-5aec076.tgz</pre></div></li>
+<li><p>Review the generated-file plan, then create the server.</p>
+<div class="code-block"><button class="copy" type="button" data-copy="code-mcp-scaffold" hidden>Copy</button><pre id="code-mcp-scaffold">npx --no-install ai-connections mcp --dry-run
+npx --no-install ai-connections mcp</pre></div>
+<p>The installer preserves existing files and leaves your real agent settings unchanged.</p></li>
+<li><p>Install the server dependencies and check the connection.</p>
+<div class="code-block"><button class="copy" type="button" data-copy="code-mcp-verify" hidden>Copy</button><pre id="code-mcp-verify">cd ai-connections/mcp
+npm install
+npm run verify</pre></div>
+<p>The starter exposes <code>product_status</code> with <code>ready: false</code>. Passing verification proves the connection; product actions still need wiring.</p></li>
+<li><p>Edit the generated files to connect your product.</p>
+<div class="table-scroll" role="region" aria-label="Generated files to edit" tabindex="0"><table class="files">
+<thead><tr><th scope="col">File</th><th scope="col">Your integration</th></tr></thead>
+<tbody>
+<tr><td><code>actions.mjs</code></td><td>Add tool schemas and handlers that call existing app services. Return job IDs for queued work and public output fields.</td></tr>
+<tr><td><code>access.mjs</code></td><td>Derive the owner and permissions from your product. HTTP authentication starts closed.</td></tr>
+<tr><td><code>product.json</code></td><td>Set your product's name and server version.</td></tr>
+</tbody></table></div>
+<p>Use the trusted <code>principal.ownerId</code> for account-scoped work. Keep your existing spending limits, queues, reference checks and file ownership rules.</p>
+<p>The generated <code>README.md</code> explains the action contract. Add fixture tests for your actions before using paid providers.</p></li>
+</ol>
+</section>
+
+<section class="guide-section" id="clients" aria-labelledby="clients-title">
+<div class="section-head"><h2 id="clients-title">Connect your agent</h2><p>Merge the generated entry into your client's configuration. Keep its other servers.</p></div>
+<p>These steps also apply to an existing product's MCP server. Use that product's own configuration or URL.</p>
+<p>Generated examples live under <code>ai-connections/mcp/clients/</code>. They contain absolute paths to Node and <code>stdio.mjs</code>; update those paths if you move the project.</p>
+<p><code>~</code> means your home folder. On Windows, use <code>%USERPROFILE%</code> in these paths.</p>
+<div class="table-scroll" role="region" aria-label="MCP client configuration" tabindex="0"><table class="clients">
+<thead><tr><th scope="col">Client</th><th scope="col">Configuration</th></tr></thead>
+<tbody>
+<tr><th scope="row"><a href="https://modelcontextprotocol.io/docs/develop/connect-local-servers">Claude Desktop</a></th><td><p><code>claude-desktop.json</code></p><p>Settings → Developer → Edit Config. Use the <code>mcpServers</code> entry.</p></td></tr>
+<tr><th scope="row"><a href="https://code.claude.com/docs/en/mcp">Claude Code</a></th><td><p><code>claude-code.json</code></p><p><code>.mcp.json</code> in your project, under <code>mcpServers</code>.</p></td></tr>
+<tr><th scope="row"><a href="https://developers.openai.com/codex/mcp/">Codex</a></th><td><p><code>codex.toml</code></p><p><code>~/.codex/config.toml</code>, under the generated <code>mcp_servers</code> table.</p></td></tr>
+<tr><th scope="row"><a href="https://cursor.com/docs/mcp">Cursor</a></th><td><p><code>cursor.json</code></p><p><code>.cursor/mcp.json</code> in your project, under <code>mcpServers</code>.</p></td></tr>
+<tr><th scope="row"><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp">Hermes</a></th><td><p><code>hermes.yaml</code></p><p><code>~/.hermes/config.yaml</code>, under <code>mcp_servers</code>.</p></td></tr>
+</tbody></table></div>
+<p>Restart or reload the client, enable your server, and ask it to call <code>product_status</code>. Review tool approvals before enabling spending or deletion actions.</p>
+<p>For a CLI-based Codex setup, replace the sample path with your generated <code>stdio.mjs</code> path:</p>
+<div class="code-block"><button class="copy" type="button" data-copy="code-codex" hidden>Copy</button><pre id="code-codex">codex mcp add my-product -- node "/absolute/path/to/product/ai-connections/mcp/stdio.mjs"
+codex mcp list</pre></div>
+</section>
+
+<section class="guide-section" id="http" aria-labelledby="http-title">
+<div class="section-head"><h2 id="http-title">Use HTTP</h2><p>For remote access, connect the server to your product's verified authentication and HTTPS first.</p></div>
+<div class="code-block"><button class="copy" type="button" data-copy="code-http" hidden>Copy</button><pre id="code-http">cd ai-connections/mcp
+npm run http</pre></div>
+<p>The local endpoint is <code>http://127.0.0.1:4318/mcp</code>. It returns 401 until <code>authenticateHttp</code> in <code>access.mjs</code> verifies a session or token.</p>
+<p>Use a matching example from <code>clients/http/</code> and supply credentials through the client's secret settings. Configure exact allowed hosts and browser origins in the host integration.</p>
+<p>Keep provider keys in your product. Use your product's authentication in the MCP client.</p>
+</section>
+</div>
+</main>
+<footer class="foot"><div class="wrap"><div class="win"><div class="win-title"><span>AI Connections</span></div><div class="win-body">
+<nav aria-label="Footer"><a href="../">Overview</a><a href="../llms.txt">Agent instructions</a><a href="https://github.com/seeker24601/ai-connections/blob/main/docs/API.md">API reference on GitHub</a><a href="https://github.com/seeker24601/ai-connections">Source</a></nav>
+<p>Made by <a href="../../">Seeker Studio</a>.</p>
+</div></div></div></footer>
+<a class="kofi-float" href="https://ko-fi.com/seekerstudio"><img src="../../assets/ko-fi-cup.svg" width="24" height="19" alt=""><span>Tip on Ko-fi</span></a>
+</body>
+</html>
