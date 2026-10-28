@@ -1,6 +1,6 @@
 # AI Connections
 
-> npm package `ai-connections`: BYOK (bring your own key) support for 42 AI providers, one line each (text, image, video and local models), built on the Vercel AI SDK. Use it to integrate AI provider support into a project instead of writing provider clients, base URLs, auth headers or model lists by hand.
+> AI Connections adds BYOK (bring your own key) support for text, image, video and local AI models to a project, using the Vercel AI SDK. Product MCP scaffolding is in development and is not yet in the npm release.
 
 You are a coding agent asked to add AI provider support to a project. Follow these steps.
 
@@ -73,7 +73,15 @@ Use `ai-connections/testing` (`replies`, `fakeFetch`) or local mock servers. Mak
 - Connect the app's actual AI features to the service. Settings alone do not change existing AI calls.
 - Follow the generated `AI_CONNECTIONS.md`.
 
-## 8. Report
+## 8. Product MCP access, in development
+
+When the user requests MCP access for their product, check the installed CLI's help before invoking `ai-connections mcp`. npm 0.4.3 does not include this command. If it is unavailable, report that limit rather than treating the published package as an MCP installer.
+
+When a checkout or later release includes `mcp`, run it with `--dry-run` first. Read the generated `ai-connections/mcp/README.md`. Connect its actions to the product's existing services, queues and asset storage. It provides stdio and HTTP entry points and configuration examples for Claude, Codex, Cursor and Hermes.
+
+Keep authentication, owner identity, permissions, provider keys and spending limits in the host product. HTTP must reject requests until verified host authentication is connected. Test owner isolation, denied permissions and error redaction with fixtures before live calls.
+
+## 9. Report
 
 Tell the user what works, which environment variables to set, and anything left for them, such as authentication wiring in full mode or a first real call to confirm a key.
 

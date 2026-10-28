@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Connections: integrate BYOK support for every AI provider in one line</title>
-<meta name="description" content="Integrate BYOK (bring your own key) support for 42 AI providers into your app with one line your coding agent writes: text, image, video and local models. Free, open source, on npm.">
+<title>AI Connections: BYOK for apps and product MCP support</title>
+<meta name="description" content="Add BYOK support for text, image, video and local AI models to your app. Free and open source. Product MCP support is in development.">
 <meta name="theme-color" content="#f3f1ea">
-<meta property="og:title" content="AI Connections: BYOK support for every AI provider"><meta property="og:description" content="Integrate BYOK support for 42 AI providers with one line your coding agent writes."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/">
+<meta property="og:title" content="AI Connections: BYOK for apps and product MCP support"><meta property="og:description" content="Add BYOK support for cloud and local AI models. Product MCP support is in development."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/ai-connections/">
 <link rel="canonical" href="https://seeker-studio.games/ai-connections/">
 <link rel="alternate" type="text/plain" href="llms.txt" title="Instructions for coding agents">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111110'/%3E%3Ccircle cx='11' cy='16' r='5' fill='none' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='11' cy='16' r='1.8' fill='%23fcfbf7'/%3E%3Cpath d='M16 16h5' stroke='%23fcfbf7' stroke-width='2.5'/%3E%3Ccircle cx='24' cy='16' r='3.5' fill='%233ddc84'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Connections","applicationCategory":"DeveloperApplication","operatingSystem":"Node.js 22+","description":"Integrate BYOK (bring your own key) support for 42 AI providers into any app: text, image, video and local models, on the Vercel AI SDK.","url":"https://seeker-studio.games/ai-connections/","downloadUrl":"https://www.npmjs.com/package/ai-connections","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Seeker Studio","url":"https://seeker-studio.games/"}}</script>
-<link rel="stylesheet" href="page.css?v=4"><link rel="stylesheet" href="../kofi.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Connections","applicationCategory":"DeveloperApplication","operatingSystem":"Node.js 22+","description":"BYOK support for text, image, video and local AI models, on the Vercel AI SDK. Product MCP scaffolding is in development.","url":"https://seeker-studio.games/ai-connections/","downloadUrl":"https://www.npmjs.com/package/ai-connections","license":"https://opensource.org/licenses/MIT","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Seeker Studio","url":"https://seeker-studio.games/"}}</script>
+<link rel="stylesheet" href="page.css?v=5"><link rel="stylesheet" href="../kofi.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="copy.js?v=3" defer></script>
 </head>
@@ -55,8 +55,8 @@
 <div class="wrap">
 <div>
 <p class="kicker"><b>FOR CODING AGENTS</b>Free and open source</p>
-<h1 id="hero-title">Integrate BYOK support for every AI provider with <em>one line.</em></h1>
-<p class="sub">Paste the prompt into your coding agent. It sets up 42 AI providers in your project, all running on your own keys.</p>
+<h1 id="hero-title">Add BYOK support to <em>your app.</em></h1>
+<p class="sub">A library for text, image, video and local AI models, installed by your coding agent.</p>
 </div>
 <div class="win w-prompt" id="prompt" data-tabs>
 <div class="win-title"><h2 id="prompt-title">Paste into your agent</h2></div>
@@ -85,7 +85,7 @@
 
 <section class="logos" aria-labelledby="logos-title">
 <div class="wrap">
-<h2 id="logos-title">42 providers, including</h2>
+<h2 id="logos-title">Cloud providers and local models</h2>
 <ul>
 <li><svg class="lg" aria-hidden="true"><use href="#lg-openai"/></svg>OpenAI</li>
 <li><svg class="lg" aria-hidden="true"><use href="#lg-anthropic"/></svg>Anthropic</li>
@@ -166,7 +166,7 @@
 <li><button class="jack" type="button" data-model="ollama:llama3.2" data-key="" aria-pressed="false" disabled><i><svg class="lg" aria-hidden="true"><use href="#lg-ollama"/></svg></i>Ollama</button></li>
 <li><button class="jack" type="button" data-model="lmstudio:openai/gpt-oss-20b" data-key="" aria-pressed="false" disabled><i><svg class="lg" aria-hidden="true"><use href="#lg-lmstudio"/></svg></i>LM Studio</button></li>
 </ul>
-<p class="board-foot">Model names are examples. <a href="https://github.com/seeker24601/ai-connections/blob/main/docs/PROVIDERS.md">See all 42</a></p>
+<p class="board-foot">Model names are examples. <a href="https://github.com/seeker24601/ai-connections/blob/main/docs/PROVIDERS.md">Provider documentation</a></p>
 </div>
 
 <figure class="win code w-swap" aria-label="Code example">
@@ -191,17 +191,37 @@
 <div class="wrap">
 <div class="section-head">
 <p class="num">01 / Features</p>
-<h2 id="features-title">One package, every provider.</h2>
+<h2 id="features-title">AI provider support.</h2>
 <p>Built on the Vercel AI SDK. Requests go straight from your app to the provider.</p>
 </div>
 <ul class="grid">
-<li class="win"><div class="win-title"><span>text</span></div><div class="win-body"><span class="big">30</span><h3>Text providers</h3><p>OpenAI, Anthropic, Google, DeepSeek, OpenRouter and more.</p></div></li>
-<li class="win"><div class="win-title"><span>media</span></div><div class="win-body"><span class="big">15</span><h3>Image and video providers</h3><p>fal, Replicate, OpenRouter, Higgsfield, WaveSpeed and more.</p></div></li>
-<li class="win"><div class="win-title"><span>local</span></div><div class="win-body"><span class="big">3</span><h3>Local runners</h3><p>Ollama, LM Studio and vLLM.</p></div></li>
-<li class="win"><div class="win-title"><span>keys</span></div><div class="win-body"><span class="big">0</span><h3>Keys in your code</h3><p>They stay in <code>.env</code>.</p></div></li>
-<li class="win"><div class="win-title"><span>errors</span></div><div class="win-body"><span class="big">1</span><h3>Error type</h3><p>Every provider fails the same way.</p></div></li>
-<li class="win"><div class="win-title"><span>tests</span></div><div class="win-body"><span class="big">$0</span><h3>Test bills</h3><p>Fake replies for tests, so no paid calls.</p></div></li>
+<li class="win"><div class="win-title"><span>text</span></div><div class="win-body"><h3>Text providers</h3><p>OpenAI, Anthropic, Google, DeepSeek, OpenRouter and more.</p></div></li>
+<li class="win"><div class="win-title"><span>media</span></div><div class="win-body"><h3>Image and video providers</h3><p>fal, Replicate, OpenRouter, Higgsfield, WaveSpeed and more.</p></div></li>
+<li class="win"><div class="win-title"><span>local</span></div><div class="win-body"><h3>Local runners</h3><p>Ollama, LM Studio and vLLM.</p></div></li>
+<li class="win"><div class="win-title"><span>keys</span></div><div class="win-body"><h3>Environment keys</h3><p>Load your keys from <code>.env</code>.</p></div></li>
+<li class="win"><div class="win-title"><span>errors</span></div><div class="win-body"><h3>Consistent errors</h3><p>Handle provider failures through <code>ProviderError</code>.</p></div></li>
+<li class="win"><div class="win-title"><span>tests</span></div><div class="win-body"><h3>Provider fixtures</h3><p>Test with fake replies before making paid calls.</p></div></li>
 </ul>
+</div>
+</section>
+
+<section class="section" id="mcp" aria-labelledby="mcp-title">
+<div class="wrap">
+<div class="section-head">
+<h2 id="mcp-title">MCP access for your product.</h2>
+<p>Let desktop agents call your app&#39;s existing actions.</p>
+</div>
+<div class="two">
+<div class="win"><div class="win-title"><span>Agent access</span></div><div class="win-body">
+<h3>Claude, Codex, Cursor and Hermes</h3>
+<p>Generate local stdio and HTTP servers with client configuration examples.</p>
+<p>MCP scaffolding is not yet included in the npm release.</p>
+</div></div>
+<div class="win"><div class="win-title"><span>Product integration</span></div><div class="win-body">
+<h3>Your app controls access</h3>
+<p>Use your existing services, sign-in and permissions. Keys, jobs and files stay in your product.</p>
+</div></div>
+</div>
 </div>
 </section>
 
