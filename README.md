@@ -14,6 +14,8 @@ Preview with `python3 -m http.server 4330 --bind 127.0.0.1`. Code lives at githu
 
 The website repository contains presentation assets and public tool downloads only. Seekers of the Deep remains a separate private project. Fonts in `assets/fonts/` retain their SIL Open Font License notices. Artwork and studio content are not licensed for redistribution.
 
+The Companions section lists sillytavern as an Extension on the homepage and category catalogue, linking to its GitHub installation instructions. Its screenshot is copied from the public SillyTavern-seeker repository into `assets/companions/sillytavern.webp`.
+
 ## Domain
 
 seeker-studio.games and www.seeker-studio.games are Workers custom domains on the `seeker-studio` Worker (`routes` in `wrangler.toml`). Cloudflare creates and manages their DNS records and HTTPS certificates; there are no hand-made A or CNAME records for the site.
