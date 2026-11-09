@@ -41,13 +41,18 @@
 
 /* Sections: copy left, one picture right */
 .ss-row{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:var(--gap);align-items:start}
-.ss-page .part:last-of-type .ss-row{padding-bottom:clamp(56px,7vw,96px)}
+.ss-page .part:last-of-type>.part-body{padding-bottom:clamp(56px,7vw,96px)}
 .ss-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:60ch}
 .ss-copy p,.ss-copy dd,.ss-copy li{color:var(--ink-2)}
 .ss-copy strong{color:var(--ink);font-weight:600}
 .ss-copy h3{font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
 .ss-plate img{width:100%}
 .ss-sticky{position:sticky;top:24px}
+/* Rows stack inside a section; a flipped row puts its picture on the left, so the page alternates. */
+.ss-stack{display:flex;flex-direction:column;gap:clamp(56px,7vw,104px)}
+.ss-row--flip{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.ss-row--flip>.ss-copy{order:2}
+#so-far .ss-stack{gap:clamp(36px,4vw,56px)}
 /* Trade-offs: the zones diagram, stacked as in the game: farthest zone at the top, your hero at the bottom.
    Square tokens echo the pixel interface. */
 .ss-zones{margin:0;width:100%;max-width:440px}
@@ -67,6 +72,22 @@
 .ss-cap{display:block;padding-top:8px;font:13px/1.4 var(--sans);color:var(--ink-2)}
 .ss-part{margin-right:8px;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--signal-ink)}
 .ss-pic+.ss-pic{margin-top:0}
+
+/* Making it, Fig. 1: one turn as two lanes, models in the game's ember and the engine in ink.
+   Each cell names who acts, so the lane headings are only a visual aid. */
+.ss-flow{margin:0}
+.ss-flow-lanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.ss-flow-lanes span{display:flex;align-items:center;gap:8px;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.ss-flow-lanes .ss-tok{width:12px;height:12px}
+.ss-tok-code{background:var(--ink)}
+.ss-flow li{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 8px;padding:12px 0;border-bottom:1px dashed var(--rule)}
+.ss-flow li.ss-flow-after{border-top:1px solid var(--ink-2);margin-top:-1px;border-bottom:1px solid var(--rule)}
+.ss-flow-step{grid-column:1/-1;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ss-flow-cell{margin:0;padding:8px 10px;border-left:3px solid;font:13px/1.4 var(--sans);color:var(--ink-2);background:rgba(255,255,255,.03)}
+.ss-flow-cell b{display:block;margin-bottom:2px;font:500 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.ss-flow-model{border-color:#d9763c}
+.ss-flow-code{border-color:var(--ink)}
+.ss-flow-empty{border:0;background:none}
 
 /* Making it: the art, then a hero card and a scene title from the game, small, as examples. */
 .ss-visuals{display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)}
@@ -107,24 +128,33 @@
 .ss-records h3{margin-top:0}
 .ss-records dl{margin-top:12px}
 .ss-records dl div{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;padding:14px 0;border-top:1px solid var(--rule)}
+.ss-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);max-width:none}
 .ss-records dt{font:500 12px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
 
 
 /* So far: a unit chart of the game's content, one square per entry, in the game's ember. */
 .ss-units{margin:0}
-.ss-units dl{display:flex;flex-direction:column;gap:22px}
+.ss-units dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px var(--gap)}
 .ss-units dl>div{display:grid;grid-template-columns:minmax(0,1fr);row-gap:4px}
 .ss-units dt{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .ss-units dd{display:flex;flex-direction:column;gap:10px}
 .ss-unit-n{font:clamp(26px,2.6vw,36px)/.9 var(--display);color:var(--ink)}
 .ss-units svg{display:block;width:100%;max-width:400px;height:auto;fill:#d9763c}
 .ss-units .ss-cap{padding-top:22px}
-.ss-copy .page-links{margin:10px 0 0}
+/* So far: the lessons in three columns */
+.ss-lessons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px var(--gap);border-top:1px solid var(--rule);padding-top:24px}
+.ss-lessons h3{grid-column:1/-1;margin:0;font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink)}
+.ss-lessons h4{margin:0 0 8px;font:600 16px/1.35 var(--sans);color:var(--ink)}
+.ss-lessons p{color:var(--ink-2)}
+.ss-copy .page-links{margin:0 0 6px}
 .ss-legal{font:13px/1.7 var(--mono)}
 
 @media (max-width:1100px){.ss-info{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){
-  .ss-row{grid-template-columns:1fr;row-gap:24px}
+  .ss-row,.ss-row--flip{grid-template-columns:1fr;row-gap:24px}
+  .ss-row--flip>.ss-copy{order:0}
+  .ss-pair,.ss-lessons{grid-template-columns:1fr;row-gap:28px}
+  .ss-units dl{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ss-sticky{position:static}
   .ss-bg{height:min(78svh,640px);background-position:62% 60%;-webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 96%);mask-image:linear-gradient(to bottom,#000 45%,transparent 96%)}
   .ss-bg video{object-position:62% 60%}
@@ -136,5 +166,6 @@
   .ss-info{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
   .ss-button{width:100%;justify-content:center}
   .ss-records dl div{grid-template-columns:1fr;row-gap:4px}
+  .ss-units dl{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.ss-button{transition:none}.ss-bg video{display:none}}
