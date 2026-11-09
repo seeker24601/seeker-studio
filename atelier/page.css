@@ -138,7 +138,7 @@ h1 .dot{color:var(--pink)}
 .note{margin-top:14px;font:11px var(--mono);color:var(--ash);letter-spacing:.04em}
 
 /* ── Footer ────────────────────────────────────────────────────────────── */
-.foot{border-top:var(--rule);background:var(--plate);padding:22px 0}
+.foot{border-top:var(--rule);padding:22px 0}
 .foot p{font:11px/1.7 var(--mono);letter-spacing:.04em}
 .foot a{text-decoration-color:var(--line);text-underline-offset:3px}
 .foot a:hover{color:var(--cyan);text-decoration-color:currentColor}
