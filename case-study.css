@@ -1,0 +1,114 @@
+/* Case-study pages: the studio's rail sections with rows of copy and figures, decision records,
+   plate figures with captions, flow diagrams, tick tables and lessons. Loaded after style.css.
+   The Sword & Sorcery page carries its own copy of these rules (sword-sorcery-page.css). */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Hero: copy and a call to action on the left, the product's own picture on the right, then an info table. */
+.cs-hero{padding:clamp(20px,3vw,32px) var(--gutter) clamp(40px,5vw,72px)}
+.cs-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.cs-crumbs>a.label:hover{color:var(--signal)}
+.cs-hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--gap);align-items:center;margin-top:clamp(28px,4vw,56px)}
+.cs-hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.cs-hero .pitch{max-width:30ch}
+.cs-hero-shot{margin:0}
+.cs-hero-shot img{display:block;width:100%;height:auto}
+.cs-button{display:inline-flex;align-items:center;gap:8px;padding:16px 24px;background:var(--signal);color:var(--paper);font-weight:700;transition:background .2s}
+.cs-button:hover{background:var(--ink)}
+.cs-button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cs-info{display:grid;grid-template-columns:repeat(var(--cs-info-cols,5),minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px);padding-top:24px;border-top:1px solid var(--rule)}
+.cs-info dt{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.cs-info dd{margin-top:6px;font-size:15px;line-height:1.4}
+
+/* Rail titles sized so the longest one fits beside its section's content. */
+@media (min-width:901px){.cs-page .rail-title{font-size:clamp(44px,4.4vw,64px)}}
+
+/* Sections: rows of copy and a figure. Rows stack inside a section; a flipped row puts the figure on the left. */
+.cs-row{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:var(--gap);align-items:start}
+.cs-row--flip{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.cs-row--flip>.cs-copy{order:2}
+.cs-stack{display:flex;flex-direction:column;gap:clamp(56px,7vw,104px)}
+.cs-page .part:last-of-type>.part-body{padding-bottom:clamp(56px,7vw,96px)}
+.cs-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:60ch}
+.cs-copy p,.cs-copy dd,.cs-copy li{color:var(--ink-2)}
+.cs-copy strong{color:var(--ink);font-weight:600}
+.cs-copy h3{font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
+.cs-sticky{position:sticky;top:24px}
+
+/* Figures: the number heads the figure with a rule across it; each picture has its own caption
+   under a hairline, led by its part label (1a, 1b) as in a book plate. */
+.cs-fig{margin:0}
+.cs-fig-n{display:flex;align-items:center;gap:12px;grid-column:1/-1;padding:0 0 14px;font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal-ink)}
+.cs-fig-n::after{content:"";flex:1;border-top:1px solid var(--rule)}
+.cs-pair-fig{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;align-items:start}
+.cs-pic img{display:block;width:100%;height:auto}
+.cs-cap{display:flex;align-items:baseline;gap:10px;margin-top:10px;padding-top:8px;border-top:1px solid var(--rule);font:12.5px/1.45 var(--sans);color:var(--ink-2)}
+.cs-part{flex:none;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--signal-ink)}
+
+/* Decision records: problem, choice, cost. A pair sits side by side. */
+.cs-records{gap:28px}
+.cs-records article{align-self:stretch}
+.cs-records h3{margin-top:0}
+.cs-records dl{margin-top:12px}
+.cs-records dl div{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;padding:14px 0;border-top:1px solid var(--rule)}
+.cs-records dt{font:500 12px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
+.cs-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gap);max-width:none}
+/* A figure beside a record lines its first rule up with the record's first rule. */
+.cs-beside-record{margin-top:calc(clamp(18px,1.6vw,22px) * 1.1 + 12px)}
+
+/* Tick table. The words Yes and No stay in the markup for screen readers; the marks are drawn over them.
+   The subject is the last row. */
+.cs-checks table{width:100%;border-collapse:collapse;table-layout:fixed}
+.cs-checks th,.cs-checks td{padding:18px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.cs-checks thead th{padding:0 8px 14px;font:500 11px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);text-align:center;vertical-align:bottom}
+.cs-checks thead td{width:40%;padding:0}
+.cs-checks tbody th{padding-left:0;text-align:left;font:clamp(15px,1.3vw,18px)/1.15 var(--display);text-transform:uppercase;letter-spacing:-.01em;font-weight:400;color:var(--ink-2)}
+.cs-checks tbody th small{display:block;margin-top:6px;font:500 11px/1.4 var(--mono);letter-spacing:.04em;text-transform:none;color:var(--ink-2)}
+.cs-checks td{position:relative;text-align:center;font-size:0;color:transparent}
+.cs-checks td::after{position:absolute;inset:0;display:grid;place-items:center;font:700 22px/1 var(--sans)}
+.cs-checks td.yes::after{content:"✓";color:var(--ink)}
+.cs-checks td.no::after{content:"–";color:var(--ink-2);opacity:.45;font-weight:400}
+.cs-checks .cs-this th{color:var(--signal-ink);font-size:clamp(17px,1.5vw,21px);padding-left:14px;border-left:2px solid var(--signal)}
+.cs-checks .cs-this th,.cs-checks .cs-this td{border-top:2px solid var(--signal);border-bottom:2px solid var(--signal)}
+.cs-checks .cs-this td:last-child{border-right:2px solid var(--signal)}
+.cs-checks .cs-this td.yes::after{color:var(--signal-ink)}
+
+/* Flow diagrams: boxes joined by short lines, with a key that marks who acts. */
+.cs-flow{--line:rgba(243,234,208,.38);max-width:520px}
+.cs-flow-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 20px}
+.cs-flow-key span{display:flex;align-items:center;gap:9px;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.cs-mark{display:inline-block;flex:none;width:11px;height:11px}
+.cs-k-you .cs-mark{border:1px solid var(--ink);border-radius:50%}
+.cs-k-app .cs-mark{background:var(--ink)}
+.cs-node{position:relative;display:grid;grid-template-columns:11px minmax(0,1fr);column-gap:10px;padding:9px 10px;border:1px solid var(--rule);background:#161514;font:13px/1.4 var(--sans);color:var(--ink-2)}
+.cs-node .cs-mark{grid-row:1/3;margin-top:2px}
+.cs-node b{font:500 11px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
+.cs-steps>li{position:relative}
+.cs-steps>li+li{margin-top:18px}
+.cs-steps>li+li::before{content:"";position:absolute;left:24px;top:-18px;height:18px;border-left:1px solid var(--line)}
+.cs-branch-label{display:block;margin:0 0 8px;font:500 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Lessons in three columns. */
+.cs-lessons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px var(--gap);border-top:1px solid var(--rule);padding-top:24px}
+.cs-lessons h3{grid-column:1/-1;margin:0;font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink)}
+.cs-lessons h4{margin:0 0 8px;font:600 16px/1.35 var(--sans);color:var(--ink)}
+.cs-lessons p{color:var(--ink-2)}
+.cs-copy .page-links{margin:0 0 6px}
+.cs-legal{font:13px/1.7 var(--mono)}
+
+@media (max-width:1100px){.cs-info{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){
+  .cs-hero-grid,.cs-row,.cs-row--flip{grid-template-columns:1fr;row-gap:24px}
+  .cs-row--flip>.cs-copy{order:0}
+  .cs-pair,.cs-lessons{grid-template-columns:1fr;row-gap:28px}
+  .cs-sticky{position:static}
+  .cs-beside-record{margin-top:0}
+}
+@media (max-width:600px){
+  .cs-page .rail-title{font-size:clamp(28px,8.5vw,44px)}
+  .cs-info{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+  .cs-button{width:100%;justify-content:center}
+  .cs-records dl div{grid-template-columns:1fr;row-gap:4px}
+  .cs-checks thead th{font-size:10px;padding:0 4px 12px}
+  .cs-checks td{padding:16px 4px}
+}
+@media (prefers-reduced-motion:reduce){.cs-button{transition:none}}
