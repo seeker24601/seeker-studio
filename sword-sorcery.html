@@ -63,6 +63,9 @@
 <div class="ss-row">
 <div class="ss-copy">
 <p>I designed and built the game end to end: the rules engine, the agentic engineering pipeline, the world, the campaigns and the art direction. AI wrote most of the code from standards I set.</p>
+<h3>Agentic engineering</h3>
+<p>The game is a set of modular systems, such as combat, memory and campaigns, that communicate with each other. Building it in modules isolates the blast radius of a bug. AI agents handle a change inside one system well, but often miss how it affects the others.</p>
+<p>The code is built using a custom-made harness. Each change has to name the systems it touches and link their documentation, an independent agent reviews it, and the repository refuses any push to production except the exact commit approved for release.</p>
 <h3>World and rules</h3>
 <p>The world is original, but inspired by settings like Greyhawk, because I prefer grounded, old-school settings with humans in focus. Also, Wizards of the Coast owns the Forgotten Realms, which is what comes to mind when most people hear "D&amp;D". The rules are 5e, because the SRD is openly licensed and many players are familiar with them through Baldur's Gate 3.</p>
 <h3>Visual direction</h3>
@@ -93,33 +96,32 @@
 <div class="part-body ss-row">
 <div class="ss-copy ss-records">
 <article>
-<h3>The engine owns every number</h3>
+<h3>Combat runs on zones</h3>
 <dl>
-<div><dt>Problem</dt><dd>If the model decides outcomes, you can talk your way to a win.</dd></div>
-<div><dt>Choice</dt><dd>Hit points, coins, XP and turns change only through tools the engine checks.</dd></div>
-<div><dt>Cost</dt><dd>The model can still narrate something the engine refused. A check catches it, and has to stay loose enough to allow ordinary storytelling.</dd></div>
+<div><dt>Problem</dt><dd>Tracking 5e movement foot by foot would have needed a grid and a map view, which would have slowed combat down and made it less fun.</dd></div>
+<div><dt>Choice</dt><dd>Combatants stand in zones about 30 feet apart. You advance, retreat or flee one zone at a time, and the engine checks weapon and spell ranges against the gap.</dd></div>
+<div><dt>Cost</dt><dd>Positions are approximate, so a 10-foot reach weapon still needs its target in the same zone, just like a sword.</dd></div>
 </dl>
 </article>
 <article>
-<h3>The engine lists the choices</h3>
+<h3>Decision models read intent</h3>
 <dl>
-<div><dt>Problem</dt><dd>A misread sentence can send you to the wrong room or kill someone you meant to spare.</dd></div>
-<div><dt>Choice</dt><dd>A classifier picks from options the engine lists, including "unclear", and the engine acts only on a clear pick.</dd></div>
-<div><dt>Cost</dt><dd>Quoted speech trips it up. One model update read "Scrap says, knock Melfor out. I attack Melfor." as a nonlethal attack, and fixing it took a new set of test cases.</dd></div>
+<div><dt>Problem</dt><dd>Matching player input with keywords and regex turned into whack-a-mole. Each new pattern missed the next phrasing, and slightly different wording could confuse or undermine the engine.</dd></div>
+<div><dt>Choice</dt><dd>A decision model picks from options the engine lists, including "unclear", and the engine acts only on a clear pick.</dd></div>
+<div><dt>Cost</dt><dd>A model call costs money and adds latency where a regex was free and instant, so calls are kept to the decisions that need one.</dd></div>
 </dl>
 </article>
 <article>
-<h3>Memory is stored as facts</h3>
+<h3>Memory is layered</h3>
 <dl>
-<div><dt>Problem</dt><dd>A long campaign outgrows any prompt.</dd></div>
-<div><dt>Choice</dt><dd>Quests, relationships and events are stored as versioned facts, and the most relevant go into each turn.</dd></div>
-<div><dt>Cost</dt><dd>Assembling memory can add several seconds to a turn.</dd></div>
+<div><dt>Problem</dt><dd>Long campaigns outgrew the prompt, and no model could hold everything that happened.</dd></div>
+<div><dt>Choice</dt><dd>Recent turns stay word for word, older ones are compressed into summaries, and what no longer matters is pushed out gradually. Each agent, such as a companion, keeps its own memory of what it learned.</dd></div>
+<div><dt>Cost</dt><dd>Compression can add several seconds to a turn, and a summary keeps less detail than the turns it replaces.</dd></div>
 </dl>
 </article>
 </div>
-<figure class="plate ss-plate ss-sticky">
-
-<img src="assets/sword-sorcery/d20.webp" width="1024" height="1024" alt="A painted d20 glowing amber in the dark" loading="lazy"></figure>
+<figure class="plate ss-plate ss-sticky ss-small">
+<img src="assets/sword-sorcery/combat-zones.webp" width="334" height="440" alt="Combat cards: two giant rats marked Melee above the hero, Roderic" loading="lazy"><span class="ss-cap">Combat cards, with each enemy’s zone</span></figure>
 </div>
 </section>
 

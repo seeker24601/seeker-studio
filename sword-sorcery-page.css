@@ -47,6 +47,7 @@
 .ss-copy h3{font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
 .ss-plate img{width:100%}
 .ss-sticky{position:sticky;top:24px}
+.ss-small{width:100%;max-width:300px}
 /* Making it figures: the number heads the figure, and each picture has its own
    caption under it, led by its part label (1a, 1b) as in a book plate. */
 .ss-page .ss-plate{background:none}
