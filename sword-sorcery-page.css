@@ -1,0 +1,131 @@
+/* Sword & Sorcery page. The studio's colours, type, rail sections, plates and footer.
+   Every section is the same row: copy on the left, one picture on the right, body text one size.
+   The game shows through its key art and its wordmark. The wordmark copies the live game's
+   .ss-logo rules (swordsorcery.app) exactly, using the fonts from sword-sorcery.css. */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Wordmark, as on the live game */
+.ss-logo{--ss-logo-size:clamp(56px,9vw,128px);display:inline-flex;flex-direction:column;align-items:flex-start;line-height:.66;margin:0;-webkit-user-select:none;user-select:none}
+.ss-logo-row{display:flex;align-items:baseline;white-space:nowrap}
+.ss-logo-word{font-family:SwordWordmark,serif;font-weight:400;font-size:var(--ss-logo-size);line-height:inherit;color:#f3ead0}
+.ss-logo-amp{font-family:SwordAmp,serif;font-weight:700;font-size:calc(var(--ss-logo-size) * .554);line-height:inherit;color:#e8862c;margin-left:.1em}
+.ss-logo-word--sorcery{margin-left:calc(var(--ss-logo-size) * .93)}
+
+/* Hero: the game's landing video behind the wordmark and hook, masked so it fades into the page.
+   The poster is also the box's background, so reduced motion and no-video still show the art. */
+.ss-hero{position:relative;isolation:isolate;padding:0 var(--gutter) clamp(40px,5vw,72px)}
+.ss-bg{position:absolute;z-index:-1;top:0;left:0;right:0;height:min(88svh,820px);background:url('assets/sword-sorcery/key-art.webp') 50% 60%/cover no-repeat;
+  -webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 96%),linear-gradient(to right,transparent,#000 14%,#000 86%,transparent);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 45%,transparent 96%),linear-gradient(to right,transparent,#000 14%,#000 86%,transparent);
+  mask-composite:intersect}
+.ss-bg video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.ss-hero-copy{display:flex;flex-direction:column;justify-content:flex-end;min-height:min(72svh,660px);padding-top:clamp(20px,3vw,32px)}
+.ss-hero-copy .ss-crumbs{margin-bottom:auto}
+.ss-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.ss-crumbs>a.label:hover{color:var(--signal)}
+.ss-hero .ss-logo{text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.ss-intro{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:clamp(24px,3vw,36px)}
+.ss-hero .pitch{text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.ss-intro .pitch{max-width:34ch}
+.ss-button{display:inline-flex;align-items:center;gap:8px;padding:16px 24px;background:var(--signal);color:var(--paper);font-weight:700;transition:background .2s}
+.ss-button:hover{background:var(--ink)}
+.ss-button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.ss-info{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px);padding-top:24px;border-top:1px solid var(--rule)}
+.ss-info dt{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ss-info dd{margin-top:6px;font-size:15px;line-height:1.4}
+
+/* Rail titles sized so even the longest one, "Making it", fits beside its section's content.
+   A taller title stretches the section and adds empty space above the next divider. */
+@media (min-width:901px){.ss-page .rail-title{font-size:clamp(44px,4.4vw,64px)}}
+
+/* Sections: copy left, one picture right */
+.ss-row{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:var(--gap);align-items:start}
+.ss-page .part:last-of-type .ss-row{padding-bottom:clamp(56px,7vw,96px)}
+.ss-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:60ch}
+.ss-copy p,.ss-copy dd,.ss-copy li{color:var(--ink-2)}
+.ss-copy h3{font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
+.ss-plate img{width:100%}
+.ss-sticky{position:sticky;top:24px}
+/* Making it figures: the number heads the figure, and each picture has its own
+   caption under it, led by its part label (1a, 1b) as in a book plate. */
+.ss-page .ss-plate{background:none}
+.ss-fig-n{display:block;grid-column:1/-1;padding:0 0 10px;font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal-ink)}
+.ss-pic img{display:block;width:100%}
+.ss-cap{display:block;padding-top:8px;font:13px/1.4 var(--sans);color:var(--ink-2)}
+.ss-part{margin-right:8px;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--signal-ink)}
+.ss-pic+.ss-pic{margin-top:0}
+
+/* Making it: the art, then a hero card and a scene title from the game, small, as examples. */
+.ss-visuals{display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)}
+.ss-ui{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:0 8px;align-items:start;margin:0}
+.ss-ui img{display:block;width:100%;height:auto}
+.ss-ui-side{display:flex;flex-direction:column;gap:14px}
+
+/* Three pieces of art as one picture */
+.ss-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 8px;background:none}
+.ss-trio img{aspect-ratio:3/4;object-fit:cover}
+
+/* Why: a tick table. Sword & Sorcery is the last row and the only one with every tick.
+   The words Yes and No stay in the markup for screen readers; the marks are drawn over them. */
+.ss-checks table{width:100%;border-collapse:collapse;table-layout:fixed}
+.ss-checks th,.ss-checks td{padding:18px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.ss-checks thead th{padding:0 8px 14px;font:500 11px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);text-align:center;vertical-align:bottom}
+.ss-checks thead td{width:44%;padding:0}
+.ss-checks tbody th{padding-left:0;text-align:left;font:clamp(15px,1.3vw,18px)/1.15 var(--display);text-transform:uppercase;letter-spacing:-.01em;font-weight:400;color:var(--ink-2)}
+.ss-checks tbody th small{display:block;margin-top:6px;font:500 11px/1.4 var(--mono);letter-spacing:.04em;text-transform:none;color:var(--ink-2)}
+.ss-checks td{position:relative;text-align:center;font-size:0;color:transparent}
+.ss-checks td::after{position:absolute;inset:0;display:grid;place-items:center;font:700 22px/1 var(--sans)}
+.ss-checks td.yes::after{content:"✓";color:var(--ink)}
+.ss-checks td.no::after{content:"–";color:var(--ink-2);opacity:.45;font-weight:400}
+.ss-checks .ss-this th{color:var(--signal-ink);font-size:clamp(17px,1.5vw,21px)}
+.ss-checks .ss-this th,.ss-checks .ss-this td{border-top:2px solid var(--signal);border-bottom:2px solid var(--signal)}
+.ss-checks .ss-this th{padding-left:14px;border-left:2px solid var(--signal)}
+.ss-checks .ss-this td:last-child{border-right:2px solid var(--signal)}
+.ss-checks .ss-this td.yes::after{color:var(--signal-ink)}
+@media (max-width:600px){
+  .ss-checks thead td{width:40%}
+  .ss-checks thead th{font-size:10px;padding:0 4px 12px}
+  .ss-checks td{padding:16px 4px}
+}
+
+/* Trade-offs: problem, choice, cost */
+.ss-records{gap:28px}
+.ss-records article{align-self:stretch}
+.ss-records h3{margin-top:0}
+.ss-records dl{margin-top:12px}
+.ss-records dl div{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;padding:14px 0;border-top:1px solid var(--rule)}
+.ss-records dt{font:500 12px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
+
+/* In play: one turn */
+.ss-steps{counter-reset:step;align-self:stretch;border-top:1px solid var(--rule)}
+.ss-steps li{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:12px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.ss-steps li::before{counter-increment:step;content:"0" counter(step);font:500 12px/1.4 var(--mono);letter-spacing:.08em;color:var(--signal-ink);padding-top:4px}
+.ss-steps h3,.ss-steps p{grid-column:2}
+.ss-copy .ss-steps h3{margin-top:0}
+.ss-steps p{margin-top:6px}
+
+/* So far */
+.ss-list{align-self:stretch;border-top:1px solid var(--rule)}
+.ss-list li{position:relative;padding:14px 0 14px 22px;border-bottom:1px solid var(--rule)}
+.ss-list li::before{content:"";position:absolute;left:0;top:23px;width:9px;height:9px;border:1.5px solid var(--ink)}
+.ss-copy .page-links{margin:10px 0 0}
+.ss-legal{font:13px/1.7 var(--mono)}
+
+@media (max-width:1100px){.ss-info{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){
+  .ss-row{grid-template-columns:1fr;row-gap:24px}
+  .ss-sticky{position:static}
+  .ss-bg{height:min(78svh,640px);background-position:62% 60%;-webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 96%);mask-image:linear-gradient(to bottom,#000 45%,transparent 96%)}
+  .ss-bg video{object-position:62% 60%}
+  .ss-hero-copy{min-height:min(66svh,540px)}
+}
+@media (max-width:600px){
+  .ss-logo{--ss-logo-size:clamp(48px,15vw,72px)}
+  .ss-page .rail-title{font-size:clamp(28px,8.5vw,44px)}
+  .ss-info{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+  .ss-button{width:100%;justify-content:center}
+  .ss-steps li{grid-template-columns:32px minmax(0,1fr)}
+  .ss-records dl div{grid-template-columns:1fr;row-gap:4px}
+}
+@media (prefers-reduced-motion:reduce){.ss-button{transition:none}.ss-bg video{display:none}}

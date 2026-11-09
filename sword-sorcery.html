@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sword &amp; Sorcery | Seeker Studio</title>
+<meta name="description" content="A solo fantasy RPG with an AI game master that plays by the 5e rules. Plays in your browser.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="Sword &amp; Sorcery"><meta property="og:description" content="A solo fantasy RPG with an AI game master that plays by the 5e rules."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/sword-sorcery.html"><meta property="og:image" content="https://seeker-studio.games/assets/sword-sorcery/key-art.webp"><meta property="og:image:alt" content="A red dragon asleep on a hoard of coins in a ruined hall">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://seeker-studio.games/sword-sorcery.html">
+<link rel="icon" href="assets/seeker-studio-logo.png" type="image/png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="sword-sorcery.css"><link rel="stylesheet" href="sword-sorcery-page.css"><link rel="stylesheet" href="kofi.css">
+<script src="site.js" defer></script>
+</head>
+<body class="ss-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="brand" href="./" aria-label="Seeker Studio home"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="games.html" aria-current="page">Games</a><a href="tools.html">Tools</a><a href="companions.html">Companions</a><a href="plugins.html">Plugins</a><a href="studio.html">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
+<main id="main">
+
+<section class="ss-hero" aria-labelledby="ss-title">
+<div class="ss-bg" aria-hidden="true"><video src="assets/sword-sorcery/key-art.mp4" poster="assets/sword-sorcery/key-art.webp" autoplay muted loop playsinline disablepictureinpicture preload="auto"></video></div>
+<div class="ss-hero-copy">
+<p class="ss-crumbs"><a class="label" href="games.html">Games /</a> <span class="code">G-02</span> <span class="status"><i></i>Alpha</span></p>
+<h1 id="ss-title" class="ss-logo" aria-label="Sword &amp; Sorcery"><span class="ss-logo-row"><span class="ss-logo-word">Sword</span><span class="ss-logo-amp">&amp;</span></span><span class="ss-logo-row"><span class="ss-logo-word ss-logo-word--sorcery">Sorcery</span></span></h1>
+<div class="ss-intro">
+<p class="pitch">A solo fantasy RPG with an AI game master that plays by the 5e rules.</p>
+<a class="ss-button" href="https://swordsorcery.app/">Play Sword &amp; Sorcery<span aria-hidden="true"> ↗</span></a>
+</div>
+</div>
+<dl class="ss-info">
+<div><dt>Status</dt><dd>Alpha</dd></div>
+<div><dt>Plays in</dt><dd>Your browser, desktop or phone</dd></div>
+<div><dt>Rules</dt><dd>5e SRD 5.2</dd></div>
+<div><dt>Built with</dt><dd>TypeScript, SQL</dd></div>
+<div><dt>Made by</dt><dd>Me, with AI for code and art</dd></div>
+</dl>
+</section>
+
+<section class="part" id="why" aria-labelledby="why-title">
+<div class="part-rail"><span class="code">01</span><h2 id="why-title" class="rail-title">Why</h2></div>
+<div class="part-body ss-row">
+<div class="ss-copy">
+<p>I played D&amp;D growing up, and started playing AI Dungeon in 2018. When language models learned to call tools, I got the idea for a game master that enforces the rules through them: the model tells the story and the engine decides what happens.</p>
+<p>Other games have since tried the same idea. Some follow simplified rulesets of their own, but the AI still improvises almost everything.</p>
+<p>AI is great at narrating a scene, voicing characters and reacting to whatever you try, but often falls short on original ideas and on planning a story across many sessions. So a person writes each campaign, the AI runs it within the author's guidelines, and code enforces the rules. That plays better than a story the model invents as it goes, or one limited to what the author could predict.</p>
+</div>
+<figure class="ss-checks">
+<table>
+<caption class="visually-hidden">How Sword &amp; Sorcery compares with improvised AI games and scripted games</caption>
+<thead><tr><td></td><th scope="col">Written campaign</th><th scope="col">Rules in code</th><th scope="col">Try anything</th></tr></thead>
+<tbody>
+<tr><th scope="row">Improvised AI games<small>AI Dungeon, Everweave, SillyTavern</small></th><td class="no">No</td><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Scripted games<small>Baldur's Gate</small></th><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>
+<tr class="ss-this"><th scope="row">Sword &amp; Sorcery</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+</tbody>
+</table>
+</figure>
+</div>
+</section>
+
+<section class="part" id="making" aria-labelledby="making-title">
+<div class="part-rail"><span class="code">02</span><h2 id="making-title" class="rail-title">Making it</h2></div>
+<div class="part-body">
+<div class="ss-row">
+<div class="ss-copy">
+<p>I designed and built the game end to end: the rules engine, the agentic engineering pipeline, the world, the campaigns and the art direction. AI wrote most of the code from standards I set.</p>
+<h3>World and rules</h3>
+<p>The world is original, but inspired by settings like Greyhawk, because I prefer grounded, old-school settings with humans in focus. Also, Wizards of the Coast owns the Forgotten Realms, which is what comes to mind when most people hear "D&amp;D". The rules are 5e, because the SRD is openly licensed and many players are familiar with them through Baldur's Gate 3.</p>
+<h3>Visual direction</h3>
+<p>The art is generated through Midjourney in a painted style, and the interface borrows from pixel art, as a throwback to the era that inspired the game. I wanted it to feel nostalgic, with dark fantasy elements that stop short of grimdark. The sound design aims for the same balance.</p>
+</div>
+<div class="ss-visuals">
+<figure class="plate ss-plate ss-trio">
+<figcaption class="ss-fig-n">Fig. 1</figcaption>
+<div class="ss-pic"><img src="assets/sword-sorcery/art-portrait.webp" width="800" height="1062" alt="A painted portrait of a young man in a travelling cloak" loading="lazy"><span class="ss-cap"><b class="ss-part">1a</b>Hero portrait</span></div>
+<div class="ss-pic"><img src="assets/sword-sorcery/art-creature.webp" width="800" height="1062" alt="A painted grick rearing up in a cave" loading="lazy"><span class="ss-cap"><b class="ss-part">1b</b>Grick</span></div>
+<div class="ss-pic"><img src="assets/sword-sorcery/art-place.webp" width="800" height="800" alt="A painted royal hall with tall windows and red banners" loading="lazy"><span class="ss-cap"><b class="ss-part">1c</b>Royal hall</span></div>
+</figure>
+<figure class="ss-ui">
+<figcaption class="ss-fig-n">Fig. 2</figcaption>
+<div class="ss-pic"><img src="assets/sword-sorcery/ui-card.webp" width="720" height="1248" alt="The Roderic hero card: a painted portrait in a thin gold frame, the name Roderic in a serif, LV 1 Human Fighter in a pixel font, a one-line description in a pixel serif, and an orange SELECT button with dithered pixel edges" loading="lazy"><span class="ss-cap"><b class="ss-part">2a</b>Hero card</span></div>
+<div class="ss-ui-side">
+<div class="ss-pic"><img src="assets/sword-sorcery/ui-title.webp" width="900" height="372" alt="A scene title plate reading The Sunken Keep in a bold italic serif over a painted village at dusk, with Brindlemark council porch, evening below it in orange pixel capitals" loading="lazy"><span class="ss-cap"><b class="ss-part">2b</b>Scene title</span></div>
+<div class="ss-pic"><img src="assets/sword-sorcery/ui-buttons.webp" width="900" height="80" alt="Two buttons: Decline with a pixel cross icon, and an orange Accept with a pixel tick icon and dithered pixel edges" loading="lazy"><span class="ss-cap"><b class="ss-part">2c</b>Buttons</span></div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section class="part" id="tradeoffs" aria-labelledby="tradeoffs-title">
+<div class="part-rail"><span class="code">03</span><h2 id="tradeoffs-title" class="rail-title">Trade-offs</h2></div>
+<div class="part-body ss-row">
+<div class="ss-copy ss-records">
+<article>
+<h3>The engine owns every number</h3>
+<dl>
+<div><dt>Problem</dt><dd>If the model decides outcomes, you can talk your way to a win.</dd></div>
+<div><dt>Choice</dt><dd>Hit points, coins, XP and turns change only through tools the engine checks.</dd></div>
+<div><dt>Cost</dt><dd>The model can still narrate something the engine refused. A check catches it, and has to stay loose enough to allow ordinary storytelling.</dd></div>
+</dl>
+</article>
+<article>
+<h3>The engine lists the choices</h3>
+<dl>
+<div><dt>Problem</dt><dd>A misread sentence can send you to the wrong room or kill someone you meant to spare.</dd></div>
+<div><dt>Choice</dt><dd>A classifier picks from options the engine lists, including "unclear", and the engine acts only on a clear pick.</dd></div>
+<div><dt>Cost</dt><dd>Quoted speech trips it up. One model update read "Scrap says, knock Melfor out. I attack Melfor." as a nonlethal attack, and fixing it took a new set of test cases.</dd></div>
+</dl>
+</article>
+<article>
+<h3>Memory is stored as facts</h3>
+<dl>
+<div><dt>Problem</dt><dd>A long campaign outgrows any prompt.</dd></div>
+<div><dt>Choice</dt><dd>Quests, relationships and events are stored as versioned facts, and the most relevant go into each turn.</dd></div>
+<div><dt>Cost</dt><dd>Assembling memory can add several seconds to a turn.</dd></div>
+</dl>
+</article>
+</div>
+<figure class="plate ss-plate ss-sticky">
+
+<img src="assets/sword-sorcery/d20.webp" width="1024" height="1024" alt="A painted d20 glowing amber in the dark" loading="lazy"></figure>
+</div>
+</section>
+
+<section class="part" id="in-play" aria-labelledby="in-play-title">
+<div class="part-rail"><span class="code">04</span><h2 id="in-play-title" class="rail-title">In play</h2></div>
+<div class="part-body ss-row">
+<div class="ss-copy">
+<p>The engine tracks spell slots, action economy, concentration and conditions. AI companions fill out your party, and your hero keeps their level, gear and memories from one campaign to the next.</p>
+<p>In the Sunken Keep, Melena finds a goblin sentry asleep and asks how to handle him. Say you answer "I hit him before he wakes."</p>
+<ol class="ss-steps">
+<li><h3>Brief</h3><p>The model gets the rules, your sheet, the room and what the game remembers about this quest. It can start combat, but has no attack tool until it does.</p></li>
+<li><h3>Resolve</h3><p>It starts combat and attacks. The engine checks both calls, rolls the dice and ends the fight when the sentry drops.</p></li>
+<li><h3>Record</h3><p>The model narrates the result. The sentry's death is stored as a fact, and the save goes to your account.</p></li>
+</ol>
+</div>
+<figure class="plate ss-plate ss-sticky">
+
+<img src="assets/sword-sorcery/play-companion.webp" width="1600" height="1600" alt="The play screen inside The Sunken Keep. Narration describes a goblin sentry asleep on a bench, and Melena, a hooded archer, asks whether to slip past him or take him down." loading="lazy"><span class="ss-cap">The Sunken Keep</span></figure>
+</div>
+</section>
+
+<section class="part" id="so-far" aria-labelledby="so-far-title">
+<div class="part-rail"><span class="code">05</span><h2 id="so-far-title" class="rail-title">So far</h2></div>
+<div class="part-body ss-row">
+<div class="ss-copy">
+<p>Sword &amp; Sorcery is a playable alpha, free with the included model or with your own key. Multiplayer may come later.</p>
+<h3>What I learned</h3>
+<ul class="ss-list">
+<li>Put a rule in code before you put it in a prompt.</li>
+<li>Give each fact one owner. The worst bugs came from two systems deciding the same outcome.</li>
+<li>Tests show the code works. Only players can show the game is fun.</li>
+</ul>
+<div class="page-links"><a class="go" href="https://swordsorcery.app/">Play Sword &amp; Sorcery<span aria-hidden="true"> ↗</span></a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="go" href="games.html">All games<span aria-hidden="true"> →</span></a></div>
+<p class="ss-legal">Dungeons &amp; Dragons, Forgotten Realms and Greyhawk are trademarks of Wizards of the Coast LLC. Sword &amp; Sorcery is an independent game built on the System Reference Document 5.2, licensed under Creative Commons Attribution 4.0, and is not affiliated with or endorsed by Wizards of the Coast.</p>
+</div>
+<figure class="plate ss-plate">
+
+<img src="assets/sword-sorcery/landscape.webp" width="1200" height="800" alt="A painted valley at dusk, with a road leading toward a distant castle under snowy mountains" loading="lazy"></figure>
+</div>
+</section>
+
+</main>
+<footer><a class="brand" href="./"><img src="assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a><a href="support.html">Support</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
+<a class="kofi-float" href="https://ko-fi.com/seekerstudio"><img src="assets/ko-fi-cup.svg" width="24" height="19" alt=""><span>Tip on Ko-fi</span></a>
+</body></html>
