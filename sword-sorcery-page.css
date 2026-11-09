@@ -31,7 +31,7 @@
 .ss-button{display:inline-flex;align-items:center;gap:8px;padding:16px 24px;background:var(--signal);color:var(--paper);font-weight:700;transition:background .2s}
 .ss-button:hover{background:var(--ink)}
 .ss-button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.ss-info{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px);padding-top:24px;border-top:1px solid var(--rule)}
+.ss-info{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);margin-top:clamp(28px,4vw,48px);padding-top:24px;border-top:1px solid var(--rule)}
 .ss-info dt{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .ss-info dd{margin-top:6px;font-size:15px;line-height:1.4}
 
