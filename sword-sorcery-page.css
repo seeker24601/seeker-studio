@@ -38,6 +38,8 @@
 /* Rail titles sized so even the longest one, "Making it", fits beside its section's content.
    A taller title stretches the section and adds empty space above the next divider. */
 @media (min-width:901px){.ss-page .rail-title{font-size:clamp(44px,4.4vw,64px)}}
+/* The titles here are smaller than on the homepage, so a thinner outline keeps the same weight. */
+@supports (-webkit-text-stroke:1px){.ss-page .rail-title{-webkit-text-stroke-width:1px}}
 
 /* Sections: copy left, one picture right */
 .ss-row{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:var(--gap);align-items:start}
