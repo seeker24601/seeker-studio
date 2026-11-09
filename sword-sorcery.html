@@ -71,16 +71,14 @@
 </div>
 <figure class="ss-flow ss-sticky">
 <figcaption class="ss-fig-n">Fig. 1</figcaption>
-<p class="ss-flow-key" aria-hidden="true"><span class="ss-step-model"><i class="ss-mark"></i>Model</span><span class="ss-step-code"><i class="ss-mark"></i>Engine, in code</span></p>
-<ol>
-<li class="ss-step-you"><i class="ss-mark" aria-hidden="true"></i><b>You<span class="visually-hidden">, you:</span></b> <span>type what your hero does</span></li>
-<li class="ss-step-model"><i class="ss-mark" aria-hidden="true"></i><b>Decision models<span class="visually-hidden">, model:</span></b> <span>read your intent and pick one of the engine’s options</span></li>
-<li class="ss-step-model"><i class="ss-mark" aria-hidden="true"></i><b>Main model<span class="visually-hidden">, model:</span></b> <span>calls the engine’s tools</span></li>
-<li class="ss-step-code"><i class="ss-mark" aria-hidden="true"></i><b>Engine<span class="visually-hidden">, engine:</span></b> <span>applies the rules, rolls the dice and decides what happens</span></li>
-<li class="ss-step-model"><i class="ss-mark" aria-hidden="true"></i><b>Main model or combat narrator<span class="visually-hidden">, model:</span></b> <span>tells the story of what the engine decided</span></li>
-<li class="ss-step-model ss-step-after"><i class="ss-mark" aria-hidden="true"></i><b>Auxiliary model<span class="visually-hidden">, model:</span></b> <span>tracks the scene, suggests your next actions and updates memory</span></li>
+<p class="ss-flow-key" aria-hidden="true"><span class="ss-k-model"><i class="ss-mark"></i>Model</span><span class="ss-k-code"><i class="ss-mark"></i>Engine, in code</span><span class="ss-k-you"><i class="ss-mark"></i>Player</span></p>
+<ol class="ss-turn">
+<li class="ss-node ss-k-you"><i class="ss-mark" aria-hidden="true"></i><b>You<span class="visually-hidden"> (you)</span></b><span>type what your hero does</span></li>
+<li class="ss-fork"><span class="ss-fork-label">At the same time</span><ol class="ss-cols"><li class="ss-col"><ol><li class="ss-node ss-k-code"><i class="ss-mark" aria-hidden="true"></i><b>Engine<span class="visually-hidden"> (engine)</span></b><span>saves your turn</span></li></ol></li><li class="ss-col"><ol><li class="ss-node ss-k-model"><i class="ss-mark" aria-hidden="true"></i><b>Decision models<span class="visually-hidden"> (model)</span></b><span>read your intent</span></li></ol></li></ol></li>
+<li class="ss-fork"><span class="ss-fork-label">One of two paths</span><ol class="ss-cols"><li class="ss-col"><span class="ss-col-label">Exploring</span><ol><li class="ss-loop"><ol><li class="ss-node ss-k-model"><i class="ss-mark" aria-hidden="true"></i><b>Main model<span class="visually-hidden"> (model)</span></b><span>calls the engine’s tools</span></li><li class="ss-node ss-k-code"><i class="ss-mark" aria-hidden="true"></i><b>Engine<span class="visually-hidden"> (engine)</span></b><span>applies the rules and rolls the dice</span></li></ol><span class="ss-loop-label">Repeats until the engine has decided</span></li><li class="ss-node ss-k-model"><i class="ss-mark" aria-hidden="true"></i><b>Main model<span class="visually-hidden"> (model)</span></b><span>narrates what the engine decided</span></li></ol></li><li class="ss-col"><span class="ss-col-label">In combat</span><ol><li class="ss-node ss-k-code"><i class="ss-mark" aria-hidden="true"></i><b>Engine<span class="visually-hidden"> (engine)</span></b><span>resolves the round for every combatant</span></li><li class="ss-node ss-k-model"><i class="ss-mark" aria-hidden="true"></i><b>Combat narrator<span class="visually-hidden"> (model)</span></b><span>narrates the round while it plays out</span></li></ol></li></ol></li>
+<li class="ss-fork ss-fork-end"><span class="ss-fork-label">At the same time</span><ol class="ss-cols"><li class="ss-col"><ol><li class="ss-node ss-k-you"><i class="ss-mark" aria-hidden="true"></i><b>You<span class="visually-hidden"> (you)</span></b><span>read what happened and act again</span></li></ol></li><li class="ss-col ss-col-bg"><ol><li class="ss-node ss-k-model"><i class="ss-mark" aria-hidden="true"></i><b>Auxiliary model<span class="visually-hidden"> (model)</span></b><span>tracks the scene, suggests actions and updates memory</span></li></ol></li></ol></li>
 </ol>
-<span class="ss-cap">One turn, from what you type to the narration</span>
+<span class="ss-cap">One turn, with the work that runs side by side and the separate path for combat</span>
 </figure>
 </div>
 <div class="ss-row ss-row--flip">

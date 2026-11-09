@@ -75,27 +75,48 @@
 .ss-pic+.ss-pic{margin-top:0}
 
 
-/* Making it, Fig. 1: one turn as a timeline. Ember diamonds are models, cream squares the engine.
-   The dashed stretch leads to the auxiliary model, which runs after the turn. */
-.ss-flow{margin:0;max-width:480px}
-.ss-flow-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 18px}
-.ss-flow-key span{display:flex;align-items:center;gap:10px;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-.ss-flow-key .ss-mark{position:static}
-.ss-flow ol{position:relative}
-.ss-flow li{position:relative;padding:0 0 22px 34px;font:14px/1.45 var(--sans);color:var(--ink-2)}
-.ss-flow li::before{content:"";position:absolute;left:7px;top:14px;bottom:-2px;border-left:1px solid var(--ink-2);opacity:.5}
-.ss-flow li:last-child{padding-bottom:0}
-.ss-flow li:last-child::before{display:none}
-.ss-flow li:has(+ .ss-step-after)::before{border-left-style:dashed}
-.ss-flow li.ss-step-after{margin-top:10px}
-.ss-flow li b{display:block;margin-bottom:2px;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
-.ss-flow li.ss-step-after b::after{content:"After the turn";margin-left:10px;color:var(--ink-2);opacity:.75}
-.ss-mark{position:absolute;left:1px;top:2px;display:inline-block;width:12px;height:12px;flex:none}
-.ss-step-you .ss-mark{border:1px solid var(--ink);border-radius:50%;background:var(--paper,#121110)}
-.ss-step-model .ss-mark{background:#d9763c;transform:rotate(45deg) scale(.86)}
-.ss-step-code .ss-mark{background:var(--ink)}
-.ss-flow li.ss-step-code b{color:var(--ink)}
-.ss-flow li.ss-step-code>span{color:var(--ink)}
+/* Making it, Fig. 1: one turn as a flow. Ember diamonds are models, cream squares the engine,
+   circles the player. A fork splits the line where work runs at the same time or the turn takes one
+   of two paths; a bracket marks the loop between the main model and the engine. */
+.ss-flow{margin:0;max-width:520px;--line:rgba(243,234,208,.38)}
+.ss-flow-key{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 20px}
+.ss-flow-key span{display:flex;align-items:center;gap:9px;font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ss-mark{display:inline-block;flex:none;width:11px;height:11px}
+.ss-k-you .ss-mark{border:1px solid var(--ink);border-radius:50%}
+.ss-k-model .ss-mark{background:#d9763c;transform:rotate(45deg) scale(.85)}
+.ss-k-code .ss-mark{background:var(--ink)}
+.ss-node{position:relative;display:grid;grid-template-columns:11px minmax(0,1fr);column-gap:10px;padding:9px 10px;border:1px solid var(--rule);background:#161514;font:13px/1.4 var(--sans);color:var(--ink-2)}
+.ss-node .ss-mark{grid-row:1/3;margin-top:2px}
+.ss-node b{font:500 11px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
+.ss-node.ss-k-code{border-color:rgba(243,234,208,.45)}
+.ss-node.ss-k-code>span{color:var(--ink)}
+/* Lines: every item after the first hangs from a short line above it. */
+.ss-turn>li+li{margin-top:18px}
+.ss-turn>li+li::before,.ss-col li+li::before{content:"";position:absolute;left:50%;top:-18px;height:18px;border-left:1px solid var(--line)}
+.ss-col li+li::before{top:-14px;height:14px}
+.ss-col ol>li+li{margin-top:14px}
+.ss-turn>li{position:relative}
+/* Forks: a bar across the two columns, a stub down to each, and a bar back together below. */
+.ss-fork-label{position:absolute;top:-16px;left:calc(50% + 10px);font:500 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ss-cols{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}
+.ss-cols::before,.ss-cols::after{content:"";position:absolute;left:calc(25% - 3px);right:calc(25% - 3px);border-top:1px solid var(--line)}
+.ss-cols::before{top:0}
+.ss-cols::after{bottom:0}
+.ss-fork-end .ss-cols::after{display:none}
+.ss-col{display:flex;flex-direction:column}
+.ss-col::before,.ss-col::after{content:"";align-self:center;border-left:1px solid var(--line)}
+.ss-col::before{height:14px}
+.ss-col::after{flex:1;min-height:14px}
+.ss-fork-end .ss-col::after{display:none}
+.ss-col-bg::before{border-left-style:dashed}
+.ss-col-bg .ss-node{border-style:dashed}
+.ss-col-label{align-self:center;margin-bottom:6px;font:500 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
+.ss-col-label+ol{position:relative}
+/* The loop: a bracket on the right joins the main model and the engine. */
+.ss-loop{position:relative;padding-right:16px}
+.ss-loop>ol>li+li{margin-top:14px}
+.ss-loop::after{content:"";position:absolute;right:2px;top:18px;bottom:44px;width:8px;border:1px solid #d9763c;border-left:0}
+.ss-loop-label{display:block;margin-top:8px;font:500 10px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--signal-ink)}
 
 /* Making it: the art, then a hero card and a scene title from the game, small, as examples. */
 .ss-visuals{display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)}
