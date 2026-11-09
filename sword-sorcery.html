@@ -64,7 +64,7 @@
 <div class="ss-copy">
 <p>I designed and built the game end to end: the rules engine, the agentic engineering pipeline, the world, the campaigns and the art direction. AI wrote most of the code from standards I set.</p>
 <h3>Agentic engineering</h3>
-<p>The game is a set of modular systems, such as combat, memory and campaigns, that communicate with each other. Building it in modules isolates the blast radius of a bug. AI agents handle a change inside one system well, but often miss how it affects the others.</p>
+<p>The game is a set of modular systems, such as combat, memory and campaigns, that interact with each other. Building it in modules isolates the blast radius of a bug. AI agents handle a change inside one system well, but often miss how it affects the others.</p>
 <p>The code is built using a custom-made harness. Each change has to name the systems it touches and link their documentation, an independent agent reviews it, and the repository refuses any push to production except the exact commit approved for release.</p>
 <h3>Models</h3>
 <p>Different models handle different work. The main model narrates and calls the engine’s tools, a separate model narrates combat, and a cheaper auxiliary model works in the background after each turn, tracking the scene, suggesting actions and updating the world’s memory. If a model fails, a fallback takes over.</p>
