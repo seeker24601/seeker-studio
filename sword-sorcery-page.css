@@ -44,10 +44,21 @@
 .ss-page .part:last-of-type .ss-row{padding-bottom:clamp(56px,7vw,96px)}
 .ss-copy{display:flex;flex-direction:column;align-items:flex-start;gap:14px;max-width:60ch}
 .ss-copy p,.ss-copy dd,.ss-copy li{color:var(--ink-2)}
+.ss-copy strong{color:var(--ink);font-weight:600}
 .ss-copy h3{font:clamp(18px,1.6vw,22px)/1.1 var(--display);text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
 .ss-plate img{width:100%}
 .ss-sticky{position:sticky;top:24px}
-.ss-small{width:100%;max-width:300px}
+/* Trade-offs: the zones diagram, stacked as in the game: farthest zone at the top, your hero at the bottom.
+   Square tokens echo the pixel interface. */
+.ss-zones{margin:0;width:100%;max-width:440px}
+.ss-zones ol{border-top:1px solid var(--rule)}
+.ss-zones li{display:grid;grid-template-columns:7.5rem minmax(0,1fr) 3.5rem;align-items:center;column-gap:12px;min-height:52px;border-bottom:1px dashed var(--rule)}
+.ss-zones li.ss-zone-you{border-bottom:1px solid var(--rule);border-top:1px solid var(--ink-2)}
+.ss-zone-name{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.ss-zone-tokens{display:flex;justify-content:center;gap:8px}
+.ss-zone-ft{font:500 11px/1.3 var(--mono);letter-spacing:.06em;color:var(--ink-2);text-align:right}
+.ss-tok{display:inline-block;width:18px;height:18px;background:#d9763c}
+.ss-tok-you{background:var(--ink)}
 /* Making it figures: the number heads the figure, and each picture has its own
    caption under it, led by its part label (1a, 1b) as in a book plate. */
 .ss-page .ss-plate{background:none}
@@ -98,18 +109,16 @@
 .ss-records dl div{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;padding:14px 0;border-top:1px solid var(--rule)}
 .ss-records dt{font:500 12px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
 
-/* In play: one turn */
-.ss-steps{counter-reset:step;align-self:stretch;border-top:1px solid var(--rule)}
-.ss-steps li{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:12px;padding:18px 0;border-bottom:1px solid var(--rule)}
-.ss-steps li::before{counter-increment:step;content:"0" counter(step);font:500 12px/1.4 var(--mono);letter-spacing:.08em;color:var(--signal-ink);padding-top:4px}
-.ss-steps h3,.ss-steps p{grid-column:2}
-.ss-copy .ss-steps h3{margin-top:0}
-.ss-steps p{margin-top:6px}
 
-/* So far */
-.ss-list{align-self:stretch;border-top:1px solid var(--rule)}
-.ss-list li{position:relative;padding:14px 0 14px 22px;border-bottom:1px solid var(--rule)}
-.ss-list li::before{content:"";position:absolute;left:0;top:23px;width:9px;height:9px;border:1.5px solid var(--ink)}
+/* So far: a unit chart of the game's content, one square per entry, in the game's ember. */
+.ss-units{margin:0}
+.ss-units dl{display:flex;flex-direction:column;gap:22px}
+.ss-units dl>div{display:grid;grid-template-columns:minmax(0,1fr);row-gap:4px}
+.ss-units dt{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.ss-units dd{display:flex;flex-direction:column;gap:10px}
+.ss-unit-n{font:clamp(26px,2.6vw,36px)/.9 var(--display);color:var(--ink)}
+.ss-units svg{display:block;width:100%;max-width:400px;height:auto;fill:#d9763c}
+.ss-units .ss-cap{padding-top:22px}
 .ss-copy .page-links{margin:10px 0 0}
 .ss-legal{font:13px/1.7 var(--mono)}
 
@@ -126,7 +135,6 @@
   .ss-page .rail-title{font-size:clamp(28px,8.5vw,44px)}
   .ss-info{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
   .ss-button{width:100%;justify-content:center}
-  .ss-steps li{grid-template-columns:32px minmax(0,1fr)}
   .ss-records dl div{grid-template-columns:1fr;row-gap:4px}
 }
 @media (prefers-reduced-motion:reduce){.ss-button{transition:none}.ss-bg video{display:none}}
