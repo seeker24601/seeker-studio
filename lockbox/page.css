@@ -84,7 +84,8 @@
 .lb-warn b{color:var(--ink);font-weight:600}
 @media (prefers-reduced-motion:reduce){.lb-dl{transition:none}}
 
-@media (max-width:900px){.lb-steps{grid-template-columns:1fr;row-gap:24px}}
+/* "How it was built" is the longest title; when titles turn horizontal it must still fit one line. */
+@media (max-width:900px){.lb-steps{grid-template-columns:1fr;row-gap:24px}.lb-page .rail-title{font-size:clamp(22px,6.4vw,44px)}}
 @media (max-width:600px){
   .lb-states>div{grid-template-columns:1fr;row-gap:4px}
   .lb-releases li span{grid-column:1/-1}
