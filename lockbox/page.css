@@ -33,7 +33,9 @@
 .lb-out thead th{padding-top:0;font:500 11px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .lb-out tbody th{width:24%;font:500 12px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 
-/* So far: releases, newest last */
+/* Download: buttons and notes, then the releases, then links. Tighter than the page's section rows. */
+#download .cs-stack{gap:clamp(32px,4vw,48px)}
+/* Releases, newest last */
 .lb-releases ol{border-top:1px solid var(--rule)}
 .lb-releases li{display:grid;grid-template-columns:7.5rem 9rem minmax(0,1fr);column-gap:var(--gap);padding:12px 0;border-bottom:1px solid var(--rule);font:14px/1.45 var(--sans);color:var(--ink-2)}
 .lb-releases li:last-child{border-bottom:0}
