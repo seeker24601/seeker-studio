@@ -54,6 +54,27 @@
 </ol></div>
 <span class="cs-cap">Steps from nothing to a stored file and a locked vault</span>
 </figure>
+<div class="cs-row">
+<div class="cs-copy">
+<h3>A password-protected ZIP</h3>
+<p>A ZIP with a password looks simpler still, but it only encrypts what is inside each file. Anyone can read the file names, and to use a file you extract it, which leaves a readable copy on disk until you delete it. Strong encryption needs a tool such as 7-Zip, and the older ZipCrypto scheme can be broken.</p>
+<p>A ZIP still wins on portability. It opens on any computer, and it needs no administrator rights or Windows Pro.</p>
+</div>
+<figure class="cs-fig lb-vs">
+<table>
+<caption class="visually-hidden">A password-protected ZIP compared with Lockbox</caption>
+<thead><tr><td></td><th scope="col">ZIP</th><th scope="col" class="lb-vs-this">Lockbox</th></tr></thead>
+<tbody>
+<tr><th scope="row">File names hidden</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Use files without extracting them</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Nothing readable left after you lock</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Opens on any computer</th><td class="yes">Yes</td><td class="no">No</td></tr>
+<tr><th scope="row">Works on Windows Home, without admin rights</th><td class="yes">Yes</td><td class="no">No</td></tr>
+</tbody>
+</table>
+<span class="cs-cap">A password-protected ZIP compared with Lockbox</span>
+</figure>
+</div>
 </div>
 </section>
 
