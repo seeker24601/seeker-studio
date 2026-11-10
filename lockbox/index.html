@@ -42,21 +42,25 @@
 <section class="part" id="why" aria-labelledby="why-title">
 <div class="part-rail"><span class="code">01</span><h2 id="why-title" class="rail-title">Why</h2></div>
 <div class="part-body cs-stack">
+<div class="lb-cols">
 <div class="cs-copy">
-<p>I needed somewhere on my own computer to keep prompts and API keys behind a password. I tried VeraCrypt and Cryptomator, but they were more complex than what I was trying to do. VeraCrypt asks you to choose an encryption algorithm, a hash and a filesystem before you can store a file, and Cryptomator is built around vaults that sync through cloud storage.</p>
+<p>I needed somewhere on my own computer to keep prompts and API keys behind a password. I tried VeraCrypt and Cryptomator, but they were more complex than what I was trying to do.</p>
+<p>A password-protected ZIP is simpler still, but anyone can read its file names, and every file you open is extracted as a readable copy.</p>
+</div>
+<div class="cs-copy">
 <p>Mac and Windows already have the encryption, in encrypted disk images and BitLocker, but using it by hand means creating, opening and ejecting a disk yourself. Lockbox does only the part I needed: pick a folder, set a password, add files, lock. I use it myself, on both Windows and Mac.</p>
-<p>A password-protected ZIP is simpler still, but anyone can read its file names, and every file you open is extracted as a readable copy. A ZIP does travel better: any computer opens it.</p>
+</div>
 </div>
 <figure class="cs-fig lb-steps">
 <div><h3>VeraCrypt</h3><ol>
 <li>Create Volume</li><li>Choose an encrypted file container</li><li>Choose a standard or hidden volume</li><li>Pick where the file goes</li><li>Choose an encryption algorithm and hash</li><li>Set the volume size</li><li>Set a password</li><li>Choose a filesystem</li><li>Move the mouse to gather randomness</li><li>Format</li><li>Pick a drive slot and mount</li><li>Copy files in</li><li>Dismount</li>
-</ol></div>
+</ol><p class="lb-count" aria-hidden="true"><span>steps</span></p></div>
 <div><h3>Cryptomator</h3><ol>
 <li>Add a vault</li><li>Name it</li><li>Choose where it’s stored</li><li>Skip or set the expert settings</li><li>Set a password</li><li>Choose whether to make a recovery key</li><li>Unlock</li><li>Reveal the drive</li><li>Copy files in</li><li>Lock</li>
-</ol></div>
+</ol><p class="lb-count" aria-hidden="true"><span>steps</span></p></div>
 <div class="lb-this"><h3>Lockbox</h3><ol>
 <li>Create Lockbox</li><li>Pick a folder and set a password</li><li>Add files</li><li>Lock, or close the window</li>
-</ol></div>
+</ol><p class="lb-count" aria-hidden="true"><span>steps</span></p></div>
 <span class="cs-cap">Steps from nothing to a locked vault</span>
 </figure>
 </div>
@@ -64,13 +68,11 @@
 
 <section class="part" id="how" aria-labelledby="how-title">
 <div class="part-rail"><span class="code">02</span><h2 id="how-title" class="rail-title">How it was built</h2></div>
-<div class="part-body cs-row cs-row--flip">
+<div class="part-body cs-stack">
+<div class="cs-row">
 <div class="cs-copy">
-<p>Lockbox started as a Mac app. AI agents wrote most of the code from prompts I wrote: what to build and what to leave out, how to test it, and the workflows that let them catch and fix their own bugs. The Windows version is a separate native app built on BitLocker, sharing the Mac app’s behaviour and wording.</p>
-<p>On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
-<p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open, and check that Lockbox locks the vault or, after a crash, reports it as still open. On Windows, tests create, unlock and lock real BitLocker vaults with administrator rights.</p>
-<p>On the day of the first Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
-<p>If I started again, I’d check what each system offers before designing the app. Lockbox was built around the Mac’s encrypted disk images, which Windows doesn’t have, so the Windows version had to be rebuilt on BitLocker.</p>
+<p>Lockbox started as a Mac app. AI agents wrote most of the code from prompts I wrote: what to build and what to leave out, how to test it, and the workflows that let them catch and fix their own bugs.</p>
+<p>Each system does the encryption, and Lockbox only drives it. The Windows version is a separate native app that shares the Mac app’s behaviour and wording. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
 </div>
 <figure class="cs-fig cs-flow lb-arch">
 <p class="cs-flow-key" aria-hidden="true"><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span><span class="lb-k-sys"><i class="cs-mark"></i>Your system</span></p>
@@ -86,6 +88,12 @@
 </ol></div>
 <span class="cs-cap">What Lockbox drives on each system when you unlock</span>
 </figure>
+</div>
+<div class="cs-lessons">
+<div><h4>Testing</h4><p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open. On Windows, tests create, unlock and lock real BitLocker vaults.</p></div>
+<div><h4>Review</h4><p>On the day of the first Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke Windows 0.1.1, which couldn’t create or unlock vaults. The BitLocker tests caught it, and 0.1.2 replaced it the same day.</p></div>
+<div><h4>In hindsight</h4><p>I’d check what each system offers before designing the app. Lockbox was built around the Mac’s encrypted disk images, which Windows doesn’t have, so the Windows version had to be rebuilt on BitLocker.</p></div>
+</div>
 </div>
 </section>
 
@@ -109,23 +117,18 @@
 </figure>
 </div>
 <div class="cs-row cs-row--flip">
-<div class="cs-copy">
-<p>An eject can fail quietly or leave the encrypted disk attached. Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. Anything it can’t confirm shows as a state of its own, never as Locked.</p>
-</div>
-<figure class="cs-fig cs-flow">
-<p class="cs-flow-key" aria-hidden="true"><span class="cs-k-you"><i class="cs-mark"></i>You</span><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span></p>
-<ol class="cs-steps">
-<li class="cs-node cs-k-you"><i class="cs-mark" aria-hidden="true"></i><b>You</b><span>choose Lock, close the vault’s window or quit</span></li>
-<li class="cs-node cs-k-app"><i class="cs-mark" aria-hidden="true"></i><b>Lockbox</b><span>ejects the vault without forcing it, then checks that the disk is gone</span></li>
-</ol>
-<span class="lb-states-label">What Lockbox shows</span>
+<div class="cs-copy lb-check">
+<p>An eject can fail quietly or leave the encrypted disk attached. Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. Anything it can’t confirm shows as a state of its own.</p>
 <dl class="lb-states">
 <div><dt class="lb-locked">Locked</dt><dd>The disk is gone.</dd></div>
 <div><dt>Unlocked</dt><dd>A file in the vault is still open, so the eject failed. An error says so.</dd></div>
 <div><dt>Not locked</dt><dd>The drive is gone but the disk is still attached. Finish Locking detaches it.</dd></div>
 <div><dt>Unverified</dt><dd>The check failed or timed out.</dd></div>
 </dl>
-<span class="cs-cap">What happens when you lock, and the state Lockbox shows after its check</span>
+</div>
+<figure class="cs-fig">
+<img src="../assets/lockbox/locked.webp" width="860" height="394" alt="The top of the Lockbox window on Windows: a BitLocker label, a pixel padlock and LOCKED in a pixel font over faint lines of random characters, with Locked and encrypted below" loading="lazy">
+<span class="cs-cap">Locked, shown only after the check passes</span>
 </figure>
 </div>
 </div>
@@ -142,24 +145,20 @@
 </div>
 <p class="lb-sums">SHA-256: <a href="../downloads/Lockbox-0.2.9-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
 <div class="lb-install">
-<details>
-<summary>Install on Mac</summary>
+<h3>Install on Mac</h3>
 <ol>
 <li>Open the ZIP and drag <b>Lockbox.app</b> into Applications.</li>
 <li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
 <li>Allow Finder Automation if asked. It lets closing the vault’s Finder window lock it.</li>
 </ol>
 <p>Requires an Apple silicon Mac on macOS 13 or later. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple’s guide to opening apps from unidentified developers</a>.</p>
-</details>
-<details>
-<summary>Install on Windows</summary>
+<h3>Install on Windows</h3>
 <ol>
 <li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
 <li>Approve the administrator prompt. Windows needs it to open disk images.</li>
 <li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
 </ol>
 <p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can’t turn on BitLocker.</p>
-</details>
 </div>
 </div>
 <div class="lb-side">

@@ -6,16 +6,18 @@
 .lb-mark svg{width:.86em;height:.86em;flex:none;color:var(--ice)}
 
 /* Trade-offs: what Lockbox shows after it tries to lock. The state words are set like the app's headline. */
-.lb-states{border-top:1px solid var(--rule)}
+.lb-check{gap:20px}
+.lb-states{align-self:stretch;border-top:1px solid var(--rule)}
 .lb-states>div{display:grid;grid-template-columns:10rem minmax(0,1fr);column-gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px dashed var(--rule)}
 .lb-states>div:last-child{border-bottom:0}
 .lb-states dt{font:22px/1 var(--pixel);text-transform:uppercase;color:var(--ink-2)}
 .lb-states dt.lb-locked{color:var(--ice)}
 .lb-states dd{font:13px/1.45 var(--sans);color:var(--ink-2)}
-.lb-states-label{display:block;margin:18px 0 8px;font:500 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 
 /* Why: the steps each tool takes from nothing to a stored file, side by side. Lockbox is the last column.
    The lists' length is the comparison, so every step is one short line. */
+/* Why: two columns of copy above the steps figure */
+.lb-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px var(--gap)}
 .lb-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gap);align-items:start}
 .lb-steps h3{margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid var(--rule);font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .lb-steps ol{counter-reset:step}
@@ -24,6 +26,12 @@
 .lb-steps .lb-this h3{color:var(--signal-ink);border-bottom:2px solid var(--signal)}
 .lb-steps .lb-this li{color:var(--ink)}
 .lb-steps .lb-this li::before{color:var(--signal-ink);opacity:1}
+/* Each column is headed by its step count, read from the list's own counter, so it can't drift from the list. */
+.lb-steps>div{display:flex;flex-direction:column}
+.lb-count{order:-1;display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.lb-count::before{content:counter(step);font:clamp(40px,4.4vw,64px)/.9 var(--display);color:var(--ink-2)}
+.lb-count span{font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.lb-steps .lb-this .lb-count::before,.lb-steps .lb-this .lb-count span{color:var(--signal-ink)}
 .lb-steps .cs-cap{grid-column:1/-1;margin-top:16px}
 
 /* Trade-offs: each choice, what you get from it and what it costs, right under its one-line intro */
@@ -71,12 +79,8 @@
 .lb-sums{font:13px/1.5 var(--mono);color:var(--ink-2)}
 .lb-sums a{color:var(--ink)}
 .lb-install{width:100%}
-.lb-install details{border-top:1px solid var(--rule)}
-.lb-install details:last-child{border-bottom:1px solid var(--rule)}
-.lb-install summary{padding:14px 0;cursor:pointer;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
-.lb-install summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.lb-install h3{margin:18px 0 10px;padding-top:16px;border-top:1px solid var(--rule);font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .lb-install ol{list-style:decimal;padding:0 0 10px 20px;display:flex;flex-direction:column;gap:6px}
-.lb-install details>p{padding:0 0 16px}
 .lb-install b{color:var(--ink);font-weight:600}
 .lb-warn{margin:0;padding:18px 20px;border:1px solid var(--rule);border-left:3px solid var(--signal)}
 .lb-warn h3{margin:0 0 10px;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--signal-ink)}
@@ -85,7 +89,7 @@
 @media (prefers-reduced-motion:reduce){.lb-dl{transition:none}}
 
 /* "How it was built" is the longest title; when titles turn horizontal it must still fit one line. */
-@media (max-width:900px){.lb-steps{grid-template-columns:1fr;row-gap:24px}.lb-page .rail-title{font-size:clamp(22px,6.4vw,44px)}}
+@media (max-width:900px){.lb-cols{grid-template-columns:1fr}.lb-steps{grid-template-columns:1fr;row-gap:28px}.lb-page .rail-title{font-size:clamp(22px,6.4vw,44px)}}
 @media (max-width:600px){
   .lb-states>div{grid-template-columns:1fr;row-gap:4px}
   .lb-releases li span{grid-column:1/-1}
