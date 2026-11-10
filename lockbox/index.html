@@ -29,12 +29,13 @@
 </div>
 <figure class="cs-hero-shot"><img src="../assets/lockbox/windows.webp" width="1600" height="1200" alt="Two Lockbox windows on Windows: a light one reading Unlocked, open as drive E, and a dark one reading Locked, with a field of ciphertext behind the headline and a password field"></figure>
 </div>
-<dl class="cs-info">
+<dl class="cs-info cs-info--6">
 <div><dt>Status</dt><dd>Released</dd></div>
+<div><dt>Timeline</dt><dd>Since August 2026</dd></div>
 <div><dt>Runs on</dt><dd>macOS 13+ on Apple silicon, Windows 10/11 Pro</dd></div>
 <div><dt>Encryption</dt><dd>AES-256 disk images, BitLocker</dd></div>
 <div><dt>Built with</dt><dd>Swift, Rust, PowerShell, JavaScript</dd></div>
-<div><dt>Made by</dt><dd>Me</dd></div>
+<div><dt>Made by</dt><dd>Me, with AI for code</dd></div>
 </dl>
 </section>
 
@@ -44,6 +45,7 @@
 <div class="cs-copy">
 <p>I needed somewhere on my own computer to keep prompts and API keys behind a password. I tried VeraCrypt and Cryptomator, but they were more complex than what I was trying to do. VeraCrypt asks you to choose an encryption algorithm, a hash and a filesystem before you can store a file, and Cryptomator is built around vaults that sync through cloud storage.</p>
 <p>Mac and Windows already have the encryption, in encrypted disk images and BitLocker, but using it by hand means creating, opening and ejecting a disk yourself. Lockbox does only the part I needed: pick a folder, set a password, add files, lock.</p>
+<p>A password-protected ZIP is simpler still, but anyone can read its file names, and every file you open is extracted as a readable copy. A ZIP does travel better: any computer opens it.</p>
 </div>
 <figure class="cs-fig lb-steps">
 <div><h3>VeraCrypt</h3><ol>
@@ -57,27 +59,6 @@
 </ol></div>
 <span class="cs-cap">Steps from nothing to a locked vault</span>
 </figure>
-<div class="cs-row">
-<div class="cs-copy">
-<h3>A password-protected ZIP</h3>
-<p>A ZIP with a password looks simpler still, but it only encrypts what is inside each file. Anyone can read the file names, and to use a file you extract it, which leaves a readable copy on disk until you delete it. Strong encryption needs a tool such as 7-Zip, and the older ZipCrypto scheme can be broken.</p>
-<p>A ZIP still wins on portability. It opens on any computer, and it needs no administrator rights or Windows Pro.</p>
-</div>
-<figure class="cs-fig lb-vs">
-<table>
-<caption class="visually-hidden">A password-protected ZIP compared with Lockbox</caption>
-<thead><tr><td></td><th scope="col">ZIP</th><th scope="col" class="lb-vs-this">Lockbox</th></tr></thead>
-<tbody>
-<tr><th scope="row">File names hidden</th><td class="no">No</td><td class="yes">Yes</td></tr>
-<tr><th scope="row">Use files without extracting them</th><td class="no">No</td><td class="yes">Yes</td></tr>
-<tr><th scope="row">Nothing readable left after you lock</th><td class="no">No</td><td class="yes">Yes</td></tr>
-<tr><th scope="row">Opens on any computer</th><td class="yes">Yes</td><td class="no">No</td></tr>
-<tr><th scope="row">Works on Windows Home, without admin rights</th><td class="yes">Yes</td><td class="no">No</td></tr>
-</tbody>
-</table>
-<span class="cs-cap">A password-protected ZIP compared with Lockbox</span>
-</figure>
-</div>
 </div>
 </section>
 
@@ -85,7 +66,8 @@
 <div class="part-rail"><span class="code">02</span><h2 id="how-title" class="rail-title">How it was built</h2></div>
 <div class="part-body cs-row cs-row--flip">
 <div class="cs-copy">
-<p>Lockbox is two native apps that share their behaviour and wording. On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
+<p>Lockbox started as a Mac app, with AI agents writing most of the code from my direction. The Windows version is a separate native app built on BitLocker, sharing the Mac app’s behaviour and wording.</p>
+<p>On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
 <p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open, and check that Lockbox locks the vault or, after a crash, reports it as still open. On Windows, tests create, unlock and lock real BitLocker vaults with administrator rights.</p>
 <p>Before the Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
 </div>
@@ -109,34 +91,28 @@
 <section class="part" id="tradeoffs" aria-labelledby="tradeoffs-title">
 <div class="part-rail"><span class="code">03</span><h2 id="tradeoffs-title" class="rail-title">Trade-offs</h2></div>
 <div class="part-body cs-stack">
-<div class="cs-row">
+<div class="lb-choices">
 <div class="cs-copy">
-<p>Lockbox is a place for files on your computer that opens with a password. Everything else was left out on purpose, so there is nothing to sign up for, configure or keep in sync.</p>
+<p>Lockbox keeps a folder and a password, and leaves out or hands to the system everything else. Each of those choices keeps it simple and has a price.</p>
 </div>
 <figure class="cs-fig lb-out">
 <table>
-<thead><tr><th scope="col">Left out</th><th scope="col">Instead</th></tr></thead>
+<thead><tr><th scope="col">Choice</th><th scope="col">What you get</th><th scope="col">What it costs</th></tr></thead>
 <tbody>
-<tr><th scope="row">Accounts</th><td>The vault is a file on your computer.</td></tr>
-<tr><th scope="row">Cloud sync</th><td>The vault stays where you put it. Copy the file while it’s locked to back it up.</td></tr>
-<tr><th scope="row">Settings</th><td>Nothing to configure. Pick a folder and a password.</td></tr>
-<tr><th scope="row">Password recovery</th><td>None. Forget the password and the files are gone.</td></tr>
+<tr><th scope="row">No accounts or cloud sync</th><td>Nothing to sign up for. The vault is a file on your computer.</td><td>You back it up yourself, by copying the file while it’s locked.</td></tr>
+<tr><th scope="row">No password recovery</th><td>The password is the only way in.</td><td>Forget it and the files are gone.</td></tr>
+<tr><th scope="row">The system’s own encryption</th><td>No settings, and no encryption code of Lockbox’s own to get wrong.</td><td>On Windows, creating a vault needs Pro and administrator approval. A vault opens only on the system that made it.</td></tr>
+<tr><th scope="row">Locked means checked</th><td>Lockbox never says Locked while the files are readable.</td><td>If a file in the vault is still open, you close it before you can lock.</td></tr>
 </tbody>
 </table>
 </figure>
 </div>
-<div class="cs-row">
-<div class="cs-copy cs-records">
-<article>
+<div class="cs-row cs-row--flip">
+<div class="cs-copy">
 <h3>Locked means checked</h3>
-<dl>
-<div><dt>Problem</dt><dd>One click to lock only works if you can trust it. An eject can fail quietly or leave the encrypted disk attached, and an app that trusts it will say Locked while the files are still readable.</dd></div>
-<div><dt>Choice</dt><dd>Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. A check that fails or times out shows Unverified, never Locked.</dd></div>
-<div><dt>Cost</dt><dd>If a file in the vault is still open, the vault stays unlocked with an error instead of being forced shut, so you sometimes have to close an app before you can lock.</dd></div>
-</dl>
-</article>
+<p>An eject can fail quietly or leave the encrypted disk attached. Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. Anything it can’t confirm shows as a state of its own, never as Locked.</p>
 </div>
-<figure class="cs-fig cs-flow cs-beside-record">
+<figure class="cs-fig cs-flow">
 <p class="cs-flow-key" aria-hidden="true"><span class="cs-k-you"><i class="cs-mark"></i>You</span><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span></p>
 <ol class="cs-steps">
 <li class="cs-node cs-k-you"><i class="cs-mark" aria-hidden="true"></i><b>You</b><span>choose Lock, close the vault’s window or quit</span></li>
@@ -151,16 +127,6 @@
 </dl>
 <span class="cs-cap">What happens when you lock, and the state Lockbox shows after its check</span>
 </figure>
-</div>
-<div class="cs-copy cs-records">
-<article>
-<h3>System encryption, not its own</h3>
-<dl>
-<div><dt>Problem</dt><dd>Encryption code is where security tools most often go wrong, and a vault format of my own would have needed its own audit.</dd></div>
-<div><dt>Choice</dt><dd>Lockbox drives the encryption each system already has and never touches the cipher itself.</dd></div>
-<div><dt>Cost</dt><dd>Windows Home can’t turn on BitLocker, so creating a vault needs Pro or above, and Windows asks for administrator approval each time Lockbox starts. A vault made on one system doesn’t open on the other.</dd></div>
-</dl>
-</article>
 </div>
 </div>
 </section>
@@ -186,7 +152,7 @@
 <div class="cs-lessons">
 <h3>What I learned</h3>
 <div><h4>Simple on the surface takes work underneath.</h4><p>Locking in one click meant handling every way an eject can fail, so the app never says Locked by mistake.</p></div>
-<div><h4>Say only what you’ve checked.</h4><p>Lockbox shows Locked only after it confirms the disk is gone, and its label names only what it verifies: BitLocker, not the cipher inside it.</p></div>
+<div><h4>Check what each system offers before you build on it.</h4><p>Lockbox was built around the Mac’s encrypted disk images, which Windows doesn’t have. The Windows version had to become its own app on BitLocker, and Windows Home can’t turn BitLocker on at all.</p></div>
 <div><h4>Test the path people take.</h4><p>Windows 0.1.1 passed every unit test and still couldn’t create a vault, because none of the tests ran as administrator.</p></div>
 </div>
 <div class="cs-copy">

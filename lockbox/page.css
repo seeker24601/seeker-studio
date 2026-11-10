@@ -26,25 +26,12 @@
 .lb-steps .lb-this li::before{color:var(--signal-ink);opacity:1}
 .lb-steps .cs-cap{grid-column:1/-1;margin-top:16px}
 
-/* Why: a password-protected ZIP against Lockbox, feature by feature. Lockbox is the last column.
-   The words Yes and No stay in the markup for screen readers; the marks are drawn over them. */
-.lb-vs table{width:100%;border-collapse:collapse;table-layout:fixed}
-.lb-vs th,.lb-vs td{padding:13px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
-.lb-vs thead td{width:60%}
-.lb-vs thead th{padding-top:0;font:500 11px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);text-align:center}
-.lb-vs thead th.lb-vs-this{color:var(--signal-ink)}
-.lb-vs tbody th{padding-left:0;text-align:left;font:14px/1.4 var(--sans);font-weight:400;color:var(--ink-2)}
-.lb-vs td{position:relative;text-align:center;font-size:0;color:transparent}
-.lb-vs td::after{position:absolute;inset:0;display:grid;place-items:center;font:700 20px/1 var(--sans)}
-.lb-vs td.yes::after{content:"✓";color:var(--ink)}
-.lb-vs td.no::after{content:"–";color:var(--ink-2);opacity:.45;font-weight:400}
-.lb-vs td:last-child.yes::after{color:var(--signal-ink)}
-
-/* Left out: what other tools have and Lockbox doesn't, with what you do instead */
+/* Trade-offs: each choice, what you get from it and what it costs, right under its one-line intro */
+.lb-choices{display:flex;flex-direction:column;gap:24px}
 .lb-out table{width:100%;border-collapse:collapse}
 .lb-out th,.lb-out td{padding:13px 12px 13px 0;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;font:14px/1.45 var(--sans);color:var(--ink-2)}
 .lb-out thead th{padding-top:0;font:500 11px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.lb-out tbody th{width:38%;font:500 12px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.lb-out tbody th{width:24%;font:500 12px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 
 /* So far: releases, newest last */
 .lb-releases ol{border-top:1px solid var(--rule)}
