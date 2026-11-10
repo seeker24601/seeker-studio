@@ -3,110 +3,223 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lockbox: one encrypted vault for your private files</title>
-<meta name="description" content="Lockbox keeps private files in one encrypted vault on your Mac or Windows PC, behind one password. Free.">
-<meta name="theme-color" content="#0b0d11">
+<meta name="description" content="Lockbox keeps private files in one encrypted vault on your Mac or Windows PC, behind one password. Free, with no accounts, settings or cloud sync.">
+<meta name="theme-color" content="#121110">
 <meta property="og:title" content="Lockbox: one encrypted vault for your private files"><meta property="og:description" content="One encrypted vault behind one password. Free for Mac and Windows."><meta property="og:type" content="website"><meta property="og:url" content="https://seeker-studio.games/lockbox/"><meta property="og:image" content="https://seeker-studio.games/assets/tools/lockbox-windows.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://seeker-studio.games/lockbox/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230b0d11'/%3E%3Cpath fill='%238fb8ff' d='M9 4v4h6V4H9ZM5 20h14V10H5v10ZM17 8h4v14H3V8h4V2h10v6Z'/%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Lockbox","applicationCategory":"SecurityApplication","operatingSystem":"macOS 13 or later (Apple silicon); Windows 10 or 11 Pro, Enterprise or Education","description":"One encrypted vault for your private files. One password, no settings, no accounts.","url":"https://seeker-studio.games/lockbox/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Seeker Studio","url":"https://seeker-studio.games/"}}</script>
-<link rel="stylesheet" href="page.css?v=2"><link rel="stylesheet" href="../kofi.css">
-<script src="page.js?v=2" defer></script>
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../case-study.css"><link rel="stylesheet" href="page.css?v=3"><link rel="stylesheet" href="../kofi.css">
+<script src="../site.js" defer></script><script src="page.js?v=3" defer></script>
 </head>
-<body>
-<!-- Icons: Pixelarticons Pro 2.5.0 (licensed), sharp family -->
-<svg class="sprite" aria-hidden="true" focusable="false">
-<symbol id="i-lock" viewBox="0 0 24 24"><path fill="currentColor" d="M9 4v4h6V4H9ZM5 20h14V10H5v10ZM17 8h4v14H3V8h4V2h10v6Z"/></symbol>
-<symbol id="i-unlock" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14V10H5v10ZM17 6h-2V4H9v4h12v14H3V8h4V2h10v4Z"/></symbol>
-<symbol id="i-file-plus" viewBox="0 0 24 24"><path fill="currentColor" d="M8 18h2v2H8v2H6v-2H4v-2h2v-2h2v2Zm8-14h-2v4h4V6h2v16h-8v-2h6V10h-6V4H6v10H4V2h12v2Zm2 2h-2V4h2v2Z"/></symbol>
-<symbol id="i-download" viewBox="0 0 24 24"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></symbol>
-<symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2h20v2h-20zM2 4h2v10h-2zM20 4h2v10h-2zM15 6h2v2h-2zM13 8h2v2h-2zM7 10h2v2h-2zM11 10h2v2h-2zM9 12h2v2h-2zM4 14h2v2h-2zM18 14h2v2h-2zM6 16h2v2h-2zM16 16h2v2h-2zM8 18h2v2h-2zM14 18h2v2h-2zM10 20h4v2h-4z"/></symbol>
-</svg>
+<body class="cs-page lb-page">
 <a class="skip" href="#main">Skip to content</a>
-
-<header class="top">
-<a class="brand" href="./"><svg aria-hidden="true"><use href="#i-lock"/></svg><span>Lockbox</span></a>
-<nav aria-label="Main">
-<a class="hide-sm" href="#how">How it works</a>
-<a class="go" href="#download">Download</a>
-</nav>
-</header>
-
+<header class="bar"><a class="brand" href="../" aria-label="Seeker Studio home"><img src="../assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><nav aria-label="Main navigation"><a href="../games.html">Games</a><a href="../tools.html" aria-current="page">Tools</a><a href="../companions.html">Companions</a><a href="../plugins.html">Plugins</a><a href="../studio.html">Studio</a><a class="nav-out" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="nav-out" href="https://github.com/seeker24601">GitHub<span aria-hidden="true"> ↗</span></a></nav></header>
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
+
+<section class="cs-hero lb-hero" aria-labelledby="lb-title">
 <div class="cipher" aria-hidden="true"></div>
-<div class="wrap hero-grid">
-<div class="hero-copy">
-<p class="tag"><i></i>Free · Mac and Windows</p>
-<h1 id="hero-title">A vault for<br>private files.</h1>
-<div class="buttons">
-<a class="dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download for Mac<small>Apple silicon · macOS 13+</small></span></a>
-<a class="dl" href="../downloads/Lockbox-0.1.2-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download for Windows<small>Windows 10/11 Pro · 64-bit</small></span></a>
+<p class="cs-crumbs"><a class="label" href="../tools.html">Tools /</a> <span class="code">T-02</span> <span class="status live"><i></i>Download · Mac + Windows</span></p>
+<div class="cs-hero-grid">
+<div class="cs-hero-copy">
+<h1 id="lb-title" class="lb-mark"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9 4v4h6V4H9ZM5 20h14V10H5v10ZM17 8h4v14H3V8h4V2h10v6Z"/></svg>Lockbox</h1>
+<p class="pitch">One encrypted vault for your private files, on Mac and Windows.</p>
+<a class="cs-button" href="#download">Download<span aria-hidden="true"> ↓</span></a>
 </div>
+<figure class="cs-hero-shot"><img src="../assets/lockbox/windows.webp" width="1600" height="1200" alt="Two Lockbox windows on Windows: a light one reading Unlocked, open as drive E, and a dark one reading Locked, with a field of ciphertext behind the headline and a password field"></figure>
 </div>
-<figure class="shot"><img src="../assets/tools/lockbox-windows.png" width="880" height="660" alt="Two Lockbox windows on Windows: a dark one showing LOCKED with a BitLocker tag and a password field, and a light one showing UNLOCKED, open as drive E, with Add Files and Show in File Explorer buttons"></figure>
+<dl class="cs-info">
+<div><dt>Status</dt><dd>Released</dd></div>
+<div><dt>Runs on</dt><dd>macOS 13+ on Apple silicon, Windows 10/11 Pro</dd></div>
+<div><dt>Encryption</dt><dd>AES-256 disk images, BitLocker</dd></div>
+<div><dt>Built with</dt><dd>Swift, Rust, PowerShell, JavaScript</dd></div>
+<div><dt>Made by</dt><dd>Me</dd></div>
+</dl>
+</section>
+
+<section class="part" id="why" aria-labelledby="why-title">
+<div class="part-rail"><span class="code">01</span><h2 id="why-title" class="rail-title">Why</h2></div>
+<div class="part-body cs-stack">
+<div class="cs-copy">
+<p>I needed somewhere on my own computer to keep prompts and API keys behind a password. I tried VeraCrypt and Cryptomator, but they were more complex than what I was trying to do. VeraCrypt asks you to choose an encryption algorithm, a hash and a filesystem before you can store a file, and Cryptomator is built around vaults that sync through cloud storage.</p>
+<p>Mac and Windows already have the encryption, in encrypted disk images and BitLocker, but using it by hand means creating, opening and ejecting a disk yourself. Lockbox does only the part I needed: pick a folder, set a password, add files, lock.</p>
+</div>
+<figure class="cs-fig lb-steps">
+<div><h3>VeraCrypt</h3><ol>
+<li>Create Volume</li><li>Choose an encrypted file container</li><li>Choose a standard or hidden volume</li><li>Pick where the file goes</li><li>Choose an encryption algorithm and hash</li><li>Set the volume size</li><li>Set a password</li><li>Choose a filesystem</li><li>Move the mouse to gather randomness</li><li>Format</li><li>Pick a drive slot and mount</li><li>Copy files in</li><li>Dismount</li>
+</ol></div>
+<div><h3>Cryptomator</h3><ol>
+<li>Add a vault</li><li>Name it</li><li>Choose where it’s stored</li><li>Set a password</li><li>Choose whether to make a recovery key</li><li>Unlock</li><li>Reveal the drive</li><li>Copy files in</li><li>Lock</li>
+</ol></div>
+<div class="lb-this"><h3>Lockbox</h3><ol>
+<li>Create Lockbox</li><li>Pick a folder and set a password</li><li>Add files</li><li>Lock, or close the window</li>
+</ol></div>
+<span class="cs-cap">Steps from nothing to a locked vault</span>
+</figure>
+<div class="cs-row">
+<div class="cs-copy">
+<h3>A password-protected ZIP</h3>
+<p>A ZIP with a password looks simpler still, but it only encrypts what is inside each file. Anyone can read the file names, and to use a file you extract it, which leaves a readable copy on disk until you delete it. Strong encryption needs a tool such as 7-Zip, and the older ZipCrypto scheme can be broken.</p>
+<p>A ZIP still wins on portability. It opens on any computer, and it needs no administrator rights or Windows Pro.</p>
+</div>
+<figure class="cs-fig lb-vs">
+<table>
+<caption class="visually-hidden">A password-protected ZIP compared with Lockbox</caption>
+<thead><tr><td></td><th scope="col">ZIP</th><th scope="col" class="lb-vs-this">Lockbox</th></tr></thead>
+<tbody>
+<tr><th scope="row">File names hidden</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Use files without extracting them</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Nothing readable left after you lock</th><td class="no">No</td><td class="yes">Yes</td></tr>
+<tr><th scope="row">Opens on any computer</th><td class="yes">Yes</td><td class="no">No</td></tr>
+<tr><th scope="row">Works on Windows Home, without admin rights</th><td class="yes">Yes</td><td class="no">No</td></tr>
+</tbody>
+</table>
+<span class="cs-cap">A password-protected ZIP compared with Lockbox</span>
+</figure>
+</div>
 </div>
 </section>
 
-<section class="band" id="how" aria-labelledby="how-title">
-<div class="wrap">
-<h2 id="how-title" class="label">How it works</h2>
-<ol class="steps">
-<li><svg aria-hidden="true"><use href="#i-unlock"/></svg><h3>Unlock</h3><p>Type your password. The vault opens like a drive.</p></li>
-<li><svg aria-hidden="true"><use href="#i-file-plus"/></svg><h3>Add files</h3><p>Move files in. On disk they stay encrypted.</p></li>
-<li><svg aria-hidden="true"><use href="#i-lock"/></svg><h3>Lock</h3><p>One click. Lockbox checks the vault really closed before it says Locked.</p></li>
-</ol>
+<section class="part" id="left-out" aria-labelledby="left-out-title">
+<div class="part-rail"><span class="code">02</span><h2 id="left-out-title" class="rail-title">Left out</h2></div>
+<div class="part-body cs-row">
+<div class="cs-copy">
+<p>Lockbox is a place for files on your computer that opens with a password. Everything else was left out on purpose, so there is nothing to sign up for, configure or keep in sync.</p>
+<p>Under the window, Lockbox uses the encryption your system already has: AES-256 encrypted disk images on macOS and BitLocker on Windows. Mac and Windows run separate native apps, in SwiftUI and in Tauri with Rust, built to behave and read the same.</p>
+</div>
+<figure class="cs-fig lb-out">
+<table>
+<thead><tr><th scope="col">Left out</th><th scope="col">Instead</th></tr></thead>
+<tbody>
+<tr><th scope="row">Accounts</th><td>The vault is a file on your computer.</td></tr>
+<tr><th scope="row">Cloud sync</th><td>The vault stays where you put it. Copy the file while it’s locked to back it up.</td></tr>
+<tr><th scope="row">Settings</th><td>None. Encryption uses the system’s own.</td></tr>
+<tr><th scope="row">Password recovery</th><td>None. Forget the password and the files are gone.</td></tr>
+</tbody>
+</table>
+</figure>
 </div>
 </section>
 
-<section class="band" id="download" aria-labelledby="download-title">
-<div class="wrap download">
-<div>
-<h2 id="download-title" class="label">Download</h2>
-<div class="buttons">
-<a class="dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Mac<small>v0.2.8 · ZIP · 1.0 MB</small></span></a>
-<a class="dl" href="../downloads/Lockbox-0.1.2-windows-x64.zip" download><svg aria-hidden="true"><use href="#i-download"/></svg><span>Windows<small>v0.1.2 · ZIP · 2.1 MB</small></span></a>
+<section class="part" id="download" aria-labelledby="download-title">
+<div class="part-rail"><span class="code">03</span><h2 id="download-title" class="rail-title">Download</h2></div>
+<div class="part-body cs-row">
+<div class="cs-copy">
+<div class="lb-dls">
+<a class="lb-dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Mac<small>v0.2.8 · ZIP · 1.0 MB</small></span></a>
+<a class="lb-dl" href="../downloads/Lockbox-0.1.2-windows-x64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Windows<small>v0.1.2 · ZIP · 2.1 MB</small></span></a>
 </div>
-<p class="sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
-</div>
-<div class="notes">
+<p class="lb-sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
+<div class="lb-install">
 <details>
 <summary>Install on Mac</summary>
 <ol>
 <li>Open the ZIP and drag <b>Lockbox.app</b> into Applications.</li>
-<li>Choose <b>Create Lockbox</b>, pick a place for the vault, and set a password of 12 characters or more.</li>
-<li>Allow Finder Automation if asked. It lets closing the vault's Finder window lock it.</li>
+<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
+<li>Allow Finder Automation if asked. It lets closing the vault’s Finder window lock it.</li>
 </ol>
-<p>Requires an Apple silicon Mac on macOS 13 or later. The app isn't notarized by Apple yet. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple's guide to opening apps from unidentified developers</a>.</p>
+<p>Requires an Apple silicon Mac on macOS 13 or later. The app isn’t notarized by Apple yet. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple’s guide to opening apps from unidentified developers</a>.</p>
 </details>
 <details>
 <summary>Install on Windows</summary>
 <ol>
 <li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
 <li>Approve the administrator prompt. Windows needs it to open disk images.</li>
-<li>Choose <b>Create Lockbox</b>, pick a place for the vault, and set a password of 12 characters or more.</li>
+<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
 </ol>
-<p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can't turn on BitLocker. The app isn't code-signed yet, so SmartScreen may warn you before the first launch.</p>
+<p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can’t turn on BitLocker. The app isn’t code-signed yet, so SmartScreen may warn you before the first launch.</p>
 </details>
-<details>
-<summary>Before you rely on it</summary>
+</div>
+</div>
+<aside class="lb-warn" aria-labelledby="warn-title">
+<h3 id="warn-title">Before you rely on it</h3>
 <ul>
-<li>There's no password reset. Lose the password and the files are gone.</li>
+<li>There’s no password reset. Lose the password and the files are gone.</li>
 <li>Back up the vault file only while Lockbox says <b>Locked</b>.</li>
 <li>While unlocked, other apps running as you can read the files.</li>
-<li>Moving files in doesn't erase copies in old backups or free disk space.</li>
+<li>Moving files in doesn’t erase copies in old backups or free disk space.</li>
 </ul>
-</details>
+</aside>
+</div>
+</section>
+
+<section class="part" id="tradeoffs" aria-labelledby="tradeoffs-title">
+<div class="part-rail"><span class="code">04</span><h2 id="tradeoffs-title" class="rail-title">Trade-offs</h2></div>
+<div class="part-body cs-stack">
+<div class="cs-row">
+<div class="cs-copy cs-records">
+<article>
+<h3>Locked means checked</h3>
+<dl>
+<div><dt>Problem</dt><dd>One click to lock only works if you can trust it. An eject can fail quietly or leave the encrypted disk attached, and an app that trusts it will say Locked while the files are still readable.</dd></div>
+<div><dt>Choice</dt><dd>Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. A check that fails or times out shows Unverified, never Locked.</dd></div>
+<div><dt>Cost</dt><dd>If a file in the vault is still open, the vault stays unlocked with an error instead of being forced shut, so you sometimes have to close an app before you can lock.</dd></div>
+</dl>
+</article>
+</div>
+<figure class="cs-fig cs-flow cs-beside-record">
+<p class="cs-flow-key" aria-hidden="true"><span class="cs-k-you"><i class="cs-mark"></i>You</span><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span></p>
+<ol class="cs-steps">
+<li class="cs-node cs-k-you"><i class="cs-mark" aria-hidden="true"></i><b>You</b><span>choose Lock, close the vault’s window or quit</span></li>
+<li class="cs-node cs-k-app"><i class="cs-mark" aria-hidden="true"></i><b>Lockbox</b><span>ejects the vault without forcing it, then checks that the disk is gone</span></li>
+</ol>
+<span class="lb-states-label">What Lockbox shows</span>
+<dl class="lb-states">
+<div><dt class="lb-locked">Locked</dt><dd>The disk is gone.</dd></div>
+<div><dt>Unlocked</dt><dd>A file in the vault is still open, so the eject failed. An error says so.</dd></div>
+<div><dt>Not locked</dt><dd>The drive is gone but the disk is still attached. Finish Locking detaches it.</dd></div>
+<div><dt>Unverified</dt><dd>The check failed or timed out.</dd></div>
+</dl>
+<span class="cs-cap">What happens when you lock, and the state Lockbox shows after its check</span>
+</figure>
+</div>
+<div class="cs-copy cs-records">
+<article>
+<h3>System encryption, not its own</h3>
+<dl>
+<div><dt>Problem</dt><dd>Encryption code is where security tools most often go wrong, and a vault format of my own would have needed its own audit.</dd></div>
+<div><dt>Choice</dt><dd>Lockbox drives the encryption each system already has and never touches the cipher itself.</dd></div>
+<div><dt>Cost</dt><dd>Windows Home can’t turn on BitLocker, so creating a vault needs Pro or above, and Windows asks for administrator approval each time Lockbox starts. A vault made on one system doesn’t open on the other.</dd></div>
+</dl>
+</article>
 </div>
 </div>
 </section>
-</main>
 
-<footer class="foot">
-<div class="wrap">
-<p>Made by <a href="../">Seeker Studio</a>. Questions: <a href="https://discord.gg/dkSZ6PjmrR">Discord</a>.</p>
-<p class="fine">Lockbox uses the encryption built into your system: AES-256 encrypted disk images on macOS, BitLocker on Windows. Type: Departure Mono (SIL OFL). Icons: Pixelarticons.</p>
+<section class="part" id="so-far" aria-labelledby="so-far-title">
+<div class="part-rail"><span class="code">05</span><h2 id="so-far-title" class="rail-title">So far</h2></div>
+<div class="part-body cs-stack">
+<div class="cs-row">
+<div class="cs-copy">
+<p>Lockbox is free for Mac and Windows. Neither app is signed yet, so macOS and Windows warn before the first launch. Signing comes next.</p>
+<p>Before the Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
 </div>
-</footer>
+<figure class="cs-fig lb-releases">
+<ol>
+<li><time datetime="2026-09-28">28 Sep 2026</time><b>Mac 0.2.7</b><span></span></li>
+<li><time datetime="2026-09-28">28 Sep 2026</time><b>Mac 0.2.8</b><span>Checks the encryption of a vault that is already open.</span></li>
+<li><time datetime="2026-10-11">11 Oct 2026</time><b>Windows 0.1.0</b><span>The first Windows release.</span></li>
+<li class="lb-pulled"><time datetime="2026-10-11">11 Oct 2026</time><b>Windows 0.1.1</b><span>The review’s fixes. Couldn’t create or unlock vaults, and was replaced the same day.</span></li>
+<li><time datetime="2026-10-11">11 Oct 2026</time><b>Windows 0.1.2</b><span>Fixes 0.1.1 and holds the vault file open while it is in use.</span></li>
+</ol>
+<span class="cs-cap">Releases so far</span>
+</figure>
+</div>
+<div class="cs-lessons">
+<h3>What I learned</h3>
+<div><h4>Simple on the surface takes work underneath.</h4><p>Locking in one click meant handling every way an eject can fail, so the app never says Locked by mistake.</p></div>
+<div><h4>Say only what you’ve checked.</h4><p>Lockbox shows Locked only after it confirms the disk is gone, and its label names only what it verifies: BitLocker, not the cipher inside it.</p></div>
+<div><h4>Test the path people take.</h4><p>Windows 0.1.1 passed every unit test and still couldn’t create a vault, because none of the tests ran as administrator.</p></div>
+</div>
+<div class="cs-copy">
+<div class="page-links"><a class="go" href="#download">Download<span aria-hidden="true"> ↑</span></a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="go" href="../tools.html">All tools<span aria-hidden="true"> →</span></a></div>
+<p class="cs-legal">VeraCrypt is a trademark of IDRIX. Cryptomator is a trademark of Skymatic GmbH. Mac, macOS and Finder are trademarks of Apple Inc. Windows and BitLocker are trademarks of Microsoft Corporation. Lockbox is an independent app, not affiliated with or endorsed by any of them. Type: Departure Mono (SIL OFL). Icons: Pixelarticons.</p>
+</div>
+</div>
+</section>
+
+</main>
+<footer><a class="brand" href="../"><img src="../assets/seeker-studio-logo.png" width="40" height="40" alt=""><span>Seeker Studio</span></a><span class="footer-links"><a href="https://discord.gg/dkSZ6PjmrR">Discord ↗</a><a href="https://github.com/seeker24601">GitHub ↗</a><a href="https://seeker-studio.itch.io/">itch.io ↗</a><a href="../support.html">Support</a></span><span class="label">© <span id="year">2026</span> · Games · Tools · Plugins</span></footer>
 <a class="kofi-float" href="https://ko-fi.com/seekerstudio"><img src="../assets/ko-fi-cup.svg" width="24" height="19" alt=""><span>Tip on Ko-fi</span></a>
-</body>
-</html>
+</body></html>
