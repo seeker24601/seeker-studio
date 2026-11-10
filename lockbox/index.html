@@ -81,12 +81,37 @@
 </div>
 </section>
 
-<section class="part" id="left-out" aria-labelledby="left-out-title">
-<div class="part-rail"><span class="code">02</span><h2 id="left-out-title" class="rail-title">Left out</h2></div>
-<div class="part-body cs-row">
+<section class="part" id="how" aria-labelledby="how-title">
+<div class="part-rail"><span class="code">02</span><h2 id="how-title" class="rail-title">How it was built</h2></div>
+<div class="part-body cs-row cs-row--flip">
+<div class="cs-copy">
+<p>Lockbox is two native apps that share their behaviour and wording. On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
+<p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open, and check that Lockbox locks the vault or, after a crash, reports it as still open. On Windows, tests create, unlock and lock real BitLocker vaults with administrator rights.</p>
+<p>Before the Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
+</div>
+<figure class="cs-fig cs-flow lb-arch">
+<p class="cs-flow-key" aria-hidden="true"><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span><span class="lb-k-sys"><i class="cs-mark"></i>Your system</span></p>
+<div><h3>Mac</h3><ol class="cs-steps">
+<li class="cs-node cs-k-app"><i class="cs-mark" aria-hidden="true"></i><b>Lockbox</b><span>SwiftUI app</span></li>
+<li class="cs-node cs-k-sys"><i class="cs-mark" aria-hidden="true"></i><b>hdiutil</b><span>Apple’s disk image tool</span></li>
+<li class="cs-node cs-k-sys"><i class="cs-mark" aria-hidden="true"></i><b>Encrypted disk image</b><span>AES-256, APFS sparse bundle</span></li>
+</ol></div>
+<div><h3>Windows</h3><ol class="cs-steps">
+<li class="cs-node cs-k-app"><i class="cs-mark" aria-hidden="true"></i><b>Lockbox</b><span>Tauri app with a Rust backend</span></li>
+<li class="cs-node cs-k-sys"><i class="cs-mark" aria-hidden="true"></i><b>PowerShell</b><span>BitLocker module, run as administrator</span></li>
+<li class="cs-node cs-k-sys"><i class="cs-mark" aria-hidden="true"></i><b>Virtual disk</b><span>VHDX holding a BitLocker volume</span></li>
+</ol></div>
+<span class="cs-cap">What Lockbox drives on each system when you unlock</span>
+</figure>
+</div>
+</section>
+
+<section class="part" id="tradeoffs" aria-labelledby="tradeoffs-title">
+<div class="part-rail"><span class="code">03</span><h2 id="tradeoffs-title" class="rail-title">Trade-offs</h2></div>
+<div class="part-body cs-stack">
+<div class="cs-row">
 <div class="cs-copy">
 <p>Lockbox is a place for files on your computer that opens with a password. Everything else was left out on purpose, so there is nothing to sign up for, configure or keep in sync.</p>
-<p>Under the window, Lockbox uses the encryption your system already has: AES-256 encrypted disk images on macOS and BitLocker on Windows. Mac and Windows run separate native apps, in SwiftUI and in Tauri with Rust, built to behave and read the same.</p>
 </div>
 <figure class="cs-fig lb-out">
 <table>
@@ -94,59 +119,12 @@
 <tbody>
 <tr><th scope="row">Accounts</th><td>The vault is a file on your computer.</td></tr>
 <tr><th scope="row">Cloud sync</th><td>The vault stays where you put it. Copy the file while it’s locked to back it up.</td></tr>
-<tr><th scope="row">Settings</th><td>None. Encryption uses the system’s own.</td></tr>
+<tr><th scope="row">Settings</th><td>Nothing to configure. Pick a folder and a password.</td></tr>
 <tr><th scope="row">Password recovery</th><td>None. Forget the password and the files are gone.</td></tr>
 </tbody>
 </table>
 </figure>
 </div>
-</section>
-
-<section class="part" id="download" aria-labelledby="download-title">
-<div class="part-rail"><span class="code">03</span><h2 id="download-title" class="rail-title">Download</h2></div>
-<div class="part-body cs-row">
-<div class="cs-copy">
-<div class="lb-dls">
-<a class="lb-dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Mac<small>v0.2.8 · ZIP · 1.0 MB</small></span></a>
-<a class="lb-dl" href="../downloads/Lockbox-0.1.2-windows-x64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Windows<small>v0.1.2 · ZIP · 2.1 MB</small></span></a>
-</div>
-<p class="lb-sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
-<div class="lb-install">
-<details>
-<summary>Install on Mac</summary>
-<ol>
-<li>Open the ZIP and drag <b>Lockbox.app</b> into Applications.</li>
-<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
-<li>Allow Finder Automation if asked. It lets closing the vault’s Finder window lock it.</li>
-</ol>
-<p>Requires an Apple silicon Mac on macOS 13 or later. The app isn’t notarized by Apple yet. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple’s guide to opening apps from unidentified developers</a>.</p>
-</details>
-<details>
-<summary>Install on Windows</summary>
-<ol>
-<li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
-<li>Approve the administrator prompt. Windows needs it to open disk images.</li>
-<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
-</ol>
-<p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can’t turn on BitLocker. The app isn’t code-signed yet, so SmartScreen may warn you before the first launch.</p>
-</details>
-</div>
-</div>
-<aside class="lb-warn" aria-labelledby="warn-title">
-<h3 id="warn-title">Before you rely on it</h3>
-<ul>
-<li>There’s no password reset. Lose the password and the files are gone.</li>
-<li>Back up the vault file only while Lockbox says <b>Locked</b>.</li>
-<li>While unlocked, other apps running as you can read the files.</li>
-<li>Moving files in doesn’t erase copies in old backups or free disk space.</li>
-</ul>
-</aside>
-</div>
-</section>
-
-<section class="part" id="tradeoffs" aria-labelledby="tradeoffs-title">
-<div class="part-rail"><span class="code">04</span><h2 id="tradeoffs-title" class="rail-title">Trade-offs</h2></div>
-<div class="part-body cs-stack">
 <div class="cs-row">
 <div class="cs-copy cs-records">
 <article>
@@ -188,12 +166,11 @@
 </section>
 
 <section class="part" id="so-far" aria-labelledby="so-far-title">
-<div class="part-rail"><span class="code">05</span><h2 id="so-far-title" class="rail-title">So far</h2></div>
+<div class="part-rail"><span class="code">04</span><h2 id="so-far-title" class="rail-title">So far</h2></div>
 <div class="part-body cs-stack">
 <div class="cs-row">
 <div class="cs-copy">
 <p>Lockbox is free for Mac and Windows. Neither app is signed yet, so macOS and Windows warn before the first launch. Signing comes next.</p>
-<p>Before the Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
 </div>
 <figure class="cs-fig lb-releases">
 <ol>
@@ -213,9 +190,51 @@
 <div><h4>Test the path people take.</h4><p>Windows 0.1.1 passed every unit test and still couldn’t create a vault, because none of the tests ran as administrator.</p></div>
 </div>
 <div class="cs-copy">
-<div class="page-links"><a class="go" href="#download">Download<span aria-hidden="true"> ↑</span></a><a class="go" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="go" href="../tools.html">All tools<span aria-hidden="true"> →</span></a></div>
+<div class="page-links"><a class="go" href="https://discord.gg/dkSZ6PjmrR">Discord<span aria-hidden="true"> ↗</span></a><a class="go" href="../tools.html">All tools<span aria-hidden="true"> →</span></a></div>
 <p class="cs-legal">VeraCrypt is a trademark of IDRIX. Cryptomator is a trademark of Skymatic GmbH. Mac, macOS and Finder are trademarks of Apple Inc. Windows and BitLocker are trademarks of Microsoft Corporation. Lockbox is an independent app, not affiliated with or endorsed by any of them. Type: Departure Mono (SIL OFL). Icons: Pixelarticons.</p>
 </div>
+</div>
+</section>
+
+<section class="part" id="download" aria-labelledby="download-title">
+<div class="part-rail"><span class="code">05</span><h2 id="download-title" class="rail-title">Download</h2></div>
+<div class="part-body cs-row">
+<div class="cs-copy">
+<div class="lb-dls">
+<a class="lb-dl" href="../downloads/Lockbox-0.2.8-macos-arm64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Mac<small>v0.2.8 · ZIP · 1.0 MB</small></span></a>
+<a class="lb-dl" href="../downloads/Lockbox-0.1.2-windows-x64.zip" download><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M5 19h14v-4h2v6H3v-6h2v4Zm8-8h4v2h-2v2h-2v2h-2v-2H9v-2H7v-2h4V3h2v8Z"/></svg><span>Windows<small>v0.1.2 · ZIP · 2.1 MB</small></span></a>
+</div>
+<p class="lb-sums">SHA-256: <a href="../downloads/Lockbox-0.2.8-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
+<div class="lb-install">
+<details>
+<summary>Install on Mac</summary>
+<ol>
+<li>Open the ZIP and drag <b>Lockbox.app</b> into Applications.</li>
+<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
+<li>Allow Finder Automation if asked. It lets closing the vault’s Finder window lock it.</li>
+</ol>
+<p>Requires an Apple silicon Mac on macOS 13 or later. The app isn’t notarized by Apple yet. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple’s guide to opening apps from unidentified developers</a>.</p>
+</details>
+<details>
+<summary>Install on Windows</summary>
+<ol>
+<li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
+<li>Approve the administrator prompt. Windows needs it to open disk images.</li>
+<li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
+</ol>
+<p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can’t turn on BitLocker. The app isn’t code-signed yet, so SmartScreen may warn you before the first launch.</p>
+</details>
+</div>
+</div>
+<aside class="lb-warn" aria-labelledby="warn-title">
+<h3 id="warn-title">Worth noting</h3>
+<ul>
+<li>There’s no password reset. Lose the password and the files are gone.</li>
+<li>Back up the vault file only while Lockbox says <b>Locked</b>.</li>
+<li>While unlocked, other apps running as you can read the files.</li>
+<li>Moving files in doesn’t erase copies in old backups or free disk space.</li>
+</ul>
+</aside>
 </div>
 </section>
 
