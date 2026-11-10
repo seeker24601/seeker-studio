@@ -1,0 +1,1 @@
+ec047fb7e594fabd0e4ad7de795cb96183a36a7064b36eb3794ece5e2274c2ea  Lockbox-0.2.9-macos-arm64.zip
