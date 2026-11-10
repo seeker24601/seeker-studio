@@ -44,7 +44,7 @@
 <div class="part-body cs-stack">
 <div class="cs-copy">
 <p>I needed somewhere on my own computer to keep prompts and API keys behind a password. I tried VeraCrypt and Cryptomator, but they were more complex than what I was trying to do. VeraCrypt asks you to choose an encryption algorithm, a hash and a filesystem before you can store a file, and Cryptomator is built around vaults that sync through cloud storage.</p>
-<p>Mac and Windows already have the encryption, in encrypted disk images and BitLocker, but using it by hand means creating, opening and ejecting a disk yourself. Lockbox does only the part I needed: pick a folder, set a password, add files, lock.</p>
+<p>Mac and Windows already have the encryption, in encrypted disk images and BitLocker, but using it by hand means creating, opening and ejecting a disk yourself. Lockbox does only the part I needed: pick a folder, set a password, add files, lock. I use it myself, on both Windows and Mac.</p>
 <p>A password-protected ZIP is simpler still, but anyone can read its file names, and every file you open is extracted as a readable copy. A ZIP does travel better: any computer opens it.</p>
 </div>
 <figure class="cs-fig lb-steps">
@@ -66,7 +66,7 @@
 <div class="part-rail"><span class="code">02</span><h2 id="how-title" class="rail-title">How it was built</h2></div>
 <div class="part-body cs-row cs-row--flip">
 <div class="cs-copy">
-<p>Lockbox started as a Mac app, with AI agents writing most of the code from my direction. The Windows version is a separate native app built on BitLocker, sharing the Mac app’s behaviour and wording.</p>
+<p>Lockbox started as a Mac app. AI agents wrote most of the code from prompts I wrote: what to build and what to leave out, how to test it, and the workflows that let them catch and fix their own bugs. The Windows version is a separate native app built on BitLocker, sharing the Mac app’s behaviour and wording.</p>
 <p>On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
 <p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open, and check that Lockbox locks the vault or, after a crash, reports it as still open. On Windows, tests create, unlock and lock real BitLocker vaults with administrator rights.</p>
 <p>Before the Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
