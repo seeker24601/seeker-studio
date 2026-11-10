@@ -37,10 +37,13 @@
 #download .cs-stack{gap:clamp(32px,4vw,48px)}
 /* Releases, newest last */
 .lb-releases ol{border-top:1px solid var(--rule)}
-.lb-releases li{display:grid;grid-template-columns:7.5rem 9rem minmax(0,1fr);column-gap:var(--gap);padding:12px 0;border-bottom:1px solid var(--rule);font:14px/1.45 var(--sans);color:var(--ink-2)}
+.lb-releases li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);column-gap:16px;row-gap:2px;padding:10px 0;border-bottom:1px solid var(--rule);font:14px/1.45 var(--sans);color:var(--ink-2)}
 .lb-releases li:last-child{border-bottom:0}
 .lb-releases time,.lb-releases b{font:500 12px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .lb-releases b{color:var(--ink)}
+.lb-releases li span{grid-column:2;font-size:13px}
+.lb-releases li span:empty{display:none}
+.lb-side{display:flex;flex-direction:column;gap:28px}
 .lb-releases .lb-pulled b{text-decoration:line-through;color:var(--ink-2)}
 
 /* Hero: a field of ciphertext fades in behind the copy, as the app shows while locked.
@@ -84,6 +87,5 @@
 @media (max-width:900px){.lb-steps{grid-template-columns:1fr;row-gap:24px}}
 @media (max-width:600px){
   .lb-states>div{grid-template-columns:1fr;row-gap:4px}
-  .lb-releases li{grid-template-columns:auto minmax(0,1fr);row-gap:2px}
   .lb-releases li span{grid-column:1/-1}
 }
