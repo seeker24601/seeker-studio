@@ -70,6 +70,7 @@
 <p>On a Mac, a SwiftUI app drives Apple’s hdiutil to create and open an AES-256 encrypted disk image. On Windows, a Tauri app with a Rust backend runs PowerShell to unlock a BitLocker volume inside a virtual disk. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
 <p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open, and check that Lockbox locks the vault or, after a crash, reports it as still open. On Windows, tests create, unlock and lock real BitLocker vaults with administrator rights.</p>
 <p>On the day of the first Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke the app: turning off PowerShell’s module autoloading also stopped a module BitLocker needs, so Windows 0.1.1 couldn’t create or unlock vaults. Tests against real BitLocker vaults caught it, and 0.1.2 fixed it the same day.</p>
+<p>If I started again, I’d check what each system offers before designing the app. Lockbox was built around the Mac’s encrypted disk images, which Windows doesn’t have, so the Windows version had to be rebuilt on BitLocker.</p>
 </div>
 <figure class="cs-fig cs-flow lb-arch">
 <p class="cs-flow-key" aria-hidden="true"><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span><span class="lb-k-sys"><i class="cs-mark"></i>Your system</span></p>
@@ -109,7 +110,6 @@
 </div>
 <div class="cs-row cs-row--flip">
 <div class="cs-copy">
-<h3>Locked means checked</h3>
 <p>An eject can fail quietly or leave the encrypted disk attached. Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. Anything it can’t confirm shows as a state of its own, never as Locked.</p>
 </div>
 <figure class="cs-fig cs-flow">
