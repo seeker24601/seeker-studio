@@ -72,7 +72,7 @@
 <div class="cs-row">
 <div class="cs-copy">
 <p>Lockbox started as a Mac app. AI agents wrote most of the code from prompts I wrote: what to build and what to leave out, how to test it, and the workflows that let them catch and fix their own bugs.</p>
-<p>Each system does the encryption, and Lockbox only drives it. The Windows version is a separate native app that shares the Mac app’s behaviour and wording. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
+<p>Each system does the encryption, and Lockbox only drives it. It was built around the Mac’s encrypted disk images, and I never accounted for needing it on Windows too. Windows doesn’t have them, so the Windows version is a workaround on BitLocker, almost a separate app, with the same behaviour and wording. Both pass the password on standard input, so it never appears in arguments, settings or logs.</p>
 </div>
 <figure class="cs-fig cs-flow lb-arch">
 <p class="cs-flow-key" aria-hidden="true"><span class="cs-k-app"><i class="cs-mark"></i>Lockbox</span><span class="lb-k-sys"><i class="cs-mark"></i>Your system</span></p>
@@ -92,8 +92,7 @@
 <div class="cs-lessons">
 <div><h4>Testing</h4><p>Unit tests cover the logic, but locking only counts if it works on a real disk. On the Mac, scripts quit the app, close its Finder window and crash it with a vault open. On Windows, tests create, unlock and lock real BitLocker vaults.</p></div>
 <div><h4>Review</h4><p>On the day of the first Windows release, two AI agents reviewed every source file of both apps, and each finding was confirmed in the code before it was fixed. One fix broke Windows 0.1.1, which couldn’t create or unlock vaults. The BitLocker tests caught it, and 0.1.2 replaced it the same day.</p></div>
-<div><h4>In hindsight</h4><p>I’d check what each system offers before designing the app. Lockbox was built around the Mac’s encrypted disk images, which Windows doesn’t have, so the Windows version had to be rebuilt on BitLocker.</p></div>
-</div>
+<div><h4>In hindsight</h4><p>I’d decide which systems an app has to run on before designing it. With Windows in the plan from the start, I’d have looked for an approach that works on both and built one app.</p></div></div>
 </div>
 </section>
 
@@ -102,11 +101,11 @@
 <div class="part-body cs-stack">
 <div class="lb-choices">
 <div class="cs-copy">
-<p>Lockbox keeps a folder and a password, and leaves out or hands to the system everything else. Each of those choices keeps it simple and has a price.</p>
+<p>Lockbox keeps a folder and a password, and leaves out or hands to the system everything else. Each of those choices keeps it simple but has a downside.</p>
 </div>
 <figure class="cs-fig lb-out">
 <table>
-<thead><tr><th scope="col">Choice</th><th scope="col">What you get</th><th scope="col">What it costs</th></tr></thead>
+<thead><tr><th scope="col">Choice</th><th scope="col">What you get</th><th scope="col">Downside</th></tr></thead>
 <tbody>
 <tr><th scope="row">No accounts or cloud sync</th><td>Nothing to sign up for. The vault is a file on your computer.</td><td>You back it up yourself, by copying the file while it’s locked.</td></tr>
 <tr><th scope="row">No password recovery</th><td>The password is the only way in.</td><td>Forget it and the files are gone.</td></tr>
@@ -116,20 +115,16 @@
 </table>
 </figure>
 </div>
-<div class="cs-row cs-row--flip">
-<div class="cs-copy lb-check">
+<div class="cs-row">
+<div class="cs-copy">
 <p>An eject can fail quietly or leave the encrypted disk attached. Lockbox ejects without forcing, then checks that the disk is really gone before it says Locked. Anything it can’t confirm shows as a state of its own.</p>
+</div>
 <dl class="lb-states">
 <div><dt class="lb-locked">Locked</dt><dd>The disk is gone.</dd></div>
 <div><dt>Unlocked</dt><dd>A file in the vault is still open, so the eject failed. An error says so.</dd></div>
 <div><dt>Not locked</dt><dd>The drive is gone but the disk is still attached. Finish Locking detaches it.</dd></div>
 <div><dt>Unverified</dt><dd>The check failed or timed out.</dd></div>
 </dl>
-</div>
-<figure class="cs-fig">
-<img src="../assets/lockbox/locked.webp" width="860" height="394" alt="The top of the Lockbox window on Windows: a BitLocker label, a pixel padlock and LOCKED in a pixel font over faint lines of random characters, with Locked and encrypted below" loading="lazy">
-<span class="cs-cap">Locked, shown only after the check passes</span>
-</figure>
 </div>
 </div>
 </section>
@@ -145,20 +140,24 @@
 </div>
 <p class="lb-sums">SHA-256: <a href="../downloads/Lockbox-0.2.9-SHA256.txt">Mac</a> · <a href="../downloads/Lockbox-0.1.2-windows-SHA256.txt">Windows</a></p>
 <div class="lb-install">
-<h3>Install on Mac</h3>
+<details>
+<summary>Install on Mac</summary>
 <ol>
 <li>Open the ZIP and drag <b>Lockbox.app</b> into Applications.</li>
 <li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
 <li>Allow Finder Automation if asked. It lets closing the vault’s Finder window lock it.</li>
 </ol>
 <p>Requires an Apple silicon Mac on macOS 13 or later. If macOS blocks it, see <a href="https://support.apple.com/en-us/102445">Apple’s guide to opening apps from unidentified developers</a>.</p>
-<h3>Install on Windows</h3>
+</details>
+<details>
+<summary>Install on Windows</summary>
 <ol>
 <li>Extract the ZIP, ideally into a folder under Program Files, and run <b>Lockbox.exe</b>.</li>
 <li>Approve the administrator prompt. Windows needs it to open disk images.</li>
 <li>Choose <b>Create Lockbox</b>, pick a folder for the vault, and set a password of 12 characters or more.</li>
 </ol>
 <p>Creating a vault needs Windows 10 or 11 Pro, Enterprise or Education, because Windows Home can’t turn on BitLocker.</p>
+</details>
 </div>
 </div>
 <div class="lb-side">

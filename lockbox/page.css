@@ -6,7 +6,6 @@
 .lb-mark svg{width:.86em;height:.86em;flex:none;color:var(--ice)}
 
 /* Trade-offs: what Lockbox shows after it tries to lock. The state words are set like the app's headline. */
-.lb-check{gap:20px}
 .lb-states{align-self:stretch;border-top:1px solid var(--rule)}
 .lb-states>div{display:grid;grid-template-columns:10rem minmax(0,1fr);column-gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px dashed var(--rule)}
 .lb-states>div:last-child{border-bottom:0}
@@ -17,8 +16,7 @@
 /* Why: the steps each tool takes from nothing to a stored file, side by side. Lockbox is the last column.
    The lists' length is the comparison, so every step is one short line. */
 /* Why: two columns of copy above the steps figure */
-.lb-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px var(--gap)}
-.lb-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gap);align-items:start}
+.lb-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px var(--gap)}.lb-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gap);align-items:start}
 .lb-steps h3{margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid var(--rule);font:500 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 .lb-steps ol{counter-reset:step}
 .lb-steps li{counter-increment:step;display:grid;grid-template-columns:1.8em minmax(0,1fr);padding:5px 0;font:13px/1.4 var(--sans);color:var(--ink-2)}
@@ -79,7 +77,14 @@
 .lb-sums{font:13px/1.5 var(--mono);color:var(--ink-2)}
 .lb-sums a{color:var(--ink)}
 .lb-install{width:100%}
-.lb-install h3{margin:18px 0 10px;padding-top:16px;border-top:1px solid var(--rule);font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.lb-install details{border-top:1px solid var(--rule)}
+.lb-install details:last-child{border-bottom:1px solid var(--rule)}
+.lb-install summary{display:flex;justify-content:space-between;align-items:center;min-height:44px;cursor:pointer;list-style:none;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.lb-install summary::-webkit-details-marker{display:none}
+.lb-install summary::after{content:"+";font-size:16px;color:var(--ink-2)}
+.lb-install details[open] summary::after{content:"−"}
+.lb-install summary:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.lb-install details>p{padding-bottom:14px}
 .lb-install ol{list-style:decimal;padding:0 0 10px 20px;display:flex;flex-direction:column;gap:6px}
 .lb-install b{color:var(--ink);font-weight:600}
 .lb-warn{margin:0;padding:18px 20px;border:1px solid var(--rule);border-left:3px solid var(--signal)}
